@@ -17,13 +17,17 @@ const Header = () => {
         <Link to="/contact" style={styles.link}>
           Contact Form
         </Link>
-        <Link to="/login" style={styles.link}>
-          Login
-        </Link>
-        <Link to="/register" style={styles.link}>
-          Register
-        </Link>
       </nav>
+
+      <Link to="/contact" style={styles.contact}>
+        Contact Form
+      </Link>
+      <Link to="/login" style={styles.link}>
+        Login
+      </Link>
+      <Link to="/register" style={styles.link}>
+        Register
+      </Link>
     </header>
   );
 };
@@ -34,23 +38,34 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "10px 20px",
-    backgroundColor: "#282c34",
+    //backgroundColor: "#282c34",
     color: "white",
   },
   logo: {
-    fontSize: "24px",
+    fontSize: "16px",
     fontWeight: "bold",
-    border: "2px solid white",
-    padding: "5px 10px",
+    border: "1px solid white",
+    borderRadius: "21px",
+    padding: "8px 12px",
+    opacity: "0px",
   },
   nav: {
     display: "flex",
-    gap: "20px",
+    gap: "48px",
+    alignItems: "center",
   },
   link: {
     color: "white",
     textDecoration: "none",
     fontSize: "18px",
+  },
+  contact: {
+    fontSize: "16px",
+    border: "1px solid white",
+    borderRadius: "21px",
+    padding: "8px 12px",
+    opacity: "0px",
+    color: "white",
   },
 };
 

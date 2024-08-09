@@ -33,7 +33,8 @@ const DragonInfo = () => {
 
   return (
     <div>
-      <h1>SpaceX Dragons</h1>
+      <h1>dive deep in to the future</h1>
+      <h2>Our rockets</h2>
       {dragons.map((dragon) => (
         <div
           key={dragon.id}
@@ -41,9 +42,19 @@ const DragonInfo = () => {
             border: "1px solid #ccc",
             marginBottom: "10px",
             padding: "10px",
+            width: "427px",
+            display: "flex",
+            flexWrap: "wrap",
+            color: "white",
+            flexDirection: "column",
           }}
         >
-          <h2>{dragon.name}</h2>
+          <img
+            src={dragon.flickr_images[0]}
+            alt={dragon.name}
+            style={{ width: "379px", height: "219px" }}
+          />
+          <h3>{dragon.name}</h3>
           <p>
             <strong>Description:</strong> {dragon.description}
           </p>
@@ -59,11 +70,9 @@ const DragonInfo = () => {
           <p>
             <strong>Dry Mass (kg):</strong> {dragon.dry_mass_kg}
           </p>
-          <img
-            src={dragon.flickr_images[0]}
-            alt={dragon.name}
-            style={{ width: "300px", height: "auto" }}
-          />
+          <p>
+            <strong>Dry Diameter (m):</strong> {dragon.dru_diameter_m}
+          </p>
         </div>
       ))}
     </div>

@@ -1,16 +1,35 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: Rubik, sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   margin: 0;
   padding: 20px;
+  background: rgba(50, 38, 89, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-image: url("./images//toy-rocket.gif.gif");
+  background-repeat: no-repeat;
 }
 
 h1 {
-  color: #333;
+  color: rgba(255, 255, 255, 1);
+  font-family: Rubik;
+  font-size: 100px;
+  font-weight: 700;
+  line-height: 118.5px;
+  text-align: left;
+  width: 583px;
+  height: 357px;
+  top: 148px;
+  left: 32px;
+  gap: 0px;
+  opacity: 0px;
+  text-transform: uppercase;
 }
 
 h2 {
-  color: #555;
+  font-size: 64px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 1);
 }
 
 p {
@@ -19,4 +38,6 @@ p {
 
 img {
   margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
