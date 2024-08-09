@@ -7,49 +7,23 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Тестове завдання
-Базове завдання
-Потрібно написати веб-додаток, який відкривається і показує інформацію
-про ракету Dragon від SpaceX. Треба отримати дані про характеристики
-ракети SpaceX за адресою https://api.spacexdata.com/v4/dragons та
-відобразити їх. Дизайн доступний за посиланням
-https://www.figma.com/design/JTokTA6Xfcy9Kb62xRBRKv/Test-Junior?nodeid=
-0-1&t=wRYLyztnat6ev1i1-0
-Потрібно зробити так, щоб ваш сервіс був доступний в інтернеті за
-захищеним протоколом HTTPS з будь-яким доменним іменем
-(безкоштовним теж).
-Додаткові завдання (робити не обов’язково)
-Реалізувати карусель із картинок. В атрибуті `flickr_images`
-міститься масив із картинок. У деталях потрібно показати карусель
-із картинок.
+## CI/CD Pipeline
 
-- Реалізувати кешування даних. При отриманні даних потрібно
-  зберегти їх у постійному сховищі. При повторному відкритті
-  програми потрібно показати дані зі сховища та у фоновому режимі
-  зробити запит на отримання нових даних. Коли нові дані прийдуть,
-  їх потрібно замінити на ті, що на екрані (в даному випадку дані
-  будуть ті самі, але важлива механіка). Також потрібно вивести
-  індикатор завантаження, якщо даних для кешування немає і дані із
-  запиту ще не прийшли. Картинки також повинні кешуватись.
-- Pull to refresh.
-- Деплой (Amplify, Netlify, Heroku). Потрібно зробити так, щоб ваш
-  сервіс був доступний в інтернеті за захищеним протоколом HTTPS з
-  будь-яким доменним іменем (безкоштовним теж).
-- Налаштування CI/CD для деплою. Проект має автоматично
-  деплоїтися. Механізм деплою має бути описаний у README.
-- Автентифікація: Потрібно додати можливість логіну/реєстрації.
-  Плюсом буде 2ФА.
-- Можливість додавати Dragon у обране та показувати обране. (Можна
-  використовувати сторонні послуги (Firebase, Cognito тощо) або
-  написати самостійно)
-- Документація та тести - наявність та якість документації та тестів.
-  Рекомедації:
-- документація бажано англійською
-- у документації опис проекту, як деплоїти та робити дів. оточення
-- юніт тести
-- функціональні тести
-- інтеграція тестів із деплойментом
-  Вимоги щодо технологій: обов'язково – ReactJS останньої версії з
-  використанням vite
-  можна використовувати JS або TS
-  бажано використовувати Recoiljs або Redux та Redux Toolkit
+This project uses GitHub Actions for Continuous Integration and Continuous Deployment (CI/CD). Every time code is pushed to the `main` branch, the project is automatically built and deployed to Vercel.
+
+### Deployment Steps
+
+1. Code is pushed or merged into the `main` branch.
+2. GitHub Actions is triggered by the push event.
+3. The project dependencies are installed, and the project is built.
+4. If the build is successful, the project is automatically deployed to Vercel.
+
+### Setting up CI/CD
+
+1. Clone this repository.
+2. Ensure you have a Vercel account and a project set up.
+3. Set the following secrets in your GitHub repository:
+   - `VERCEL_PROJECT_ID`
+   - `VERCEL_ORG_ID`
+   - `VERCEL_TOKEN`
+4. Push changes to the `main` branch, and your project will be automatically deployed.
