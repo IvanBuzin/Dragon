@@ -119,7 +119,7 @@ const DragonInfo = () => {
                     alt={`${dragon.name} ${index + 1}`}
                     style={{
                       width: "100%",
-                      height: "avto",
+                      height: "auto",
                       maxHeight: "300px",
                     }}
                   />
