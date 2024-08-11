@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PullToRefresh from "react-pull-to-refresh";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const DragonInfo = () => {
   const [dragons, setDragons] = useState([]);
