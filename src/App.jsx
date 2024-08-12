@@ -6,6 +6,8 @@ import QA from "./components/QA";
 import ContactForm from "./components/ContactForm";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Home from "./components/Home";
+import Team from "./components/Team";
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+      <Home />
     </div>
   );
 }

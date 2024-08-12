@@ -79,55 +79,62 @@ const DragonInfo = () => {
       <div>
         <h1>dive deep in to the future</h1>
         <h2>Our rockets</h2>
-        {dragons.map((dragon) => (
-          <div
-            key={dragon.id}
-            style={{
-              border: "1px solid #ccc",
-              marginBottom: "20px",
-              padding: "10px",
-              width: "427px",
-              // display: "flex",
-              // flexWrap: "wrap",
-              color: "white",
-              // flexDirection: "column",
-            }}
-          >
-            <h3>{dragon.name}</h3>
-            <p>
-              <strong>Description:</strong> {dragon.description}
-            </p>
-            <p>
-              <strong>First Flight:</strong> {dragon.first_flight}
-            </p>
-            <p>
-              <strong>Type:</strong> {dragon.type}
-            </p>
-            <p>
-              <strong>Crew Capacity:</strong> {dragon.crew_capacity}
-            </p>
-            <p>
-              <strong>Dry Mass (kg):</strong> {dragon.dry_mass_kg}
-            </p>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            flexWrap: "wrap",
+            gap: "24px",
+          }}
+        >
+          {dragons.map((dragon) => (
+            <div
+              key={dragon.id}
+              style={{
+                border: "1px solid #ccc",
+                marginBottom: "20px",
+                padding: "10px",
+                width: "427px",
+                boxSizing: "border-box",
+                color: "white",
+              }}
+            >
+              <h3>{dragon.name}</h3>
+              <p>
+                <strong>Description:</strong> {dragon.description}
+              </p>
+              <p>
+                <strong>First Flight:</strong> {dragon.first_flight}
+              </p>
+              <p>
+                <strong>Type:</strong> {dragon.type}
+              </p>
+              <p>
+                <strong>Crew Capacity:</strong> {dragon.crew_capacity}
+              </p>
+              <p>
+                <strong>Dry Mass (kg):</strong> {dragon.dry_mass_kg}
+              </p>
 
-            {/*Карусель*/}
-            <Slider {...settings}>
-              {dragon.flickr_images.map((image, index) => (
-                <div key={index}>
-                  <img
-                    src={image}
-                    alt={`${dragon.name} ${index + 1}`}
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      maxHeight: "300px",
-                    }}
-                  />
-                </div>
-              ))}
-            </Slider>
-          </div>
-        ))}
+              {/*Карусель*/}
+              <Slider {...settings}>
+                {dragon.flickr_images.map((image, index) => (
+                  <div key={index}>
+                    <img
+                      src={image}
+                      alt={`${dragon.name} ${index + 1}`}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        maxHeight: "300px",
+                      }}
+                    />
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          ))}
+        </div>
       </div>
     </PullToRefresh>
   );
