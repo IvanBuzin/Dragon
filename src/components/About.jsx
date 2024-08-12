@@ -30,7 +30,7 @@ const About = () => {
     setTimeout(() => {
       const data = {
         // description: "",
-        video_url: "https://www.youtube.com/embed/L-CfAaqL-4g",
+        video_url: "https://www.youtube.com/watch?v=921VbEMAwwY&t=1s",
       };
       setAboutData(data);
       setLoading(false);
