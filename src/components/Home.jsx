@@ -1,81 +1,66 @@
 import About from "./About";
 import DragonInfo from "./DragonInfo/DragonInfo";
+import Header from "./Header";
 import StarshipCapabilities from "./StarshipCapabilities";
 import Team from "./Team";
 
 const Home = () => {
   return (
-    <div style={{ color: "white", backgroundColor: "#111", padding: "20px" }}>
-      {/* Перша секція */}
-      <section id="rockets">
-        <DragonInfo />
-      </section>
-
-      {/* Друга секція: Rocket Statistics */}
-      <section id="rocket-stats" style={{ marginTop: "50px" }}>
-        <h2>Rocket Statistics</h2>
-        <div
+    <>
+      <div
+        style={{
+          color: "white",
+          height: "100%",
+          maxHeight: "3149px",
+        }}
+      >
+        {/* Перша секція */}
+        <section
+          id="rockets"
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            marginTop: "20px",
+            height: "653px",
+            border: "1px solid white",
+            borderRadius: "40px",
           }}
         >
-          <div
-            style={{
-              width: "30%",
-              padding: "20px",
-              backgroundColor: "#222",
-              textAlign: "center",
-              borderRadius: "8px",
-            }}
-          >
-            <h2>209</h2>
-            <h3>Total Launches</h3>
-          </div>
-
-          <div
-            style={{
-              width: "30%",
-              padding: "20px",
-              backgroundColor: "#222",
-              textAlign: "center",
-              borderRadius: "8px",
-            }}
-          >
-            <h2>23</h2>
-            <h3>Visits to the ISS</h3>
-          </div>
-
-          <div
-            style={{
-              width: "30%",
-              padding: "20px",
-              backgroundColor: "#222",
-              textAlign: "center",
-              borderRadius: "8px",
-            }}
-          >
-            <h2>31</h2>
-            <h3>Total Reflights</h3>
-          </div>
-        </div>
-      </section>
-      {/* Третя секція */}
-      <section id="about">
-        <About />
-      </section>
-      {/* Четверта секція */}
-      <section id="team">
-        <Team />
-      </section>
-
-      {/* П'ята секція */}
-      <section id="starship">
-        <StarshipCapabilities />
-      </section>
-    </div>
+          <Header />
+        </section>
+        {/* Друга секція */}
+        <section
+          id="rockets"
+          style={{
+            height: "755px",
+            border: "1px solid white",
+            margin: "0px",
+          }}
+        >
+          <DragonInfo />
+        </section>
+        {/* Друга секція: Rocket Statistics */}
+        <section
+          id="rocket-stats"
+          style={{
+            height: "755px",
+            border: "1px solid white",
+            // borderRadius: "40px",
+          }}
+        ></section>
+        {/* Третя секція */}
+        <section id="about">
+          <About />
+        </section>
+        {/* Четверта секція */}
+        <section id="team">
+          <Team />
+        </section>
+      </div>
+      <div>
+        {/* П'ята секція */}
+        <section id="starship">
+          <StarshipCapabilities />
+        </section>
+      </div>
+    </>
   );
 };
 

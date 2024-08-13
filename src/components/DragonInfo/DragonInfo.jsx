@@ -66,6 +66,11 @@ const DragonInfo = () => {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
+
+  // Конвертація метрів у футі та кілограмів у фунти
+  const metersToFeet = (meters) => (meters * 3.28084).toFixed(1);
+  const kgToLbs = (kg) => (kg * 2.20462).toFixed(3);
+
   // Налаштування для каруселі
   const settings = {
     dots: true,
@@ -77,14 +82,13 @@ const DragonInfo = () => {
   return (
     <PullToRefresh onRefresh={fetchData}>
       <div>
-        <h1>dive deep in to the future</h1>
         <h2>Our rockets</h2>
         <div
           style={{
             display: "flex",
             justifyContent: "flex-start",
             flexWrap: "wrap",
-            gap: "24px",
+            gap: "20px",
           }}
         >
           {dragons.map((dragon) => (
@@ -92,15 +96,34 @@ const DragonInfo = () => {
               key={dragon.id}
               style={{
                 border: "1px solid #ccc",
-                marginBottom: "20px",
-                padding: "10px",
+                // marginBottom: "20px",
+                padding: "24px",
                 width: "427px",
+                height: "553px",
                 boxSizing: "border-box",
                 color: "white",
+                borderRadius: "40px",
               }}
             >
-              <h3>{dragon.name}</h3>
-              <p>
+              <Slider {...settings}>
+                {dragon.flickr_images.map((image, index) => (
+                  <div key={index}>
+                    <img
+                      src={image}
+                      alt={`${dragon.name} ${index + 1}`}
+                      style={{
+                        width: "379px",
+                        height: "auto",
+                        maxHeight: "219px",
+                        border: "1px solid white",
+                        borderRadius: "20px",
+                      }}
+                    />
+                  </div>
+                ))}
+              </Slider>
+              <h4>{dragon.name}</h4>
+              {/* <p>
                 <strong>Description:</strong> {dragon.description}
               </p>
               <p>
@@ -113,25 +136,52 @@ const DragonInfo = () => {
                 <strong>Crew Capacity:</strong> {dragon.crew_capacity}
               </p>
               <p>
-                <strong>Dry Mass (kg):</strong> {dragon.dry_mass_kg}
+                <strong>Dry Mass:</strong> {dragon.dry_mass_kg} kg /{" "}
+                {kgToLbs(dragon.dry_mass_kg)} lbs
+              </p> */}
+              <p style={{ display: "flex", justifyContent: "space-between" }}>
+                <span>
+                  <strong>Height</strong>
+                </span>
+                <span>
+                  {dragon.height_w_trunk?.meters} m /{" "}
+                  {metersToFeet(dragon.height_w_trunk?.meters)} ft
+                </span>
+              </p>
+              <p style={{ display: "flex", justifyContent: "space-between" }}>
+                <span>
+                  <strong>Diameter</strong>
+                </span>
+                <span>
+                  {" "}
+                  {dragon.diameter?.meters} m /{" "}
+                  {metersToFeet(dragon.diameter?.meters)} ft
+                </span>
+              </p>
+              <p style={{ display: "flex", justifyContent: "space-between" }}>
+                <span>
+                  <strong>Spacecraft Volume</strong>{" "}
+                </span>
+                <span>
+                  {dragon.pressurized_capsule?.payload_volume?.cubic_meters} m³
+                </span>
+              </p>
+              <p style={{ display: "flex", justifyContent: "space-between" }}>
+                <strong>Trunk Volume</strong>{" "}
+                {dragon.trunk?.trunk_volume?.cubic_meters} m³
+              </p>
+              <p style={{ display: "flex", justifyContent: "space-between" }}>
+                <strong>Launch Payload Mass</strong>{" "}
+                {dragon.launch_payload_mass?.kg} kg /{" "}
+                {kgToLbs(dragon.launch_payload_mass?.kg)} lbs
+              </p>
+              <p style={{ display: "flex", justifyContent: "space-between" }}>
+                <strong>Return Payload Mass</strong>{" "}
+                {dragon.return_payload_mass?.kg} kg /{" "}
+                {kgToLbs(dragon.return_payload_mass?.kg)} lbs
               </p>
 
               {/*Карусель*/}
-              <Slider {...settings}>
-                {dragon.flickr_images.map((image, index) => (
-                  <div key={index}>
-                    <img
-                      src={image}
-                      alt={`${dragon.name} ${index + 1}`}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        maxHeight: "300px",
-                      }}
-                    />
-                  </div>
-                ))}
-              </Slider>
             </div>
           ))}
         </div>

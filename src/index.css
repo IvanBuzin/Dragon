@@ -3,7 +3,7 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   margin: 0;
-  padding: 20px;
+  padding: 48px 60px 100px 60px;
   background: rgba(50, 38, 89, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.2);
   background-image: url("./images//toy-rocket.gif.gif");
@@ -12,7 +12,9 @@ body {
   width: 1440px;
   height: 4131px;
 }
-
+section {
+  margin-bottom: 100px;
+}
 h1 {
   color: rgba(255, 255, 255, 1);
   font-family: Rubik;
@@ -22,10 +24,8 @@ h1 {
   text-align: left;
   width: 583px;
   height: 357px;
-  top: 148px;
-  left: 32px;
-  gap: 0px;
-  opacity: 0px;
+  margin-top: 48px;
+  margin-left: 32px;
   text-transform: uppercase;
 }
 
@@ -35,6 +35,8 @@ h2 {
   color: rgba(255, 255, 255, 1);
   text-transform: uppercase;
   text-align: center;
+  margin: 0px;
+  height: 76px;
 }
 
 h3 {
@@ -45,12 +47,24 @@ h3 {
   text-align: center;
 }
 
+h4 {
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-transform: uppercase;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
 p {
-  color: #666;
+  color: rgba(255, 255, 255, 1);
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 img {
-  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
 }

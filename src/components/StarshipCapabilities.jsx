@@ -69,7 +69,13 @@ const StarshipCapabilities = () => {
   };
 
   return (
-    <div style={{ padding: "20px", backgroundColor: "#111", color: "#fff" }}>
+    <div
+      style={{
+        padding: "20px",
+        backgroundColor: "#111",
+        color: "#fff",
+      }}
+    >
       <h2>Starship Capabilities</h2>
       <p>
         As the most powerful launch system ever developed, Starship will be able
@@ -83,7 +89,7 @@ const StarshipCapabilities = () => {
             <img
               src={capability.image}
               alt={capability.title}
-              style={{ width: "100%", height: "auto", maxHeight: "300px" }}
+              style={{ width: "100%", height: "auto", maxHeight: "834px" }}
             />
             <h3>{capability.title}</h3>
             <p>{capability.description}</p>
