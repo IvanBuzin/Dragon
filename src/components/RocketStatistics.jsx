@@ -11,7 +11,7 @@ const RocketStatistics = () => {
   const fetchStatistics = () => {
     return fetch("https://api.spacexdata.com/v4/dragons")
       .then((response) => {
-        if (response.ok) {
+        if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         return response.json();
@@ -31,6 +31,9 @@ const RocketStatistics = () => {
           visitsToISS,
           totalReflights,
         });
+      })
+      .catch((error) => {
+        console.error("Fetch error: ", error);
       });
   };
 
@@ -40,27 +43,24 @@ const RocketStatistics = () => {
   }, []);
 
   return (
-    <div>
-      <h2 style={{ textAlign: "center" }}>Rocket Statistics</h2>
+    <div style={{ display: "flex" }}>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          flexWrap: "wrap",
+          flexWrap: "nowrap",
           color: "white",
-          gap: "20px",
-          marginTop: "20px",
+          gap: "32px",
         }}
       >
         <div
           style={{
             flex: "1 1 calc(33.33% - 20px)",
             backgroundColor: "#222",
-            padding: "20px",
-
-            borderRadius: "8px",
             textAlign: "center",
             minWidth: "250px",
+            width: "419px",
+            height: "146px",
           }}
         >
           <h2>{statistics.totalLaunches}</h2>
@@ -70,11 +70,10 @@ const RocketStatistics = () => {
           style={{
             flex: "1 1 calc(33.33% - 20px)",
             backgroundColor: "#222",
-            padding: "20px",
-
-            borderRadius: "8px",
             textAlign: "center",
             minWidth: "250px",
+            width: "419px",
+            height: "146px",
           }}
         >
           <h2>{statistics.visitsToISS}</h2>
@@ -84,10 +83,10 @@ const RocketStatistics = () => {
           style={{
             flex: "1 1 calc(33.33% - 20px)",
             backgroundColor: "#222",
-            padding: "20px",
-            borderRadius: "8px",
             textAlign: "center",
             minWidth: "250px",
+            width: "419px",
+            height: "146px",
           }}
         >
           <h2>{statistics.totalReflights}</h2>

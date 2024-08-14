@@ -46,6 +46,8 @@ h3 {
   color: rgba(255, 255, 255, 1);
   text-transform: uppercase;
   text-align: center;
+  margin: 0px;
+  margin-top: 32px;
 }
 
 h4 {

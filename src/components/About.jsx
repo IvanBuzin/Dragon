@@ -50,12 +50,15 @@ const About = () => {
   }
 
   return (
-    <div>
+    <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>
       <h2>About Us</h2>
-      <p>{aboutData.description}</p>
       {aboutData.video_url && (
         <div
-          style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}
+          style={{
+            position: "relative",
+            paddingBottom: "40.5%",
+            height: 0,
+          }}
         >
           <iframe
             src={aboutData.video_url}
@@ -66,6 +69,7 @@ const About = () => {
               left: 0,
               width: "100%",
               height: "100%",
+              borderRadius: "40px",
             }}
             frameBorder="0"
             allowFullScreen

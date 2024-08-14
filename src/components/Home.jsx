@@ -1,6 +1,7 @@
 import About from "./About";
 import DragonInfo from "./DragonInfo/DragonInfo";
 import Header from "./Header";
+import RocketStatistics from "./RocketStatistics";
 import StarshipCapabilities from "./StarshipCapabilities";
 import Team from "./Team";
 
@@ -42,18 +43,32 @@ const Home = () => {
             height: "146px",
             border: "1px solid white",
           }}
-        ></section>
-        {/* Третя секція */}
-        <section id="about">
-          <About />
+        >
+          <RocketStatistics />
         </section>
         {/* Четверта секція */}
-        <section id="team">
+        <section
+          id="about"
+          style={{
+            height: "644px",
+            border: "1px solid white",
+          }}
+        >
+          <About />
+        </section>
+        {/* П'ята секція */}
+        <section
+          id="team"
+          style={{
+            height: "551px",
+            border: "1px solid white",
+          }}
+        >
           <Team />
         </section>
       </div>
       <div>
-        {/* П'ята секція */}
+        {/* Шоста секція */}
         <section id="starship">
           <StarshipCapabilities />
         </section>

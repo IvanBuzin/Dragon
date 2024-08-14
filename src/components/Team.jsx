@@ -58,13 +58,52 @@ const Team = () => {
   }
 
   return (
-    <div style={{ padding: "20px", backgroundColor: "#111", color: "#fff" }}>
-      <h2>Team</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor
-        sed urna a faucibus. Pellentesque mi nisl, mollis convallis metus id,
-        congue semper neque. Sed suscipit eget ipsum ut gravida. Fusce 
-      </p>
+    <div
+      style={{
+        display: "flex",
+        gap: "20px",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          backgroundColor: "#111",
+          color: "#fff",
+          flexDirection: "column",
+          alignItems: "flex-start",
+        }}
+      >
+        <h2>Team</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor
+          sed urna a faucibus. Pellentesque mi nisl, mollis convallis metus id,
+          congue semper neque. Sed suscipit eget ipsum ut gravida. Fusce 
+        </p>
+        <div
+          style={{
+            display: "flex",
+          }}
+        >
+          <div
+            style={{
+              marginTop: "24px",
+              padding: "0px 16px",
+              background: "#fff",
+            }}
+          >
+            <img src="/src/images/Group 1x.png" alt="navigation r" />
+          </div>
+          <div
+            style={{
+              marginTop: "24px",
+              padding: "0px 16px",
+              background: "#fff",
+            }}
+          >
+            <img src="/src/images/Group 1x r.png" alt="navigation r" />
+          </div>
+        </div>
+      </div>
       <div
         style={{
           display: "grid",
