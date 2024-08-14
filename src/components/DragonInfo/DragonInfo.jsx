@@ -73,57 +73,84 @@ const DragonInfo = () => {
 
   // Налаштування для каруселі
   const settings = {
-    dots: true,
-    infinite: true,
+    dots: false, // Додавання точок навігації
+    infinite: false,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 1, // Кількість блоків, що відображаються одночасно
     slidesToScroll: 1,
+    arrows: true, // Додавання стрілок для навігації
   };
+
   return (
     <PullToRefresh onRefresh={fetchData}>
-      <div>
-        <h2>Our rockets</h2>
+      <div style={{ display: "bloc" }}>
+        <h2
+          style={{
+            marginBottom: "32px",
+          }}
+        >
+          Our rockets
+        </h2>
         <div
           style={{
             display: "flex",
-            justifyContent: "flex-start",
-            flexWrap: "wrap",
-            gap: "20px",
+            justifyContent: "space-between",
+            flexDirection: "column",
+            gap: "32px",
           }}
         >
-          {dragons.map((dragon) => (
-            <div
-              key={dragon.id}
-              style={{
-                border: "1px solid #ccc",
-                // marginBottom: "20px",
-                padding: "24px",
-                width: "427px",
-                height: "553px",
-                boxSizing: "border-box",
-                color: "white",
-                borderRadius: "40px",
-              }}
-            >
-              <Slider {...settings}>
-                {dragon.flickr_images.map((image, index) => (
-                  <div key={index}>
-                    <img
-                      src={image}
-                      alt={`${dragon.name} ${index + 1}`}
-                      style={{
-                        width: "379px",
-                        height: "auto",
-                        maxHeight: "219px",
-                        border: "1px solid white",
-                        borderRadius: "20px",
-                      }}
-                    />
-                  </div>
-                ))}
-              </Slider>
-              <h4>{dragon.name}</h4>
-              {/* <p>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              flexWrap: "noWrap",
+              gap: "20px",
+            }}
+          >
+            {dragons.map((dragon) => (
+              <div
+                key={dragon.id}
+                style={{
+                  border: "1px solid #ccc",
+                  // marginBottom: "20px",
+                  padding: "24px",
+                  width: "427px",
+                  height: "553px",
+                  boxSizing: "border-box",
+                  color: "white",
+                  borderRadius: "40px",
+                  // display: "flex",
+                  // flexDirection: "row",
+                  // justifyContent: "space-between",
+                  // alignItems: "center",
+                  // gap: "12px",
+                  // width: "1321px",
+                  // height: "62px",
+                  // flex: "none",
+                  // order: 2,
+                  // alignSelf: "stretch",
+                  // flexGrow: 0,
+                }}
+              >
+                <Slider {...settings}>
+                  {dragon.flickr_images.map((image, index) => (
+                    <div key={index}>
+                      <img
+                        src={image}
+                        alt={`${dragon.name} ${index + 1}`}
+                        style={{
+                          width: "379px",
+                          height: "auto",
+                          maxHeight: "219px",
+                          border: "1px solid white",
+                          borderRadius: "20px",
+                        }}
+                      />
+                    </div>
+                  ))}
+                </Slider>
+                <h4>{dragon.name}</h4>
+                {/* <p>
                 <strong>Description:</strong> {dragon.description}
               </p>
               <p>
@@ -139,51 +166,276 @@ const DragonInfo = () => {
                 <strong>Dry Mass:</strong> {dragon.dry_mass_kg} kg /{" "}
                 {kgToLbs(dragon.dry_mass_kg)} lbs
               </p> */}
-              <p style={{ display: "flex", justifyContent: "space-between" }}>
-                <span>
-                  <strong>Height</strong>
-                </span>
-                <span>
-                  {dragon.height_w_trunk?.meters} m /{" "}
-                  {metersToFeet(dragon.height_w_trunk?.meters)} ft
-                </span>
+                <p style={{ display: "flex", justifyContent: "space-between" }}>
+                  <span>
+                    <strong>Height</strong>
+                  </span>
+                  <span>
+                    {dragon.height_w_trunk?.meters} m /{" "}
+                    {metersToFeet(dragon.height_w_trunk?.meters)} ft
+                  </span>
+                </p>
+                <p style={{ display: "flex", justifyContent: "space-between" }}>
+                  <span>
+                    <strong>Diameter</strong>
+                  </span>
+                  <span>
+                    {" "}
+                    {dragon.diameter?.meters} m /{" "}
+                    {metersToFeet(dragon.diameter?.meters)} ft
+                  </span>
+                </p>
+                <p style={{ display: "flex", justifyContent: "space-between" }}>
+                  <span>
+                    <strong>Spacecraft Volume</strong>{" "}
+                  </span>
+                  <span>
+                    {dragon.pressurized_capsule?.payload_volume?.cubic_meters}{" "}
+                    m³
+                  </span>
+                </p>
+                <p style={{ display: "flex", justifyContent: "space-between" }}>
+                  <strong>Trunk Volume</strong>{" "}
+                  {dragon.trunk?.trunk_volume?.cubic_meters} m³
+                </p>
+                <p style={{ display: "flex", justifyContent: "space-between" }}>
+                  <strong>Launch Payload Mass</strong>{" "}
+                  {dragon.launch_payload_mass?.kg} kg /{" "}
+                  {kgToLbs(dragon.launch_payload_mass?.kg)} lbs
+                </p>
+                <p style={{ display: "flex", justifyContent: "space-between" }}>
+                  <strong>Return Payload Mass</strong>{" "}
+                  {dragon.return_payload_mass?.kg} kg /{" "}
+                  {kgToLbs(dragon.return_payload_mass?.kg)} lbs
+                </p>
+              </div>
+            ))}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-start",
+                flexWrap: "wrap",
+                gap: "20px",
+              }}
+            >
+              {dragons.map((dragon) => (
+                <div
+                  key={dragon.id}
+                  style={{
+                    border: "1px solid #ccc",
+                    // marginBottom: "20px",
+                    padding: "24px",
+                    width: "427px",
+                    height: "553px",
+                    boxSizing: "border-box",
+                    color: "white",
+                    borderRadius: "40px",
+                    // display: "flex",
+                    // flexDirection: "row",
+                    // justifyContent: "space-between",
+                    // alignItems: "center",
+                    // gap: "12px",
+                    // width: "1321px",
+                    // height: "62px",
+                    // flex: "none",
+                    // order: 2,
+                    // alignSelf: "stretch",
+                    // flexGrow: 0,
+                  }}
+                >
+                  <Slider {...settings}>
+                    {dragon.flickr_images.map((image, index) => (
+                      <div key={index}>
+                        <img
+                          src={image}
+                          alt={`${dragon.name} ${index + 1}`}
+                          style={{
+                            width: "379px",
+                            height: "auto",
+                            maxHeight: "219px",
+                            border: "1px solid white",
+                            borderRadius: "20px",
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </Slider>
+                  <h4>{dragon.name}</h4>
+                  {/* <p>
+                <strong>Description:</strong> {dragon.description}
               </p>
-              <p style={{ display: "flex", justifyContent: "space-between" }}>
-                <span>
-                  <strong>Diameter</strong>
-                </span>
-                <span>
-                  {" "}
-                  {dragon.diameter?.meters} m /{" "}
-                  {metersToFeet(dragon.diameter?.meters)} ft
-                </span>
+              <p>
+                <strong>First Flight:</strong> {dragon.first_flight}
               </p>
-              <p style={{ display: "flex", justifyContent: "space-between" }}>
-                <span>
-                  <strong>Spacecraft Volume</strong>{" "}
-                </span>
-                <span>
-                  {dragon.pressurized_capsule?.payload_volume?.cubic_meters} m³
-                </span>
+              <p>
+                <strong>Type:</strong> {dragon.type}
               </p>
-              <p style={{ display: "flex", justifyContent: "space-between" }}>
-                <strong>Trunk Volume</strong>{" "}
-                {dragon.trunk?.trunk_volume?.cubic_meters} m³
+              <p>
+                <strong>Crew Capacity:</strong> {dragon.crew_capacity}
               </p>
-              <p style={{ display: "flex", justifyContent: "space-between" }}>
-                <strong>Launch Payload Mass</strong>{" "}
-                {dragon.launch_payload_mass?.kg} kg /{" "}
-                {kgToLbs(dragon.launch_payload_mass?.kg)} lbs
-              </p>
-              <p style={{ display: "flex", justifyContent: "space-between" }}>
-                <strong>Return Payload Mass</strong>{" "}
-                {dragon.return_payload_mass?.kg} kg /{" "}
-                {kgToLbs(dragon.return_payload_mass?.kg)} lbs
-              </p>
+              <p>
+                <strong>Dry Mass:</strong> {dragon.dry_mass_kg} kg /{" "}
+                {kgToLbs(dragon.dry_mass_kg)} lbs
+              </p> */}
+                  <p
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <span>
+                      <strong>Height</strong>
+                    </span>
+                    <span>
+                      {dragon.height_w_trunk?.meters} m /{" "}
+                      {metersToFeet(dragon.height_w_trunk?.meters)} ft
+                    </span>
+                  </p>
+                  <p
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <span>
+                      <strong>Diameter</strong>
+                    </span>
+                    <span>
+                      {" "}
+                      {dragon.diameter?.meters} m /{" "}
+                      {metersToFeet(dragon.diameter?.meters)} ft
+                    </span>
+                  </p>
+                  <p
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <span>
+                      <strong>Spacecraft Volume</strong>{" "}
+                    </span>
+                    <span>
+                      {dragon.pressurized_capsule?.payload_volume?.cubic_meters}{" "}
+                      m³
+                    </span>
+                  </p>
+                  <p
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <strong>Trunk Volume</strong>{" "}
+                    {dragon.trunk?.trunk_volume?.cubic_meters} m³
+                  </p>
+                  <p
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <strong>Launch Payload Mass</strong>{" "}
+                    {dragon.launch_payload_mass?.kg} kg /{" "}
+                    {kgToLbs(dragon.launch_payload_mass?.kg)} lbs
+                  </p>
+                  <p
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <strong>Return Payload Mass</strong>{" "}
+                    {dragon.return_payload_mass?.kg} kg /{" "}
+                    {kgToLbs(dragon.return_payload_mass?.kg)} lbs
+                  </p>
+                </div>
+              ))}
 
-              {/*Карусель*/}
+              {/* <div
+              className="navigation-arrows"
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <button className="prev-arrow">Previous</button>
+              <button className="next-arrow">Next</button>
+            </div> */}
             </div>
-          ))}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              height: "62px",
+            }}
+          >
+            <div
+              style={{
+                marginTop: "24px",
+                padding: "0px 16px",
+              }}
+            >
+              <img
+                src="/src/images/Vector w.png"
+                alt="navigation left"
+                style={{ color: "white" }}
+              />
+            </div>
+            <div
+              className="navigation-dots"
+              style={{
+                display: "flex",
+                gap: "12px",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <button
+                className="dot"
+                data-slide="0"
+                style={{
+                  width: "16px",
+                  height: "16px",
+                  gap: "12px",
+                  opacity: "0px",
+                  borderRadius: "50px",
+                }}
+              ></button>
+              <button
+                className="dot"
+                data-slide="1"
+                style={{
+                  width: "16px",
+                  height: "16px",
+                  gap: "0px",
+                  opacity: "0px",
+                  borderRadius: "50px",
+                }}
+              ></button>
+              <button
+                className="dot"
+                data-slide="2"
+                style={{
+                  width: "16px",
+                  height: "16px",
+                  gap: "12px",
+                  opacity: "0px",
+                  borderRadius: "50px",
+                }}
+              ></button>
+              <button
+                className="dot"
+                data-slide="3"
+                style={{
+                  width: "16px",
+                  height: "16px",
+                  gap: "12px",
+                  opacity: "0px",
+                  borderRadius: "50px",
+                }}
+              ></button>
+              <button
+                className="dot"
+                data-slide="3"
+                style={{
+                  width: "16px",
+                  height: "16px",
+                  gap: "12px",
+                  opacity: "0px",
+                  borderRadius: "50px",
+                }}
+              ></button>
+            </div>{" "}
+            <div
+              style={{
+                marginTop: "24px",
+                padding: "0px 16px",
+              }}
+            >
+              <img src="/src/images/Vector w r.png" alt="navigation left" />
+            </div>
+          </div>
         </div>
       </div>
     </PullToRefresh>

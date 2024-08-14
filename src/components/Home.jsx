@@ -16,7 +16,7 @@ const Home = () => {
       >
         {/* Перша секція */}
         <section
-          id="rockets"
+          id="hero"
           style={{
             height: "653px",
             border: "1px solid white",
@@ -31,18 +31,16 @@ const Home = () => {
           style={{
             height: "755px",
             border: "1px solid white",
-            margin: "0px",
           }}
         >
           <DragonInfo />
         </section>
-        {/* Друга секція: Rocket Statistics */}
+        {/* Третя секція: Rocket Statistics */}
         <section
-          id="rocket-stats"
+          id="statistics"
           style={{
-            height: "755px",
+            height: "146px",
             border: "1px solid white",
-            // borderRadius: "40px",
           }}
         ></section>
         {/* Третя секція */}

@@ -9,17 +9,34 @@ const RocketStatistics = () => {
 
   // Функція для отримання статистики з API (замініть на реальний запит)
   const fetchStatistics = () => {
-    // Замість цього API-запиту ви можете використовувати реальні дані
-    // або замінити на ручний введення даних
-    setStatistics({
-      totalLaunches: 200,
-      visitsToISS: 50,
-      totalReflights: 30,
-    });
+    return fetch("https://api.spacexdata.com/v4/dragons")
+      .then((response) => {
+        if (response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const totalLaunches = data.length;
+        const visitsToISS = data.reduce(
+          (acc, dragon) => acc + dragon.flickr_images.length,
+          0
+        );
+        const totalReflights = data.reduce(
+          (acc, dragon) => acc + dragon.active,
+          0
+        );
+        setStatistics({
+          totalLaunches,
+          visitsToISS,
+          totalReflights,
+        });
+      });
   };
 
   useEffect(() => {
     fetchStatistics();
+    console.log(statistics); // Перевірка, що дані надходять
   }, []);
 
   return (
@@ -31,16 +48,19 @@ const RocketStatistics = () => {
           justifyContent: "space-between",
           flexWrap: "wrap",
           color: "white",
+          gap: "20px",
+          marginTop: "20px",
         }}
       >
         <div
           style={{
-            width: "30%",
+            flex: "1 1 calc(33.33% - 20px)",
             backgroundColor: "#222",
             padding: "20px",
-            margin: "10px",
+
             borderRadius: "8px",
             textAlign: "center",
+            minWidth: "250px",
           }}
         >
           <h2>{statistics.totalLaunches}</h2>
@@ -48,12 +68,13 @@ const RocketStatistics = () => {
         </div>
         <div
           style={{
-            width: "30%",
+            flex: "1 1 calc(33.33% - 20px)",
             backgroundColor: "#222",
             padding: "20px",
-            margin: "10px",
+
             borderRadius: "8px",
             textAlign: "center",
+            minWidth: "250px",
           }}
         >
           <h2>{statistics.visitsToISS}</h2>
@@ -61,12 +82,12 @@ const RocketStatistics = () => {
         </div>
         <div
           style={{
-            width: "30%",
+            flex: "1 1 calc(33.33% - 20px)",
             backgroundColor: "#222",
             padding: "20px",
-            margin: "10px",
             borderRadius: "8px",
             textAlign: "center",
+            minWidth: "250px",
           }}
         >
           <h2>{statistics.totalReflights}</h2>
