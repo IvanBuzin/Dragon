@@ -70,45 +70,71 @@ const Team = () => {
           backgroundColor: "#111",
           color: "#fff",
           flexDirection: "column",
-          alignItems: "flex-start",
+          height: "551px",
+          justifyContent: "space-between",
         }}
       >
-        <h2>Team</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor
-          sed urna a faucibus. Pellentesque mi nisl, mollis convallis metus id,
-          congue semper neque. Sed suscipit eget ipsum ut gravida. Fusce 
-        </p>
         <div
           style={{
             display: "flex",
+            gap: "24px",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            width: "427px",
+            height: "196px",
+          }}
+        >
+          <h2>Team</h2>
+          <p style={{ margin: "0px", lineHeight: "24px" }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+            auctor sed urna a faucibus. Pellentesque mi nisl, mollis convallis
+            metus id, congue semper neque. Sed suscipit eget ipsum ut gravida.
+            Fusce 
+          </p>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "12px",
           }}
         >
           <div
             style={{
-              marginTop: "24px",
-              padding: "0px 16px",
               background: "#fff",
+              width: "126px",
+              height: "126px",
+              borderRadius: "24px",
             }}
           >
-            <img src="/src/images/Group 1x.png" alt="navigation r" />
+            <img
+              src="/src/images/Group 1x.png"
+              alt="navigation r"
+              style={{ marginLeft: "24px", marginTop: "24px" }}
+            />
           </div>
           <div
             style={{
-              marginTop: "24px",
-              padding: "0px 16px",
+              width: "126px",
+              height: "126px",
+              borderRadius: "24px",
               background: "#fff",
             }}
           >
-            <img src="/src/images/Group 1x r.png" alt="navigation r" />
+            <img
+              src="/src/images/Group 1x r.png"
+              alt="navigation r"
+              style={{ marginLeft: "24px", marginTop: "24px" }}
+            />
           </div>
         </div>
       </div>
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+          display: "flex",
+          // gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
           gap: "20px",
+          justifyContent: "center",
         }}
       >
         {teamMembers.map((member) => (
@@ -116,23 +142,31 @@ const Team = () => {
             key={member.id}
             style={{
               border: "1px solid #ccc",
-              padding: "10px",
+              borderRadius: "40px",
+              width: "423px",
+              height: "551px",
+              /**/
               backgroundColor: "#222",
               textAlign: "center",
             }}
           >
             <img
-              src={member.photo}
-              alt={member.name}
+              // src={member.photo}
+              src="/src/images/image 2.png"
+              // alt={member.name}
+              alt="Dave Johnson"
               style={{
                 width: "100%",
-                height: "200px",
+                height: "423px",
+                borderRadius: "40px",
                 objectFit: "cover",
                 marginBottom: "10px",
               }}
             />
-            <h3>{member.name}</h3>
-            <p>{member.position}</p>
+            {/* <p>{member.position}</p> */}
+            {/* <h3>{member.name}</h3> */}
+            <p style={{ textTransform: "uppercase" }}>St. Mechanic</p>
+            <h4>Dave Johnson</h4>
           </div>
         ))}
       </div>

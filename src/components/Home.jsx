@@ -12,7 +12,12 @@ const Home = () => {
         style={{
           color: "white",
           height: "100%",
-          maxHeight: "3149px",
+          maxHeight: "3983px",
+          display: "flex",
+          gap: "100px",
+          flexDirection: "column",
+          width: "1320px",
+          padding: "48px 60px 100px 60px",
         }}
       >
         {/* Перша секція */}
@@ -69,7 +74,14 @@ const Home = () => {
       </div>
       <div>
         {/* Шоста секція */}
-        <section id="starship">
+        <section
+          id="starship"
+          style={{
+            height: "834px",
+            width: "1806px",
+            border: "1px solid white",
+          }}
+        >
           <StarshipCapabilities />
         </section>
       </div>
