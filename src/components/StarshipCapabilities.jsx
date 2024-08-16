@@ -74,134 +74,150 @@ const StarshipCapabilities = () => {
         backgroundColor: "#111" /* delete*/,
         color: "#fff",
         display: "flex",
-        marginLeft: "60px",
-        marginTop: "436px",
-        width: "600px",
+        width: "100%",
+        flexDirection: "column",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          marginLeft: "168px",
-          justifyContent: "space-between",
-          width: "453px",
-          height: "272px",
-        }}
-      >
-        <h2 style={{}}>Starship Capabilities</h2>
-        <p style={{ margin: "0px" }}>
-          As the most powerful launch system ever developed, Starship will be
-          able to carry up to 100 people on long-duration, interplanetary
-          flights. Starship will also help enable satellite delivery, the
-          development of a Moon base, and point-to-point transport here on
-          Earth.
-        </p>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          height: "62px",
-        }}
-      >
-        <div
-          style={{
-            marginTop: "24px",
-            padding: "0px 16px",
-          }}
-        >
-          <img
-            src="/src/images/Vector w.png"
-            alt="navigation left"
-            style={{ color: "white" }}
-          />
-        </div>
-        <div
-          className="navigation-dots"
-          style={{
-            display: "flex",
-            gap: "12px",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <button
-            className="dot"
-            data-slide="0"
-            style={{
-              width: "16px",
-              height: "16px",
-              gap: "12px",
-              opacity: "0px",
-              borderRadius: "50px",
-            }}
-          ></button>
-          <button
-            className="dot"
-            data-slide="1"
-            style={{
-              width: "16px",
-              height: "16px",
-              gap: "0px",
-              opacity: "0px",
-              borderRadius: "50px",
-            }}
-          ></button>
-          <button
-            className="dot"
-            data-slide="2"
-            style={{
-              width: "16px",
-              height: "16px",
-              gap: "12px",
-              opacity: "0px",
-              borderRadius: "50px",
-            }}
-          ></button>
-          <button
-            className="dot"
-            data-slide="3"
-            style={{
-              width: "16px",
-              height: "16px",
-              gap: "12px",
-              opacity: "0px",
-              borderRadius: "50px",
-            }}
-          ></button>
-          <button
-            className="dot"
-            data-slide="3"
-            style={{
-              width: "16px",
-              height: "16px",
-              gap: "12px",
-              opacity: "0px",
-              borderRadius: "50px",
-            }}
-          ></button>
-        </div>{" "}
-        <div
-          style={{
-            marginTop: "24px",
-            padding: "0px 16px",
-          }}
-        >
-          <img src="/src/images/Vector w r.png" alt="navigation left" />
-        </div>
-      </div>
       <Slider {...settings}>
         {capabilities.map((capability, index) => (
-          <div key={index} style={{ textAlign: "center" }}>
+          <div
+            key={index}
+            style={{
+              textAlign: "center",
+              display: "flex",
+            }}
+          >
             <img
               // src={capability.image}
               // alt={capability.title}
               src="/src/images/download (10).png"
-              style={{ width: "100%", height: "auto", maxHeight: "534px" }}
-            />
+              style={{ width: "100%", maxHeight: "834px" }}
+            />{" "}
             {/* <h3>{capability.title}</h3>
             <p>{capability.description}</p> */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                marginLeft: "60px",
+                justifyContent: "space-between",
+                width: "1321px",
+                height: "366px",
+                marginTop: "-360px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  width: "453px",
+                  gap: "24px",
+                }}
+              >
+                <h2 style={{}}>Starship Capabilities</h2>{" "}
+                <p style={{ width: "453px", margin: "0px" }}>
+                  As the most powerful launch system ever developed, Starship
+                  will be able to carry up to 100 people on long-duration,
+                  interplanetary flights. Starship will also help enable
+                  satellite delivery, the development of a Moon base, and
+                  point-to-point transport here on Earth.
+                </p>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  height: "62px",
+                }}
+              >
+                <div
+                  style={{
+                    marginTop: "24px",
+                    padding: "0px 16px",
+                  }}
+                >
+                  <img
+                    src="/src/images/Vector w.png"
+                    alt="navigation left"
+                    style={{ color: "white" }}
+                  />
+                </div>
+                <div
+                  className="navigation-dots"
+                  style={{
+                    display: "flex",
+                    gap: "12px",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <button
+                    className="dot"
+                    data-slide="0"
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      gap: "12px",
+                      opacity: "0px",
+                      borderRadius: "50px",
+                    }}
+                  ></button>
+                  <button
+                    className="dot"
+                    data-slide="1"
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      gap: "0px",
+                      opacity: "0px",
+                      borderRadius: "50px",
+                    }}
+                  ></button>
+                  <button
+                    className="dot"
+                    data-slide="2"
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      gap: "12px",
+                      opacity: "0px",
+                      borderRadius: "50px",
+                    }}
+                  ></button>
+                  <button
+                    className="dot"
+                    data-slide="3"
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      gap: "12px",
+                      opacity: "0px",
+                      borderRadius: "50px",
+                    }}
+                  ></button>
+                  <button
+                    className="dot"
+                    data-slide="3"
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      gap: "12px",
+                      opacity: "0px",
+                      borderRadius: "50px",
+                    }}
+                  ></button>
+                </div>{" "}
+                <div
+                  style={{
+                    marginTop: "24px",
+                    padding: "0px 16px",
+                  }}
+                >
+                  <img src="/src/images/Vector w r.png" alt="navigation left" />
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </Slider>

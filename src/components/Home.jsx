@@ -16,7 +16,7 @@ const Home = () => {
           display: "flex",
           gap: "100px",
           flexDirection: "column",
-          width: "1320px",
+          // width: "1320px",
           padding: "48px 60px 100px 60px",
         }}
       >
@@ -78,7 +78,7 @@ const Home = () => {
           id="starship"
           style={{
             height: "834px",
-            width: "1806px",
+            width: "1440px",
             border: "1px solid white",
           }}
         >

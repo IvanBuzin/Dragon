@@ -30,7 +30,8 @@ const About = () => {
     setTimeout(() => {
       const data = {
         // description: "",
-        video_url: "https://www.youtube.com/embed/921VbEMAwwY",
+        // video_url: "https://www.youtube.com/embed/921VbEMAwwY",
+        video_url: "https://www.youtube.com/embed/RfiQYRn7fBg",
       };
       setAboutData(data);
       setLoading(false);
@@ -51,7 +52,7 @@ const About = () => {
 
   return (
     <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>
-      <h2>About Us</h2>
+      <h2 style={{ textAlign: "center" }}>About Us</h2>
       {aboutData.video_url && (
         <div
           style={{
