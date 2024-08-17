@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,7 +7,7 @@ const StarshipCapabilities = () => {
   const [capabilities, setCapabilities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const sliderRef = useRef(null); // Додано useRef для керування навігацією
   const localStorageKey = "capabilitiesData";
 
   const saveToLocalStorage = (data) => {
@@ -66,6 +66,7 @@ const StarshipCapabilities = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
   };
 
   return (
@@ -78,7 +79,7 @@ const StarshipCapabilities = () => {
         flexDirection: "column",
       }}
     >
-      <Slider {...settings}>
+      <Slider {...settings} ref={sliderRef}>
         {capabilities.map((capability, index) => (
           <div
             key={index}
@@ -89,21 +90,29 @@ const StarshipCapabilities = () => {
           >
             <img
               // src={capability.image}
-              // alt={capability.title}
+              alt={capability.title}
               src="/src/images/download (10).png"
               style={{ width: "100%", maxHeight: "834px" }}
             />{" "}
-            {/* <h3>{capability.title}</h3>
-            <p>{capability.description}</p> */}
+            {/* <h3>{capability.title}</h3> */}
+            {/* <p>{capability.description}</p> */}
             <div
               style={{
-                display: "flex",
                 flexDirection: "column",
                 marginLeft: "60px",
                 justifyContent: "space-between",
+
+                marginTop: "-360px",
+                display: "flex",
+
+                alignItems: "flex-start",
+                padding: "0px",
+                gap: "32px",
+                // position: "absolute",
                 width: "1321px",
                 height: "366px",
-                marginTop: "-360px",
+                left: "243px",
+                top: "436px",
               }}
             >
               <div
@@ -127,95 +136,54 @@ const StarshipCapabilities = () => {
               <div
                 style={{
                   display: "flex",
+                  flexDirection: "row",
                   justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "0px",
+                  gap: "12px",
+                  width: "1321px",
                   height: "62px",
+                  flex: "none",
+                  order: 2,
+                  alignSelf: "stretch",
+                  flexGrow: 0,
                 }}
               >
                 <div
                   style={{
-                    marginTop: "24px",
                     padding: "0px 16px",
+                    cursor: "pointer",
                   }}
+                  onClick={() => sliderRef.current.slickPrev()} //Перехід до попереднього слайда
                 >
                   <img
                     src="/src/images/Vector w.png"
                     alt="navigation left"
                     style={{ color: "white" }}
                   />
-                </div>
-                <div
-                  className="navigation-dots"
+                </div>{" "}
+                <ul
+                  className="slick-dots"
                   style={{
                     display: "flex",
-                    gap: "12px",
-                    alignItems: "center",
                     justifyContent: "center",
+                    listStyle: "none",
+                    padding: "0",
                   }}
-                >
-                  <button
-                    className="dot"
-                    data-slide="0"
-                    style={{
-                      width: "16px",
-                      height: "16px",
-                      gap: "12px",
-                      opacity: "0px",
-                      borderRadius: "50px",
-                    }}
-                  ></button>
-                  <button
-                    className="dot"
-                    data-slide="1"
-                    style={{
-                      width: "16px",
-                      height: "16px",
-                      gap: "0px",
-                      opacity: "0px",
-                      borderRadius: "50px",
-                    }}
-                  ></button>
-                  <button
-                    className="dot"
-                    data-slide="2"
-                    style={{
-                      width: "16px",
-                      height: "16px",
-                      gap: "12px",
-                      opacity: "0px",
-                      borderRadius: "50px",
-                    }}
-                  ></button>
-                  <button
-                    className="dot"
-                    data-slide="3"
-                    style={{
-                      width: "16px",
-                      height: "16px",
-                      gap: "12px",
-                      opacity: "0px",
-                      borderRadius: "50px",
-                    }}
-                  ></button>
-                  <button
-                    className="dot"
-                    data-slide="3"
-                    style={{
-                      width: "16px",
-                      height: "16px",
-                      gap: "12px",
-                      opacity: "0px",
-                      borderRadius: "50px",
-                    }}
-                  ></button>
-                </div>{" "}
+                ></ul>
                 <div
                   style={{
-                    marginTop: "24px",
                     padding: "0px 16px",
+                    cursor: "pointer",
                   }}
+                  onClick={() => sliderRef.current.slickNext()} // Перехід до наступного слайда
                 >
-                  <img src="/src/images/Vector w r.png" alt="navigation left" />
-                </div>
+                  <img
+                    src="/src/images/Vector w r.png"
+                    alt="navigation right"
+                    style={{ color: "white" }}
+                  />
+                </div>{" "}
               </div>
             </div>
           </div>

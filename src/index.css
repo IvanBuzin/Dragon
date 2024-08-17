@@ -132,3 +132,39 @@ section.dragon-info-section {
   display: flex;
   justify-content: space-between;
 }
+/*Навігація точки та стрілки*/
+.slick-dots {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 80%;
+  margin-left: 122px;
+  list-style: none;
+  bottom: -70px;
+}
+
+/* .custom-dots {
+  bottom: 21px;
+} */
+
+.slick-dots li {
+  margin: 0 8px;
+}
+
+.slick-dots li button {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #706d6d;
+  cursor: pointer;
+  padding: 0;
+}
+
+.slick-dots li.slick-active button {
+  background-color: #fff;
+}
+.slick-dots li button:before {
+  content: none;
+}
+/*Навігація точки та стрілки*/

@@ -30,6 +30,25 @@ const Header = () => {
       </Link> */}
       </header>
       <h1>dive deep in to the future</h1>
+      <div style={styles.vector}></div>
+      <img
+        src="https://oblador.github.io/react-native-vector-icons/#Ionicons"
+        alt="globus"
+        // loading={"lazy"}
+        style={{
+          position: "absolute",
+          left: "2.42%",
+          right: "95.08%",
+          top: "90.05%",
+          bottom: "4.9%",
+          width: "33.02px",
+          height: "33px",
+          // top: "588px",
+          // left: "32.02px",
+          gap: "0px",
+          opacity: "0px",
+        }}
+      />
     </div>
   );
 };
@@ -66,6 +85,16 @@ const styles = {
     borderRadius: "21px",
     padding: "8px 12px",
     opacity: "0px",
+  },
+  vector: {
+    position: "absolute",
+    width: "6px",
+    height: "1191px",
+    left: "1288px",
+    top: "602px",
+    background:
+      "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)",
+    transform: "rotate(90deg)",
   },
 };
 

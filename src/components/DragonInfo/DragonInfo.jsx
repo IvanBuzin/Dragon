@@ -191,17 +191,24 @@ const DragonInfo = () => {
             </div>
           ))}
         </Slider>
-
         <div
           style={{
             display: "flex",
+            flexDirection: "row",
             justifyContent: "space-between",
+            alignItems: "center",
+            padding: "0px",
+            gap: "12px",
+            width: "1321px",
             height: "62px",
+            flex: "none",
+            order: 2,
+            alignSelf: "stretch",
+            flexGrow: 0,
           }}
         >
           <div
             style={{
-              marginTop: "24px",
               padding: "0px 16px",
               cursor: "pointer",
             }}
@@ -212,10 +219,18 @@ const DragonInfo = () => {
               alt="navigation left"
               style={{ color: "white" }}
             />
-          </div>
+          </div>{" "}
+          <ul
+            className="slick-dots"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              listStyle: "none",
+              padding: "0",
+            }}
+          ></ul>
           <div
             style={{
-              marginTop: "24px",
               padding: "0px 16px",
               cursor: "pointer",
             }}
@@ -226,7 +241,7 @@ const DragonInfo = () => {
               alt="navigation right"
               style={{ color: "white" }}
             />
-          </div>
+          </div>{" "}
         </div>
       </div>
     </PullToRefresh>
@@ -234,3 +249,22 @@ const DragonInfo = () => {
 };
 
 export default DragonInfo;
+
+/* Frame 1000007909 */
+
+/* Auto layout */
+// display: flex;
+// flex-direction: row;
+// justify-content: space-between;
+// align-items: center;
+// padding: 0px;
+// gap: 12px;
+
+// width: 1321px;
+// height: 62px;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 2;
+// align-self: stretch;
+// flex-grow: 0;
