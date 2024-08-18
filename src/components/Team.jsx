@@ -4,6 +4,7 @@ const Team = () => {
   const [teamMembers, setTeamMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [expandedMemberId, setExpandedMemberId] = useState(null);
 
   const localStorageKey = "teamData";
 
@@ -19,17 +20,43 @@ const Team = () => {
     return null;
   };
 
+  const fetchWikiData = async (name) => {
+    const response = await fetch(
+      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
+        name
+      )}`
+    );
+    const data = await response.json();
+    return data.extract; // Витягує короткий опис з Вікіпедії
+  };
+
   const fetchData = () => {
-    return fetch("https://api.spacexdata.com/v4/dragons") // замініть на ваш API для отримання даних команди
+    return fetch("https://api.spacexdata.com/v4/crew")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then((data) => {
-        setTeamMembers(data);
-        saveToLocalStorage(data);
+      .then(async (data) => {
+        // Додаємо короткий опис з Вікіпедії до кожного члена команди
+        const teamDataWithRoles = await Promise.all(
+          data.map(async (member) => {
+            const roleDescription = await fetchWikiData(member.name);
+            const shortRole =
+              roleDescription.split(" ")[0] +
+              " " +
+              roleDescription.split(" ")[1];
+            return {
+              ...member,
+              role: shortRole,
+              fullRoleDescription: roleDescription,
+            };
+          })
+        );
+
+        setTeamMembers(teamDataWithRoles);
+        saveToLocalStorage(teamDataWithRoles);
         setLoading(false);
       })
       .catch((error) => {
@@ -46,7 +73,7 @@ const Team = () => {
       setLoading(false);
     }
 
-    fetchData();
+    fetchData().then((data) => console.log(data));
   }, []);
 
   if (loading) {
@@ -148,25 +175,29 @@ const Team = () => {
               /**/
               backgroundColor: "#222",
               textAlign: "center",
+              position: "relative",
             }}
+            onClick={() => toggleExpandedRole(member.id)}
           >
             <img
-              // src={member.photo}
-              src="/src/images/image 2.png"
-              // alt={member.name}
-              alt="Dave Johnson"
+              src={member.image}
+              alt={member.name}
               style={{
-                width: "100%",
                 height: "423px",
+                width: "auto",
                 borderRadius: "40px",
                 objectFit: "cover",
                 marginBottom: "10px",
+                marginTop: "40px",
               }}
             />
-            {/* <p>{member.position}</p> */}
-            {/* <h3>{member.name}</h3> */}
-            <p style={{ textTransform: "uppercase" }}>St. Mechanic</p>
-            <h4>Dave Johnson</h4>
+
+            <p style={{ textTransform: "uppercase" }}>
+              {expandedMemberId === member.id
+                ? member.fullRoleDescription
+                : member.role}
+            </p>
+            <h4>{member.name}</h4>
           </div>
         ))}
       </div>
