@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import Slider from "react-slick";
 
 const Team = () => {
   const [teamMembers, setTeamMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [expandedMemberId, setExpandedMemberId] = useState(null);
+
+  const sliderRef = useRef(null);
 
   const localStorageKey = "teamData";
 
@@ -43,10 +46,7 @@ const Team = () => {
         const teamDataWithRoles = await Promise.all(
           data.map(async (member) => {
             const roleDescription = await fetchWikiData(member.name);
-            const shortRole =
-              roleDescription.split(" ")[0] +
-              " " +
-              roleDescription.split(" ")[1];
+            const shortRole = roleDescription.split(" ").slice(0, 2).join("");
             return {
               ...member,
               role: shortRole,
@@ -76,6 +76,10 @@ const Team = () => {
     fetchData().then((data) => console.log(data));
   }, []);
 
+  const toggleExpandedRole = (id) => {
+    setExpandedMemberId((prevId) => (prevId === id ? null : id));
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -83,12 +87,21 @@ const Team = () => {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
+  /*перевірити*/
+  const sliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    arrows: false,
+  };
 
   return (
     <div
       style={{
         display: "flex",
-        gap: "20px",
+        gap: "20px" /*загальний блок вертикаль*/,
       }}
     >
       <div
@@ -133,10 +146,11 @@ const Team = () => {
               height: "126px",
               borderRadius: "24px",
             }}
+            onClick={() => sliderRef.current.slickPrev()}
           >
             <img
               src="/src/images/Group 1x.png"
-              alt="navigation r"
+              alt="navigation left"
               style={{ marginLeft: "24px", marginTop: "24px" }}
             />
           </div>
@@ -147,6 +161,7 @@ const Team = () => {
               borderRadius: "24px",
               background: "#fff",
             }}
+            onClick={() => sliderRef.current.slickNext()}
           >
             <img
               src="/src/images/Group 1x r.png"
@@ -156,50 +171,69 @@ const Team = () => {
           </div>
         </div>
       </div>
-      <div
+
+      <div /* 2 блок*/
         style={{
           display: "flex",
-          // gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
           gap: "20px",
           justifyContent: "center",
+          width: "70%",
+          flexDirection: "column",
         }}
       >
-        {teamMembers.map((member) => (
-          <div
-            key={member.id}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "40px",
-              width: "423px",
-              height: "551px",
-              /**/
-              backgroundColor: "#222",
-              textAlign: "center",
-              position: "relative",
-            }}
-            onClick={() => toggleExpandedRole(member.id)}
-          >
-            <img
-              src={member.image}
-              alt={member.name}
+        <Slider ref={sliderRef} {...sliderSettings}>
+          {teamMembers.map((member) => (
+            <div
+              key={member.id}
               style={{
-                height: "423px",
-                width: "auto",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: "32px 0px",
+                gap: "12px",
+                width: "423px",
+                height: "551px",
+                border: "1px solid #ccc",
                 borderRadius: "40px",
-                objectFit: "cover",
-                marginBottom: "10px",
-                marginTop: "40px",
-              }}
-            />
+                boxSizing: "border-box",
 
-            <p style={{ textTransform: "uppercase" }}>
-              {expandedMemberId === member.id
-                ? member.fullRoleDescription
-                : member.role}
-            </p>
-            <h4>{member.name}</h4>
-          </div>
-        ))}
+                flex: "none",
+                order: 1,
+                flexGrow: 0,
+
+                backgroundColor: "#222",
+
+                position: "relative",
+              }}
+              onClick={() => toggleExpandedRole(member.id)}
+            >
+              <img
+                src={member.image}
+                alt={member.name}
+                style={{
+                  height: "423px",
+                  maxWidth: "423px",
+                  borderRadius: "40px",
+                  objectFit: "cover",
+                  textAlign: "center",
+                }}
+              />
+
+              <p
+                style={{
+                  textTransform: "uppercase",
+                  fontSize: "12px",
+                  margin: "0",
+                }}
+              >
+                {expandedMemberId === member.id
+                  ? member.fullRoleDescription
+                  : member.role}
+              </p>
+              <h4 style={{ fontSize: "14px", margin: "0" }}>{member.name}</h4>
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );
