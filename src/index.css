@@ -14,11 +14,7 @@ body {
   color: rgba(0, 0, 0, 1);
   /* background-color: rgb(17, 17, 17); */
 }
-main {
-}
-section {
-  /* width: 1321px; */
-}
+
 h1 {
   color: rgba(255, 255, 255, 1);
   font-family: Rubik;
@@ -61,9 +57,6 @@ h4 {
 p {
   color: rgba(255, 255, 255, 1);
   font-size: 14px;
-}
-
-img {
 }
 
 /* Загальні стилі для секції */
