@@ -30,7 +30,7 @@ const Team = () => {
       )}`
     );
     const data = await response.json();
-    return data.extract; // Витягує короткий опис з Вікіпедії
+    return data.thumbnail ? data.thumbnail.source : null; // Витягує URL зображення, якщо воно є
   };
 
   const fetchData = () => {
@@ -45,16 +45,15 @@ const Team = () => {
         // Додаємо короткий опис з Вікіпедії до кожного члена команди
         const teamDataWithRoles = await Promise.all(
           data.map(async (member) => {
-            const roleDescription = await fetchWikiData(member.name);
-            const shortRole = roleDescription.split(" ").slice(0, 2).join("");
+            const wikiImage = await fetchWikiData(member.name);
             return {
               ...member,
-              role: shortRole,
-              fullRoleDescription: roleDescription,
+              image: member.image ?? wikiImage, // Використовуємо зображення з Вікіпедії, якщо не знайдено основне зображення
             };
           })
         );
 
+        // Спочатку завантажуємо основні дані
         setTeamMembers(teamDataWithRoles);
         saveToLocalStorage(teamDataWithRoles);
         setLoading(false);
@@ -72,8 +71,21 @@ const Team = () => {
       setTeamMembers(cachedData);
       setLoading(false);
     }
+    fetchData();
 
-    fetchData().then((data) => console.log(data));
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowLeft") {
+        sliderRef.current.slickPrev();
+      } else if (event.key === "ArrowRight") {
+        sliderRef.current.slickNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   const toggleExpandedRole = (id) => {
@@ -87,7 +99,7 @@ const Team = () => {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
-  /*перевірити*/
+
   const sliderSettings = {
     dots: false,
     infinite: true,
@@ -102,6 +114,7 @@ const Team = () => {
       style={{
         display: "flex",
         gap: "20px" /*загальний блок вертикаль*/,
+        height: "551px",
       }}
     >
       <div
@@ -110,7 +123,7 @@ const Team = () => {
           backgroundColor: "#111",
           color: "#fff",
           flexDirection: "column",
-          height: "551px",
+
           justifyContent: "space-between",
         }}
       >
@@ -177,7 +190,7 @@ const Team = () => {
           display: "flex",
           gap: "20px",
           justifyContent: "center",
-          width: "70%",
+          width: "66%",
           flexDirection: "column",
         }}
       >
@@ -189,48 +202,99 @@ const Team = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                padding: "32px 0px",
+
                 gap: "12px",
-                width: "423px",
-                height: "551px",
-                border: "1px solid #ccc",
-                borderRadius: "40px",
+
                 boxSizing: "border-box",
 
                 flex: "none",
                 order: 1,
                 flexGrow: 0,
 
-                backgroundColor: "#222",
-
                 position: "relative",
               }}
               onClick={() => toggleExpandedRole(member.id)}
             >
-              <img
-                src={member.image}
-                alt={member.name}
+              <div
                 style={{
-                  height: "423px",
-                  maxWidth: "423px",
+                  display: "flex",
+                  gap: "12px",
+                  flexDirection: "column",
+                  padding: "32px 0px",
+                  width: "423px",
+                  height: "487px",
                   borderRadius: "40px",
-                  objectFit: "cover",
-                  textAlign: "center",
-                }}
-              />
+                  border: "1px solid #ccc",
+                  backgroundColor: "#222",
 
-              <p
-                style={{
-                  textTransform: "uppercase",
-                  fontSize: "12px",
-                  margin: "0",
+                  /*/* Frame 327 
+
+box-sizing: border-box;
+
+ Auto layout 
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 32px 0px;
+gap: 12px;
+
+width: 423px;
+height: 551px;
+
+border-radius: 40px;
+
+/* Inside auto layout 
+flex: none;
+order: 1;
+flex-grow: 0;*/
                 }}
               >
-                {expandedMemberId === member.id
-                  ? member.fullRoleDescription
-                  : member.role}
-              </p>
-              <h4 style={{ fontSize: "14px", margin: "0" }}>{member.name}</h4>
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  style={{
+                    height: "423px",
+                    maxWidth: "423px",
+                    borderRadius: "40px",
+                    objectFit: "cover",
+                  }}
+                  onError={(e) =>
+                    (e.target.src =
+                      member.wikiImage || "/src/images/image 2.png")
+                  }
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    gap: "12px",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <p
+                    style={{
+                      textTransform: "uppercase",
+                      fontSize: "12px",
+                      margin: "0",
+                      color: "white",
+                    }}
+                  >
+                    {expandedMemberId === member.id
+                      ? member.fullRoleDescription
+                      : member.role}{" "}
+                    St. Mechanic
+                  </p>
+                  <h4
+                    style={{
+                      fontSize: "14px",
+                      margin: "0",
+                    }}
+                  >
+                    {member.name}
+                  </h4>
+                </div>
+              </div>
             </div>
           ))}
         </Slider>

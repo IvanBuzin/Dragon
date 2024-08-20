@@ -17,7 +17,7 @@ const Home = () => {
           gap: "100px",
           flexDirection: "column",
           // width: "1320px",
-          padding: "48px 60px 100px 60px",
+          padding: "48px 60px",
         }}
       >
         {/* Перша секція */}
@@ -66,7 +66,6 @@ const Home = () => {
           id="team"
           style={{
             height: "551px",
-            border: "1px solid white",
           }}
         >
           <Team />
