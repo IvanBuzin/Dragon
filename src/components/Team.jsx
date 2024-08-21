@@ -30,7 +30,7 @@ const Team = () => {
       )}`
     );
     const data = await response.json();
-    return data.thumbnail ? data.thumbnail.source : null; // Витягує URL зображення, якщо воно є
+    return data;
   };
 
   const fetchData = () => {
@@ -45,10 +45,16 @@ const Team = () => {
         // Додаємо короткий опис з Вікіпедії до кожного члена команди
         const teamDataWithRoles = await Promise.all(
           data.map(async (member) => {
-            const wikiImage = await fetchWikiData(member.name);
+            const wikiData = await fetchWikiData(member.name);
+            const shortRole = wikiData.extract.includes("NASA astronaut")
+              ? "NASA astronaut"
+              : "Engineer";
             return {
               ...member,
-              image: member.image ?? wikiImage, // Використовуємо зображення з Вікіпедії, якщо не знайдено основне зображення
+              image: member.image ?? wikiData.thumbnail?.source, // Використовуємо зображення з Вікіпедії, якщо не знайдено основне зображення
+              role: shortRole,
+              fullRoleDescription:
+                wikiData.extract ?? "No description available",
             };
           })
         );
@@ -226,27 +232,6 @@ const Team = () => {
                   borderRadius: "40px",
                   border: "1px solid #ccc",
                   backgroundColor: "#222",
-
-                  /*/* Frame 327 
-
-box-sizing: border-box;
-
- Auto layout 
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 32px 0px;
-gap: 12px;
-
-width: 423px;
-height: 551px;
-
-border-radius: 40px;
-
-/* Inside auto layout 
-flex: none;
-order: 1;
-flex-grow: 0;*/
                 }}
               >
                 <img
@@ -257,6 +242,9 @@ flex-grow: 0;*/
                     maxWidth: "423px",
                     borderRadius: "40px",
                     objectFit: "cover",
+
+                    marginLeft: "auto",
+                    marginRight: "auto",
                   }}
                   onError={(e) =>
                     (e.target.src =
@@ -280,10 +268,11 @@ flex-grow: 0;*/
                       color: "white",
                     }}
                   >
-                    {expandedMemberId === member.id
+                    {expandedMemberId === member.id &&
+                    member.fullRoleDescription
                       ? member.fullRoleDescription
                       : member.role}{" "}
-                    St. Mechanic
+                    {/* St. Mechanic */}
                   </p>
                   <h4
                     style={{
