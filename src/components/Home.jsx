@@ -77,8 +77,13 @@ const Home = () => {
           id="starship"
           style={{
             height: "834px",
-            width: "1440px",
+
             border: "1px solid white",
+            position: "absolute",
+            width: "1806px",
+
+            left: "calc(50% - (1806px/2))",
+            top: "3297px",
           }}
         >
           <StarshipCapabilities />

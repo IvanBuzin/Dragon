@@ -159,3 +159,30 @@ section.dragon-info-section {
   content: none;
 }
 /*Навігація точки та стрілки*/
+
+/* Frame 322 
+
+/* Auto layout 
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 100px;
+
+position: absolute;
+width: 1321px;
+height: 3149px;
+left: 60px;
+top: 48px;
+
+
+
+/* Frame 1000007918 
+
+position: absolute;
+width: 1806px;
+height: 834px;
+left: calc(50% - 1806px/2);
+top: 3297px;
+
+*/
