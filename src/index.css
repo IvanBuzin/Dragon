@@ -59,8 +59,7 @@ p {
   font-size: 14px;
 }
 
-/* Загальні стилі для секції */
-section.dragon-info-section {
+Загальні стилі для секції section.dragon-info-section {
   --bs-body-bg: #000;
   --bs-body-bg-rgb: 0, 0, 0;
   --bs-body-color: #fff;
@@ -123,8 +122,7 @@ section.dragon-info-section {
   display: flex;
   justify-content: space-between;
 }
-/*Навігація точки та стрілки*/
-.slick-dots {
+/* Навігація точки та стрілки .slick-dots {
   display: flex !important;
   justify-content: center;
   align-items: center;
@@ -133,12 +131,12 @@ section.dragon-info-section {
   margin-left: 122px;
   list-style: none;
   bottom: -70px;
-}
+} */
 
 /* .custom-dots {
   bottom: 21px;
 } */
-
+/* 
 .slick-dots li {
   margin: 0 8px;
 }
@@ -157,58 +155,39 @@ section.dragon-info-section {
 }
 .slick-dots li button:before {
   content: none;
+} */
+
+/* Контейнер для стрілок і точок */
+.navigation-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  width: 1321px;
+  height: 62px;
+  margin: 0 auto; /* Центрування контейнера */
 }
-/*Навігація точки та стрілки*/
 
-/* Frame 322 
+/* Контейнер для точок */
+.dots-container {
+  display: flex;
+  gap: 8px;
+}
 
-/* Auto layout 
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 0px;
-gap: 100px;
+/* Стиль для кожної точки */
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #ccc;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
 
-position: absolute;
-width: 1321px;
-height: 3149px;
-left: 60px;
-top: 48px;
-
-
-
-/* Frame 1000007918 
-
-position: absolute;
-width: 1806px;
-height: 834px;
-left: calc(50% - 1806px/2);
-top: 3297px;
-
-*/
-
-/* download (10) 1 
-
-position: absolute;
-width: 1806px;
-height: 834px;
-left: calc(50% - 1806px / 2);
-top: 0px;
-
-background: url(download(10).jpg);*/
-
-/* Frame 322 */
-
-/* Auto layout 
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 0px;
-gap: 100px;
-
-position: absolute;
-width: 1321px;
-height: 3149px;
-left: 60px;
-top: 48px;
-*/
+.dot.active {
+  opacity: 1;
+  background-color: #000;
+}

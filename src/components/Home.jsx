@@ -43,7 +43,6 @@ const Home = () => {
           id="rockets"
           style={{
             height: "755px",
-            border: "1px solid white",
             width: "100%",
           }}
         >
