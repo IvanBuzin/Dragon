@@ -148,7 +148,7 @@ const Team = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
             auctor sed urna a faucibus. Pellentesque mi nisl, mollis convallis
             metus id, congue semper neque. Sed suscipit eget ipsum ut gravida.
-            Fusce 
+            Fusce
           </p>
         </div>
 

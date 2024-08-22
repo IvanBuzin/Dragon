@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -35,6 +35,7 @@ const OurRocket = () => {
   const handleNext = () => {
     sliderRef.current.slickNext();
   };
+
   const metersToFeet = (meters) => (meters * 3.28084).toFixed(1);
   const kgToLbs = (kg) => (kg * 2.20462).toFixed(3);
 
@@ -90,13 +91,10 @@ const OurRocket = () => {
                 <p
                   style={{
                     display: "flex",
-
-                    border: "0px 0px 1px 0px",
                     height: "24px",
                     margin: "0px",
                     gap: "0px",
                     justifyContent: "space-between",
-                    opacity: "0px",
                   }}
                 >
                   <strong>HEIGHT:</strong>{" "}
@@ -106,12 +104,10 @@ const OurRocket = () => {
                 <p
                   style={{
                     display: "flex",
-                    border: "0px 0px 1px 0px",
                     height: "24px",
                     margin: "0px",
                     gap: "0px",
                     justifyContent: "space-between",
-                    opacity: "0px",
                   }}
                 >
                   <strong>DIAMETER:</strong> {dragon.diameter?.meters ?? "4"} m
@@ -120,13 +116,10 @@ const OurRocket = () => {
                 <p
                   style={{
                     display: "flex",
-
-                    border: "0px 0px 1px 0px",
                     height: "24px",
                     margin: "0px",
                     gap: "0px",
                     justifyContent: "space-between",
-                    opacity: "0px",
                   }}
                 >
                   <strong>SPACECRAFT VOLUME:</strong>{" "}
@@ -141,13 +134,10 @@ const OurRocket = () => {
                 <p
                   style={{
                     display: "flex",
-
-                    border: "0px 0px 1px 0px",
                     height: "24px",
                     margin: "0px",
                     gap: "0px",
                     justifyContent: "space-between",
-                    opacity: "0px",
                   }}
                 >
                   <strong>TRUNK VOLUME:</strong>{" "}
@@ -159,13 +149,10 @@ const OurRocket = () => {
                 <p
                   style={{
                     display: "flex",
-
-                    border: "0px 0px 1px 0px",
                     height: "24px",
                     margin: "0px",
                     gap: "0px",
                     justifyContent: "space-between",
-                    opacity: "0px",
                   }}
                 >
                   <strong>LAUNCH PAYLOAD MASS:</strong>{" "}
@@ -175,13 +162,10 @@ const OurRocket = () => {
                 <p
                   style={{
                     display: "flex",
-
-                    border: "0px 0px 1px 0px",
                     height: "24px",
                     margin: "0px",
                     gap: "0px",
                     justifyContent: "space-between",
-                    opacity: "0px",
                   }}
                 >
                   <strong>RETURN PAYLOAD MASS:</strong>{" "}

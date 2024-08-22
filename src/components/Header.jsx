@@ -24,31 +24,48 @@ const Header = () => {
 
         {/* <Link to="/login" style={styles.link}>
         Login
-      </Link>
-      <Link to="/register" style={styles.link}>
+        </Link>
+        <Link to="/register" style={styles.link}>
         Register
-      </Link> */}
+        </Link> */}
       </header>
-      <h1>dive deep in to the future</h1>
-      <div style={styles.vector}></div>
-      <img
-        src="https://oblador.github.io/react-native-vector-icons/#Ionicons"
-        alt="globus"
-        // loading={"lazy"}
+      <h1
         style={{
-          position: "absolute",
-          left: "2.42%",
-          right: "95.08%",
-          top: "90.05%",
-          bottom: "4.9%",
-          width: "33.02px",
-          height: "33px",
-          // top: "588px",
-          // left: "32.02px",
+          display: "flex",
+          width: "583px",
+          height: "357px",
+          marginTop: "48px",
+          marginLeft: "32px",
           gap: "0px",
-          opacity: "0px",
+          // opacity: 0,
         }}
-      />
+      >
+        dive deep in to the future
+      </h1>
+      <div
+        style={{
+          display: "flex",
+          height: "6px",
+          width: "1191px",
+          background:
+            "linear-gradient(359deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%)",
+          margin: "98px 42px 48px 98px",
+        }}
+      >
+        <img
+          src="/src/images/Group d.png"
+          alt="kolo"
+          style={{
+            position: "absolute",
+            width: "33px",
+            height: "33px",
+            top: "588px",
+            left: "32px",
+
+            opacity: "0.8",
+          }}
+        />
+      </div>
     </div>
   );
 };
@@ -85,16 +102,6 @@ const styles = {
     borderRadius: "21px",
     padding: "8px 12px",
     opacity: "0px",
-  },
-  vector: {
-    position: "absolute",
-    width: "6px",
-    height: "1191px",
-    left: "1288px",
-    top: "602px",
-    background:
-      "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)",
-    transform: "rotate(90deg)",
   },
 };
 
