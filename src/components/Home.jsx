@@ -3,7 +3,7 @@ import Header from "./Header";
 import OurRockets from "./OurRocket";
 import DragonInfo from "./DragonInfo/DragonInfo";
 import StarshipCapabilities from "./StarshipCapabilities";
-import Starbase from "./Starbase";
+// import Starbase from "./Starbase";
 import About from "./About";
 import RocketStatistics from "./RocketStatistics";
 import Team from "./Team";
@@ -119,7 +119,7 @@ const Home = () => {
             <DragonInfo rocket={selectedRocket} />
           </section>
           <StarshipCapabilities />
-          <Starbase />
+          {/* <Starbase /> */}
         </>
       )}
     </div>

@@ -99,6 +99,7 @@ const styles = {
   contact: {
     fontSize: "16px",
     border: "1px solid white",
+
     borderRadius: "21px",
     padding: "8px 12px",
     opacity: "0px",

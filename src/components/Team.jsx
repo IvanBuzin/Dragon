@@ -170,7 +170,11 @@ const Team = () => {
             <img
               src="/src/images/Group 1x.png"
               alt="navigation left"
-              style={{ marginLeft: "24px", marginTop: "24px" }}
+              style={{
+                marginLeft: "24px",
+                marginTop: "24px",
+                cursor: "pointer",
+              }}
             />
           </div>
           <div
@@ -185,7 +189,11 @@ const Team = () => {
             <img
               src="/src/images/Group 1x r.png"
               alt="navigation r"
-              style={{ marginLeft: "24px", marginTop: "24px" }}
+              style={{
+                marginLeft: "24px",
+                marginTop: "24px",
+                cursor: "pointer",
+              }}
             />
           </div>
         </div>
