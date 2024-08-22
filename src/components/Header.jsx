@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div>
+    <div style={{ scrollBehavior: "smooth" }}>
       <header style={styles.header}>
         <div style={styles.logo}>LOGO</div>
         <nav style={styles.nav}>
-          <Link to="/" style={styles.link}>
+          <Link to="/about" style={styles.link}>
             Home
           </Link>
           <Link to="/about" style={styles.link}>

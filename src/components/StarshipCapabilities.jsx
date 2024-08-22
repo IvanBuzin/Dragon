@@ -47,9 +47,9 @@ const StarshipCapabilities = () => {
     if (cachedData) {
       setCapabilities(cachedData);
       setLoading(false);
+    } else {
+      fetchData();
     }
-
-    fetchData();
   }, []);
 
   if (loading) {
@@ -72,11 +72,32 @@ const StarshipCapabilities = () => {
   return (
     <div
       style={{
-        backgroundColor: "#111" /* delete*/,
-        color: "#fff",
-        display: "flex",
+        // display: "flex",
+
+        // flexDirection: "column",
+
+        WebkitFontSmoothing: "antialiased",
+        font: "16px/24px Arial, Verdana, sans-serif",
+        fontWeight: 400,
+        fontStyle: "normal",
+        textAlign: "center",
+        overflow: "hidden",
+        display: "block",
+        position: "absolute",
         width: "100%",
-        flexDirection: "column",
+        height: "100%",
+        margin: 0,
+        padding: 0,
+        backgroundColor: "#000",
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        transform:
+          "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate3d(0, 0, 0.75, 0deg)",
+        backgroundImage:
+          'url("https://www.spacex.com/vehicles/starship/assets/images/Starhip_website-crop20230126_dji_0199_01.jpg")',
+        opacity: 1,
+        visibility: "inherit",
       }}
     >
       <Slider {...settings} ref={sliderRef}>
@@ -86,16 +107,50 @@ const StarshipCapabilities = () => {
             style={{
               textAlign: "center",
               display: "flex",
+              // alignItems: "center",
+              // justifyContent: "center",
+              // flexDirection: "column",
             }}
           >
             <img
-              // src={capability.image}
-              alt={capability.title}
-              src="/src/images/download (10).png"
-              style={{ width: "100%", maxHeight: "834px" }}
+              src={capability.flickr_images[0]}
+              alt={capability.name}
+              style={{
+                width: "100%",
+                /*maxHeight: "834px"*/ maxHeight: "600px",
+                objectFit: "cover",
+              }}
             />{" "}
-            {/* <h3>{capability.title}</h3> */}
-            {/* <p>{capability.description}</p> */}
+            <h3>{capability.title}</h3>
+            <p>
+              <strong>Description:</strong>
+              {capability.description}
+            </p>
+            <p>
+              <strong>First Flight:</strong>
+              {capability.first_flight}
+            </p>
+            <p>
+              <strong>Active:</strong>
+              {capability.active ? "Yes" : "No"}
+            </p>
+            <p>
+              <strong>Crew Capacity:</strong>
+              {capability.crew_capacity}
+            </p>
+            <p>
+              <strong>Height:</strong> {capability.height_w_trunk.meters} meters
+              / {capability.height_w_trunk.feet} feet
+            </p>
+            <p>
+              <strong>Diameter:</strong> {capability.diameter.meters} meters /{" "}
+              {capability.diameter.feet} feet
+            </p>
+            <p>
+              <strong>Launch Payload Mass:</strong>{" "}
+              {capability.launch_payload_mass.kg} kg /{" "}
+              {capability.launch_payload_mass.lb} lbs
+            </p>
             <div
               style={{
                 flexDirection: "column",

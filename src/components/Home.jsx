@@ -1,6 +1,7 @@
 import About from "./About";
 import DragonInfo from "./DragonInfo/DragonInfo";
 import Header from "./Header";
+import OurRocket from "./OurRocket";
 import RocketStatistics from "./RocketStatistics";
 import StarshipCapabilities from "./StarshipCapabilities";
 import Team from "./Team";
@@ -11,13 +12,18 @@ const Home = () => {
       <div
         style={{
           color: "white",
-          height: "100%",
+          height: "3149px",
           maxHeight: "3983px",
+          width: "1321px",
+          position: "absolute",
           display: "flex",
+          alignItems: "flex-start",
           gap: "100px",
           flexDirection: "column",
-          // width: "1320px",
-          padding: "48px 60px",
+          left: "60px",
+          top: "48px",
+          padding: "0px",
+          scrollBehavior: "smooth", // додано для плавного скролінгу
         }}
       >
         {/* Перша секція */}
@@ -27,6 +33,7 @@ const Home = () => {
             height: "653px",
             border: "1px solid white",
             borderRadius: "40px",
+            width: "100%",
           }}
         >
           <Header />
@@ -37,6 +44,17 @@ const Home = () => {
           style={{
             height: "755px",
             border: "1px solid white",
+            width: "100%",
+          }}
+        >
+          <OurRocket />
+        </section>
+        <section
+          id="rockets"
+          style={{
+            height: "755px",
+            border: "1px solid white",
+            width: "100%",
           }}
         >
           <DragonInfo />
@@ -51,12 +69,14 @@ const Home = () => {
         >
           <RocketStatistics />
         </section>
+
         {/* Четверта секція */}
         <section
           id="about"
           style={{
             height: "644px",
             border: "1px solid white",
+            width: "100%",
           }}
         >
           <About />
@@ -66,12 +86,11 @@ const Home = () => {
           id="team"
           style={{
             height: "551px",
+            width: "100%",
           }}
         >
           <Team />
         </section>
-      </div>
-      <div>
         {/* Шоста секція */}
         <section
           id="starship"
@@ -89,6 +108,7 @@ const Home = () => {
           <StarshipCapabilities />
         </section>
       </div>
+      <div></div>
     </>
   );
 };
