@@ -61,7 +61,6 @@ const Home = () => {
         id="statistics"
         style={{
           height: "146px",
-          border: "1px solid white",
         }}
       >
         <RocketStatistics />
@@ -72,7 +71,6 @@ const Home = () => {
         id="about"
         style={{
           height: "644px",
-          border: "1px solid white",
           width: "100%",
         }}
       >

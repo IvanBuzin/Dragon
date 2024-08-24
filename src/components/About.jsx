@@ -71,6 +71,7 @@ const About = () => {
               width: "100%",
               height: "100%",
               borderRadius: "40px",
+              border: "1px solid rgb(204, 204, 204, 0.2)",
             }}
             frameBorder="0"
             allowFullScreen

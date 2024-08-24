@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const OurRocket = () => {
+const OurRocket = ({ onRocketSelect }) => {
   const [dragons, setDragons] = useState([]);
   const sliderRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -39,6 +39,10 @@ const OurRocket = () => {
   const metersToFeet = (meters) => (meters * 3.28084).toFixed(1);
   const kgToLbs = (kg) => (kg * 2.20462).toFixed(3);
 
+  const handleRocketClick = (dragon) => {
+    onRocketSelect(dragon); // Виклик функції для передачі обраної ракети до Home компонента
+  };
+
   return (
     <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>
       <h2 style={{ textAlign: "center" }}>Our rockets</h2>
@@ -47,14 +51,16 @@ const OurRocket = () => {
           <div
             key={dragon.id}
             style={{
-              border: "1px solid #ccc",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
               padding: "24px",
               width: "427px",
               height: "553px",
               boxSizing: "border-box",
               color: "white",
               borderRadius: "40px",
+              cursor: "pointer",
             }}
+            onClick={() => handleRocketClick(dragon)}
           >
             <div
               style={{
@@ -75,7 +81,7 @@ const OurRocket = () => {
                   width: "378px",
                   borderRadius: "20px",
                   maxHeight: "218px",
-                  border: "1px solid white",
+                  border: "1px solid rgba(255, 255, 255, 0.05)",
                 }}
               />
               <h4 style={{ margin: "0px" }}>{dragon.name || "Rocket"}</h4>

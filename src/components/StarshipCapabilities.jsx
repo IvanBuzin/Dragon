@@ -188,7 +188,8 @@ const StarshipCapabilities = () => {
                   point-to-point transport here on Earth.
                 </p>
               </div>
-              <div
+
+              {/* <div
                 style={{
                   display: "flex",
                   flexDirection: "row",
@@ -239,7 +240,7 @@ const StarshipCapabilities = () => {
                     style={{ color: "white" }}
                   />
                 </div>{" "}
-              </div>
+              </div> */}
             </div>
           </div>
         ))}
