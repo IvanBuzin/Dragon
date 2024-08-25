@@ -2,44 +2,44 @@ import { useEffect, useState } from "react";
 
 const RocketStatistics = () => {
   const [statistics, setStatistics] = useState({
-    totalLaunches: 43,
-    visitsToISS: 46,
-    totalReflights: 25,
+    totalLaunches: 0,
+    visitsToISS: 0,
+    totalReflights: 0,
   });
 
   const fetchStatistics = async () => {
     try {
-      const response = await fetch("https://api.spacexdata.com/v4/dragons");
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+      // Отримати інформацію про всі запуски
+      const launchesResponse = await fetch(
+        "https://api.spacexdata.com/v4/launches"
+      );
+      if (!launchesResponse.ok) {
+        throw new Error(`HTTP error! Status: ${launchesResponse.status}`);
       }
+      const launches = await launchesResponse.json();
 
-      const data = await response.json();
-
-      let totalLaunches = 0;
-      let visitsToISS = 0;
-      let totalReflights = 0;
-
-      data.forEach((dragon) => {
-        // Загальна кількість запусків
-        totalLaunches += dragon.launches.length;
-
-        // Підрахунок місій на МКС (ISS)
-        visitsToISS += dragon.launches.filter((launch) =>
-          launch.includes("iss")
-        ).length;
-        visitsToISS += issMissions;
-
-        // Підрахунок повторних запусків (якщо космічний корабель активний і здійснював більше одного запуску)
-        totalReflights += dragon.launches.length > 1 ? 1 : 0;
-      });
+      // Оновлення статистики
+      const totalLaunches = launches.length;
+      const visitsToISS = launches.filter(
+        (launch) =>
+          launch.details &&
+          launch.details.includes("International Space Station")
+      ).length;
+      const totalReflights = launches.reduce(
+        (count, launch) =>
+          count +
+          (launch.cores
+            ? launch.cores.filter((core) => core.reused).length
+            : 0),
+        0
+      );
 
       setStatistics({
         totalLaunches,
         visitsToISS,
         totalReflights,
       });
+
       console.log("Fetched statistics:", {
         totalLaunches,
         visitsToISS,
@@ -52,17 +52,15 @@ const RocketStatistics = () => {
 
   useEffect(() => {
     fetchStatistics();
-    // console.log(statistics); // Перевірка, що дані надходять
   }, []);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", flexDirection: "column", color: "white" }}>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           flexWrap: "nowrap",
-          color: "white",
           gap: "32px",
         }}
       >
