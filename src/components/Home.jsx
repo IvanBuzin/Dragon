@@ -106,16 +106,8 @@ const Home = () => {
       {/* Інформація про обрану ракету */}
       {selectedRocket && (
         <>
-          <section
-            id="dragon-info"
-            style={{
-              border: "1px solid white",
-              borderRadius: "40px",
-              width: "100%",
-            }}
-          >
-            <DragonInfo rocket={selectedRocket} />
-          </section>
+          <DragonInfo rocket={selectedRocket.name} />
+
           <StarshipCapabilities />
           {/* <Starbase /> */}
         </>

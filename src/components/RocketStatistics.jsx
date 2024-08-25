@@ -2,44 +2,57 @@ import { useEffect, useState } from "react";
 
 const RocketStatistics = () => {
   const [statistics, setStatistics] = useState({
-    totalLaunches: 0,
-    visitsToISS: 0,
-    totalReflights: 0,
+    totalLaunches: 43,
+    visitsToISS: 46,
+    totalReflights: 25,
   });
 
-  // Функція для отримання статистики з API (замініть на реальний запит)
-  const fetchStatistics = () => {
-    return fetch("https://api.spacexdata.com/v4/dragons")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        const totalLaunches = data.length;
-        const visitsToISS = data.reduce(
-          (acc, dragon) => acc + dragon.flickr_images.length,
-          0
-        );
-        const totalReflights = data.reduce(
-          (acc, dragon) => acc + dragon.active,
-          0
-        );
-        setStatistics({
-          totalLaunches,
-          visitsToISS,
-          totalReflights,
-        });
-      })
-      .catch((error) => {
-        console.error("Fetch error: ", error);
+  const fetchStatistics = async () => {
+    try {
+      const response = await fetch("https://api.spacexdata.com/v4/dragons");
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      let totalLaunches = 0;
+      let visitsToISS = 0;
+      let totalReflights = 0;
+
+      data.forEach((dragon) => {
+        // Загальна кількість запусків
+        totalLaunches += dragon.launches.length;
+
+        // Підрахунок місій на МКС (ISS)
+        visitsToISS += dragon.launches.filter((launch) =>
+          launch.includes("iss")
+        ).length;
+        visitsToISS += issMissions;
+
+        // Підрахунок повторних запусків (якщо космічний корабель активний і здійснював більше одного запуску)
+        totalReflights += dragon.launches.length > 1 ? 1 : 0;
       });
+
+      setStatistics({
+        totalLaunches,
+        visitsToISS,
+        totalReflights,
+      });
+      console.log("Fetched statistics:", {
+        totalLaunches,
+        visitsToISS,
+        totalReflights,
+      });
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
   };
 
   useEffect(() => {
     fetchStatistics();
-    console.log(statistics); // Перевірка, що дані надходять
+    // console.log(statistics); // Перевірка, що дані надходять
   }, []);
 
   return (

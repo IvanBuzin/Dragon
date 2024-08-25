@@ -140,7 +140,7 @@ const DragonInfo = () => {
                     maxHeight: "457px",
                     border: "1px 0px 0px 0px solid white",
                     borderRadius: "20px",
-                    opacity: "0",
+                    // opacity: "0",
                   }}
                 />
                 <div
@@ -175,7 +175,7 @@ const DragonInfo = () => {
                         gap: "0px",
                         border: "0px 0px 1px 0px",
                         margin: "0px",
-                        opacity: "0px",
+                        // opacity: "0px",
                       }}
                     >
                       <span>
@@ -196,7 +196,6 @@ const DragonInfo = () => {
                         gap: "0px",
                         border: "0px 0px 1px 0px",
                         margin: "0px",
-                        opacity: "0px",
                       }}
                     >
                       <span>
@@ -218,7 +217,7 @@ const DragonInfo = () => {
                         gap: "0px",
                         border: "0px 0px 1px 0px",
                         margin: "0px",
-                        opacity: "0px",
+                        // opacity: "0px",
                       }}
                     >
                       <span>
@@ -242,7 +241,7 @@ const DragonInfo = () => {
                         gap: "0px",
                         border: "0px 0px 1px 0px",
                         margin: "0px",
-                        opacity: "0px",
+                        // opacity: "0px",
                       }}
                     >
                       <strong>Trunk Volume</strong>{" "}
@@ -258,7 +257,7 @@ const DragonInfo = () => {
                         gap: "0px",
                         border: "0px 0px 1px 0px",
                         margin: "0px",
-                        opacity: "0px",
+                        // opacity: "0px",
                       }}
                     >
                       <strong>Launch Payload Mass</strong>{" "}
@@ -275,7 +274,7 @@ const DragonInfo = () => {
                         gap: "0px",
                         border: "0px 0px 1px 0px",
                         margin: "0px",
-                        opacity: "0px",
+                        // opacity: "0px",
                       }}
                     >
                       <strong>Trunk Volume</strong>{" "}
@@ -291,7 +290,7 @@ const DragonInfo = () => {
                         gap: "0px",
                         border: "0px 0px 1px 0px",
                         margin: "0px",
-                        opacity: "0px",
+                        // opacity: "0px",
                       }}
                     >
                       <strong>Launch Payload Mass</strong>{" "}
@@ -308,7 +307,7 @@ const DragonInfo = () => {
                         gap: "0px",
                         border: "0px 0px 1px 0px",
                         margin: "0px",
-                        opacity: "0px",
+                        // opacity: "0px",
                       }}
                     >
                       <strong>Return Payload Mass</strong>{" "}
@@ -325,7 +324,7 @@ const DragonInfo = () => {
                         gap: "0px",
                         border: "0px 0px 1px 0px",
                         margin: "0px",
-                        opacity: "0px",
+                        // opacity: "0px",
                       }}
                     >
                       <strong>Return Payload Mass</strong>{" "}
@@ -342,7 +341,7 @@ const DragonInfo = () => {
                         gap: "0px",
                         border: "0px 0px 1px 0px",
                         margin: "0px",
-                        opacity: "0px",
+                        // opacity: "0px",
                       }}
                     >
                       <span>
@@ -367,7 +366,7 @@ const DragonInfo = () => {
                         border: "0px 0px 1px 0px",
                         margin: "0px",
 
-                        opacity: "0px",
+                        // opacity: "0px",
                       }}
                     >
                       <strong>Return Payload Mass</strong>{" "}
