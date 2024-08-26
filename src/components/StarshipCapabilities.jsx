@@ -277,16 +277,46 @@ const StarshipCapabilities = () => {
   }
 
   return (
-    <div className="slider-container">
-      <Slider {...settings} ref={sliderRef}>
-        {capabilities.map((capability, index) => (
-          <div key={index} className="slider-item">
-            <img
-              src={capability.flickr_images[index + 1]}
-              alt={capability.name}
-              className="slider-image"
-            />
-            {/* <h3>{capability.name}</h3>
+    <div
+      style={{
+        // display: "flex",
+
+        // flexDirection: "column",
+
+        WebkitFontSmoothing: "antialiased",
+        font: "16px/24px Arial, Verdana, sans-serif",
+        fontWeight: 400,
+        fontStyle: "normal",
+        textAlign: "center",
+        overflow: "hidden",
+        display: "block",
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        margin: 0,
+        padding: 0,
+        backgroundColor: "#000",
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        transform:
+          "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate3d(0, 0, 0.75, 0deg)",
+        backgroundImage:
+          'url("https://www.spacex.com/vehicles/starship/assets/images/Starhip_website-crop20230126_dji_0199_01.jpg")',
+        opacity: 1,
+        visibility: "inherit",
+      }}
+    >
+      <div className="slider-container">
+        <Slider {...settings} ref={sliderRef}>
+          {capabilities.map((capability, index) => (
+            <div key={index} className="slider-item">
+              <img
+                src={capability.flickr_images[index + 1]}
+                alt={capability.name}
+                className="slider-image"
+              />
+              {/* <h3>{capability.name}</h3>
             <div className="capability-description">
               <p>
                 <strong>Description:</strong> {capability.description}
@@ -314,32 +344,34 @@ const StarshipCapabilities = () => {
                 {capability.launch_payload_mass.lb} lbs
               </p>
             </div> */}
-          </div>
-        ))}
-      </Slider>
-      <div className="navigation-container">
-        <img
-          className="arrow"
-          src="/src/images/Vector w.png"
-          alt="navigation left"
-          onClick={handlePrev}
-        />
-        <div className="dots-container">
-          {capabilities.map((_, index) => (
-            <div
-              key={index}
-              className={`dot ${index === activeSlide ? "active" : ""}`}
-              onClick={() => sliderRef.current.slickGoTo(index)}
-            ></div>
+            </div>
           ))}
+        </Slider>
+        <div className="navigation-container">
+          <img
+            className="arrow"
+            src="/src/images/Vector w.png"
+            alt="navigation left"
+            onClick={handlePrev}
+          />
+          <div className="dots-container">
+            {capabilities.map((_, index) => (
+              <div
+                key={index}
+                className={`dot ${index === activeSlide ? "active" : ""}`}
+                onClick={() => sliderRef.current.slickGoTo(index)}
+              ></div>
+            ))}
+          </div>
+          <img
+            className="arrow"
+            src="/src/images/Vector w r.png"
+            alt="navigation right"
+            onClick={handleNext}
+          />
         </div>
-        <img
-          className="arrow"
-          src="/src/images/Vector w r.png"
-          alt="navigation right"
-          onClick={handleNext}
-        />
       </div>
+      /
     </div>
   );
 };

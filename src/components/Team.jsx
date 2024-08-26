@@ -126,7 +126,7 @@ const Team = () => {
       <div
         style={{
           display: "flex",
-          backgroundColor: "#111",
+
           color: "#fff",
           flexDirection: "column",
 
@@ -239,7 +239,7 @@ const Team = () => {
                   height: "487px",
                   borderRadius: "40px",
                   border: "1px solid #ccc",
-                  backgroundColor: "#222",
+                  backgroundColor: "rgba(0, 0, 0, 1)",
                 }}
               >
                 <img

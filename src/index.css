@@ -6,15 +6,12 @@ body {
   width: 1440px;
   height: 4131px;
 
-  background: rgba(50, 38, 89, 0.5);
+  background-color: #000;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background-image: url("./images//toy-rocket.gif.gif");
   background-size: 1440px 753px;
   background-repeat: no-repeat;
   color: rgba(0, 0, 0, 1);
-  /* background-color: rgb(17, 17, 17); */
-
-  
 }
 
 h1 {

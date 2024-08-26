@@ -60,7 +60,6 @@ const OurRocket = ({ onRocketSelect }) => {
               borderRadius: "40px",
               cursor: "pointer",
             }}
-            onClick={() => handleRocketClick(dragon)}
           >
             <div
               style={{
@@ -84,7 +83,12 @@ const OurRocket = ({ onRocketSelect }) => {
                   border: "1px solid rgba(255, 255, 255, 0.05)",
                 }}
               />
-              <h4 style={{ margin: "0px" }}>{dragon.name || "Rocket"}</h4>
+              <h4
+                style={{ margin: "0px", cursor: "pointer" }}
+                onClick={() => handleRocketClick(dragon)}
+              >
+                {dragon.name || "Rocket"}
+              </h4>
               <div
                 style={{
                   textAlign: "left",

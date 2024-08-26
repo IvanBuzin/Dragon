@@ -67,7 +67,7 @@ const RocketStatistics = () => {
         <div
           style={{
             flex: "1 1 calc(33.33% - 20px)",
-            backgroundColor: "#222",
+
             textAlign: "center",
             minWidth: "250px",
             width: "419px",
@@ -80,7 +80,7 @@ const RocketStatistics = () => {
         <div
           style={{
             flex: "1 1 calc(33.33% - 20px)",
-            backgroundColor: "#222",
+
             textAlign: "center",
             minWidth: "250px",
             width: "419px",
@@ -93,7 +93,7 @@ const RocketStatistics = () => {
         <div
           style={{
             flex: "1 1 calc(33.33% - 20px)",
-            backgroundColor: "#222",
+
             textAlign: "center",
             minWidth: "250px",
             width: "419px",
