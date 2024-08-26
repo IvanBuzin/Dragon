@@ -37,7 +37,7 @@ const Home = () => {
         id="hero"
         style={{
           height: "649px",
-          border: "1px solid white",
+          border: selectedRocket ? "none" : "1px solid white",
           borderRadius: "40px",
           width: "100%",
         }}
@@ -51,6 +51,7 @@ const Home = () => {
         style={{
           height: "755px",
           width: "100%",
+          display: selectedRocket ? "none" : "block",
         }}
       >
         <OurRockets onRocketSelect={handleRocketSelection} />
@@ -60,6 +61,7 @@ const Home = () => {
       <section
         id="statistics"
         style={{
+          display: selectedRocket ? "none" : "block",
           height: "146px",
         }}
       >
@@ -72,6 +74,7 @@ const Home = () => {
         style={{
           height: "644px",
           width: "100%",
+          display: selectedRocket ? "none" : "block",
         }}
       >
         <About />
@@ -83,6 +86,7 @@ const Home = () => {
         style={{
           height: "551px",
           width: "100%",
+          display: selectedRocket ? "none" : "block",
         }}
       >
         <Team />
@@ -106,9 +110,35 @@ const Home = () => {
       {/* Інформація про обрану ракету */}
       {selectedRocket && (
         <>
-          <DragonInfo rocket={selectedRocket.name} />
-
-          <StarshipCapabilities />
+          <section
+            id="dragonInfo"
+            style={{
+              width: "1316px",
+              height: "615px",
+              top: "132px",
+              left: "1px",
+              gap: "0px",
+              position: "absolute",
+              background: "#000",
+              opacity: "0px",
+            }}
+          >
+            <DragonInfo rocket={selectedRocket.name} />
+          </section>
+          <section
+            id="starship-n"
+            style={{
+              border: "1px solid white",
+              width: "1806px",
+              background: "#000",
+              left: "calc(50% - (1806px/2))",
+              top: "847px",
+              position: "absolute",
+              opacity: "0px",
+            }}
+          >
+            <StarshipCapabilities />
+          </section>
           {/* <Starbase /> */}
         </>
       )}
