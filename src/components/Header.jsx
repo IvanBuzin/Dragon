@@ -49,7 +49,7 @@ const Header = () => {
           width: "1191px",
           background:
             "linear-gradient(359deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%)",
-          margin: "98px 42px 48px 98px",
+          margin: "94px 42px 48px 94px",
         }}
       >
         <img

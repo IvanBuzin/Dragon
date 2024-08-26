@@ -36,7 +36,7 @@ const Home = () => {
       <section
         id="hero"
         style={{
-          height: "653px",
+          height: "649px",
           border: "1px solid white",
           borderRadius: "40px",
           width: "100%",
