@@ -182,8 +182,9 @@ const DragonInfo = () => {
                         <strong>Height</strong>
                       </span>
                       <span>
-                        {dragon.height_w_trunk?.meters} m /{" "}
-                        {metersToFeet(dragon.height_w_trunk?.meters)} ft
+                        {dragon.height_w_trunk?.meters ?? "8.1"} m /{" "}
+                        {metersToFeet(dragon.height_w_trunk?.meters) ?? "26.7"}{" "}
+                        ft
                       </span>
                     </p>
                     <p
@@ -203,8 +204,8 @@ const DragonInfo = () => {
                       </span>
                       <span>
                         {" "}
-                        {dragon.diameter?.meters} m /{" "}
-                        {metersToFeet(dragon.diameter?.meters)} ft
+                        {dragon.diameter?.meters ?? "4"} m /{" "}
+                        {metersToFeet(dragon.diameter?.meters) ?? "13"} ft
                       </span>
                     </p>
                     <p
@@ -224,11 +225,14 @@ const DragonInfo = () => {
                         <strong>Spacecraft Volume</strong>{" "}
                       </span>
                       <span>
-                        {
+                        {dragon.pressurized_capsule?.payload_volume
+                          ?.cubic_meters ?? "9.3"}{" "}
+                        m³ /{" "}
+                        {metersToFeet(
                           dragon.pressurized_capsule?.payload_volume
                             ?.cubic_meters
-                        }{" "}
-                        m³
+                        ) ?? "328"}{" "}
+                        ft³
                       </span>
                     </p>
                     <p
@@ -245,7 +249,10 @@ const DragonInfo = () => {
                       }}
                     >
                       <strong>Trunk Volume</strong>{" "}
-                      {dragon.trunk?.trunk_volume?.cubic_meters} m³
+                      {dragon.trunk?.trunk_volume?.cubic_meters ?? "37"} m³/
+                      {metersToFeet(dragon.trunk?.trunk_volume?.cubic_meters) ??
+                        "1300"}{" "}
+                      ft³
                     </p>
                     <p
                       style={{
@@ -261,8 +268,8 @@ const DragonInfo = () => {
                       }}
                     >
                       <strong>Launch Payload Mass</strong>{" "}
-                      {dragon.launch_payload_mass?.kg} kg /{" "}
-                      {kgToLbs(dragon.launch_payload_mass?.kg)} lbs
+                      {dragon.launch_payload_mass?.kg ?? "6,000"} kg /{" "}
+                      {kgToLbs(dragon.launch_payload_mass?.kg) ?? "13,228"} lbs
                     </p>
                     <p
                       style={{
@@ -278,7 +285,10 @@ const DragonInfo = () => {
                       }}
                     >
                       <strong>Trunk Volume</strong>{" "}
-                      {dragon.trunk?.trunk_volume?.cubic_meters} m³
+                      {dragon.trunk?.trunk_volume?.cubic_meters ?? "37"} m³/
+                      {metersToFeet(dragon.trunk?.trunk_volume?.cubic_meters) ??
+                        "1300"}{" "}
+                      ft³
                     </p>
                     <p
                       style={{
@@ -328,8 +338,8 @@ const DragonInfo = () => {
                       }}
                     >
                       <strong>Return Payload Mass</strong>{" "}
-                      {dragon.return_payload_mass?.kg} kg /{" "}
-                      {kgToLbs(dragon.return_payload_mass?.kg)} lbs
+                      {dragon.return_payload_mass?.kg ?? "3,000"} kg /{" "}
+                      {kgToLbs(dragon.return_payload_mass?.kg) ?? "6,614"} lbs
                     </p>
                     <p
                       style={{
@@ -348,11 +358,14 @@ const DragonInfo = () => {
                         <strong>Spacecraft Volume</strong>{" "}
                       </span>
                       <span>
-                        {
+                        {dragon.pressurized_capsule?.payload_volume
+                          ?.cubic_meters ?? "9.3"}{" "}
+                        m³/
+                        {metersToFeet(
                           dragon.pressurized_capsule?.payload_volume
                             ?.cubic_meters
-                        }{" "}
-                        m³
+                        ) ?? "328"}{" "}
+                        ft³
                       </span>
                     </p>
                     <p

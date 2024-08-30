@@ -4,18 +4,27 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const OurRocket = ({ onRocketSelect }) => {
-  const [dragons, setDragons] = useState([]);
+  const [rockets, setRockets] = useState([]);
+  const [filteredImages, setFilteredImages] = useState([]);
   const sliderRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const fetchDragons = async () => {
-    const response = await fetch("https://api.spacexdata.com/v4/dragons");
-    const data = await response.json();
-    setDragons(data);
+  const fetchRockets = async () => {
+    const dragonResponse = await fetch("https://api.spacexdata.com/v4/dragons");
+    const dragonData = await dragonResponse.json();
+
+    const rocketResponse = await fetch("https://api.spacexdata.com/v4/rockets");
+    const rocketData = await rocketResponse.json();
+
+    const combinedData = [...dragonData, ...rocketData];
+    setRockets(combinedData);
+
+    const allImages = combinedData.flatMap((rocket) => rocket.flickr_images);
+    setFilteredImages(allImages);
   };
 
   useEffect(() => {
-    fetchDragons();
+    fetchRockets();
   }, []);
 
   const settings = {
@@ -39,17 +48,18 @@ const OurRocket = ({ onRocketSelect }) => {
   const metersToFeet = (meters) => (meters * 3.28084).toFixed(1);
   const kgToLbs = (kg) => (kg * 2.20462).toFixed(3);
 
-  const handleRocketClick = (dragon) => {
-    onRocketSelect(dragon); // Виклик функції для передачі обраної ракети до Home компонента
+  const handleRocketClick = (rocket) => {
+    onRocketSelect(rocket.id);
+    setFilteredImages(rocket.flickr_images);
   };
 
   return (
     <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>
       <h2 style={{ textAlign: "center" }}>Our rockets</h2>
       <Slider {...settings} ref={sliderRef}>
-        {dragons.map((dragon) => (
+        {rockets.map((rocket) => (
           <div
-            key={dragon.id}
+            key={rocket.id}
             style={{
               border: "1px solid rgba(255, 255, 255, 0.2)",
               padding: "24px",
@@ -60,6 +70,7 @@ const OurRocket = ({ onRocketSelect }) => {
               borderRadius: "40px",
               cursor: "pointer",
             }}
+            onClick={() => handleRocketClick(rocket)}
           >
             <div
               style={{
@@ -74,8 +85,8 @@ const OurRocket = ({ onRocketSelect }) => {
               }}
             >
               <img
-                src={dragon.flickr_images?.[0] || "./images/toy-rocket.gif"}
-                alt={dragon.name || "Rocket"}
+                src={rocket.flickr_images[0] || "./images/toy-rocket.gif"}
+                alt={rocket.name || "Rocket"}
                 style={{
                   width: "378px",
                   borderRadius: "20px",
@@ -85,9 +96,9 @@ const OurRocket = ({ onRocketSelect }) => {
               />
               <h4
                 style={{ margin: "0px", cursor: "pointer" }}
-                onClick={() => handleRocketClick(dragon)}
+                onClick={() => handleRocketClick(rocket)}
               >
-                {dragon.name || "Rocket"}
+                {rocket.name || "Rocket"}
               </h4>
               <div
                 style={{
@@ -107,9 +118,15 @@ const OurRocket = ({ onRocketSelect }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <strong>HEIGHT:</strong>{" "}
-                  {dragon.height_w_trunk?.meters ?? "8.1"} m /{" "}
-                  {metersToFeet(dragon.height_w_trunk?.meters) ?? "26.7"} ft
+                  <strong>HEIGHT</strong>{" "}
+                  {rocket.height?.meters ??
+                    rocket.height_w_trunk?.meters ??
+                    "8.1"}{" "}
+                  m /{" "}
+                  {metersToFeet(
+                    rocket.height?.meters ?? rocket.height_w_trunk?.meters
+                  ) ?? "26.7"}{" "}
+                  ft
                 </p>
                 <p
                   style={{
@@ -120,8 +137,8 @@ const OurRocket = ({ onRocketSelect }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <strong>DIAMETER:</strong> {dragon.diameter?.meters ?? "4"} m
-                  / {metersToFeet(dragon.diameter?.meters) ?? "13"} ft
+                  <strong>DIAMETER</strong> {rocket.diameter?.meters ?? "4"} m /{" "}
+                  {metersToFeet(rocket.diameter?.meters) ?? "13"} ft
                 </p>
                 <p
                   style={{
@@ -132,12 +149,12 @@ const OurRocket = ({ onRocketSelect }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <strong>SPACECRAFT VOLUME:</strong>{" "}
-                  {dragon.pressurized_capsule?.payload_volume?.cubic_meters ??
+                  <strong>SPACECRAFT VOLUME</strong>{" "}
+                  {rocket.pressurized_capsule?.payload_volume?.cubic_meters ??
                     "9.3"}{" "}
                   m³ /{" "}
                   {metersToFeet(
-                    dragon.pressurized_capsule?.payload_volume?.cubic_meters
+                    rocket.pressurized_capsule?.payload_volume?.cubic_meters
                   ) ?? "328"}{" "}
                   ft³
                 </p>
@@ -150,9 +167,9 @@ const OurRocket = ({ onRocketSelect }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <strong>TRUNK VOLUME:</strong>{" "}
-                  {dragon.trunk?.trunk_volume?.cubic_meters ?? "37"} m³ /{" "}
-                  {metersToFeet(dragon.trunk?.trunk_volume?.cubic_meters) ??
+                  <strong>TRUNK VOLUME</strong>{" "}
+                  {rocket.trunk?.trunk_volume?.cubic_meters ?? "37"} m³ /{" "}
+                  {metersToFeet(rocket.trunk?.trunk_volume?.cubic_meters) ??
                     "1300"}{" "}
                   ft³
                 </p>
@@ -165,9 +182,15 @@ const OurRocket = ({ onRocketSelect }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <strong>LAUNCH PAYLOAD MASS:</strong>{" "}
-                  {dragon.launch_payload_mass?.kg ?? "6,000"} kg /{" "}
-                  {kgToLbs(dragon.launch_payload_mass?.kg) ?? "13,228"} lbs
+                  <strong>LAUNCH PAYLOAD MASS</strong>{" "}
+                  {rocket.launch_payload_mass?.kg ??
+                    rocket.dry_mass_kg ??
+                    "6,000"}{" "}
+                  kg /{" "}
+                  {kgToLbs(
+                    rocket.launch_payload_mass?.kg ?? rocket.dry_mass_kg
+                  ) ?? "13,228"}{" "}
+                  lbs
                 </p>
                 <p
                   style={{
@@ -178,10 +201,22 @@ const OurRocket = ({ onRocketSelect }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <strong>RETURN PAYLOAD MASS:</strong>{" "}
-                  {dragon.return_payload_mass?.kg ?? "3,000"} kg /{" "}
-                  {kgToLbs(dragon.return_payload_mass?.kg) ?? "6,614"} lbs
+                  <strong>RETURN PAYLOAD MASS</strong>{" "}
+                  {rocket.return_payload_mass?.kg ?? "3,000"} kg /{" "}
+                  {kgToLbs(rocket.return_payload_mass?.kg) ?? "6,614"} lbs
                 </p>
+                {/* <p
+                  style={{
+                    display: "flex",
+                    height: "24px",
+                    margin: "0px",
+                    gap: "0px",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <strong>DESCRIPTION</strong>{" "}
+                  {rocket.description ?? "No description available"}
+                </p> */}
               </div>
             </div>
           </div>
@@ -196,7 +231,7 @@ const OurRocket = ({ onRocketSelect }) => {
           onClick={handlePrev}
         />
         <div className="dots-container">
-          {dragons.map((_, index) => (
+          {rockets.map((_, index) => (
             <div
               key={index}
               className={`dot ${index === activeSlide ? "active" : ""}`}

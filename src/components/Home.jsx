@@ -3,7 +3,7 @@ import Header from "./Header";
 import OurRockets from "./OurRocket";
 import DragonInfo from "./DragonInfo/DragonInfo";
 import StarshipCapabilities from "./StarshipCapabilities";
-// import Starbase from "./Starbase";
+import Starbase from "./Starbase";
 import About from "./About";
 import RocketStatistics from "./RocketStatistics";
 import Team from "./Team";
@@ -102,6 +102,7 @@ const Home = () => {
           position: "absolute",
           left: "calc(50% - (1806px/2))",
           top: "3297px",
+          display: selectedRocket ? "none" : "block",
         }}
       >
         <StarshipCapabilities />
@@ -109,7 +110,13 @@ const Home = () => {
 
       {/* Інформація про обрану ракету */}
       {selectedRocket && (
-        <>
+        <div
+          style={{
+            display: "flex",
+            gap: "100px",
+            // height: selectedRocket ? "2608px" : "4131px",
+          }}
+        >
           <section
             id="dragonInfo"
             style={{
@@ -130,17 +137,18 @@ const Home = () => {
             style={{
               border: "1px solid white",
               width: "1806px",
-              background: "#000",
+              // background: "#000",
               left: "calc(50% - (1806px/2))",
-              top: "847px",
-              position: "absolute",
+              top: "892px",
+
               opacity: "0px",
             }}
           >
             <StarshipCapabilities />
+
+            <Starbase />
           </section>
-          {/* <Starbase /> */}
-        </>
+        </div>
       )}
     </div>
   );
