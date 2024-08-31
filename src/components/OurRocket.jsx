@@ -54,12 +54,16 @@ const OurRocket = ({ onRocketSelect }) => {
   };
 
   return (
-    <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>
+    <div
+      className="our-rocket-container"
+      style={{ display: "flex", gap: "32px", flexDirection: "column" }}
+    >
       <h2 style={{ textAlign: "center" }}>Our rockets</h2>
       <Slider {...settings} ref={sliderRef}>
         {rockets.map((rocket) => (
           <div
             key={rocket.id}
+            className="rocket-card"
             style={{
               border: "1px solid rgba(255, 255, 255, 0.2)",
               padding: "24px",
@@ -73,6 +77,7 @@ const OurRocket = ({ onRocketSelect }) => {
             onClick={() => handleRocketClick(rocket)}
           >
             <div
+              className="rocket-card-inner"
               style={{
                 display: "flex",
                 gap: "24px",
@@ -85,6 +90,7 @@ const OurRocket = ({ onRocketSelect }) => {
               }}
             >
               <img
+                className="rocket-image"
                 src={rocket.flickr_images[0] || "./images/toy-rocket.gif"}
                 alt={rocket.name || "Rocket"}
                 style={{
@@ -95,12 +101,14 @@ const OurRocket = ({ onRocketSelect }) => {
                 }}
               />
               <h4
+                className="rocket-name"
                 style={{ margin: "0px", cursor: "pointer" }}
                 onClick={() => handleRocketClick(rocket)}
               >
                 {rocket.name || "Rocket"}
               </h4>
               <div
+                className="rocket-specs"
                 style={{
                   textAlign: "left",
                   display: "flex",
@@ -110,6 +118,7 @@ const OurRocket = ({ onRocketSelect }) => {
                 }}
               >
                 <p
+                  className="spec-item"
                   style={{
                     display: "flex",
                     height: "24px",
@@ -129,6 +138,7 @@ const OurRocket = ({ onRocketSelect }) => {
                   ft
                 </p>
                 <p
+                  className="spec-item"
                   style={{
                     display: "flex",
                     height: "24px",
@@ -159,6 +169,7 @@ const OurRocket = ({ onRocketSelect }) => {
                   ft³
                 </p>
                 <p
+                  className="spec-item"
                   style={{
                     display: "flex",
                     height: "24px",
@@ -174,6 +185,7 @@ const OurRocket = ({ onRocketSelect }) => {
                   ft³
                 </p>
                 <p
+                  className="spec-item"
                   style={{
                     display: "flex",
                     height: "24px",
@@ -193,6 +205,7 @@ const OurRocket = ({ onRocketSelect }) => {
                   lbs
                 </p>
                 <p
+                  className="spec-item"
                   style={{
                     display: "flex",
                     height: "24px",
@@ -205,7 +218,7 @@ const OurRocket = ({ onRocketSelect }) => {
                   {rocket.return_payload_mass?.kg ?? "3,000"} kg /{" "}
                   {kgToLbs(rocket.return_payload_mass?.kg) ?? "6,614"} lbs
                 </p>
-                {/* <p
+                {/* <p className="spec-item"
                   style={{
                     display: "flex",
                     height: "24px",
