@@ -1,18 +1,21 @@
 import { useState } from "react";
 import Header from "./Header";
 import OurRockets from "./OurRocket";
-import DragonInfo from "./DragonInfo/DragonInfo";
 import StarshipCapabilities from "./StarshipCapabilities";
 import Starbase from "./Starbase";
 import About from "./About";
 import RocketStatistics from "./RocketStatistics";
 import Team from "./Team";
+import RocketInfo from "./RocketInfo";
 
 const Home = () => {
   const [selectedRocket, setSelectedRocket] = useState(null);
 
   const handleRocketSelection = (rocket) => {
     setSelectedRocket(rocket);
+  };
+  const handleBackToRockets = () => {
+    setSelectedRocket(null);
   };
 
   return (
@@ -113,12 +116,13 @@ const Home = () => {
         <div
           style={{
             display: "flex",
-            gap: "100px",
+            flexDirection: "column",
+            gap: "20px",
             // height: selectedRocket ? "2608px" : "4131px",
           }}
         >
           <section
-            id="dragonInfo"
+            id="rocketInfo"
             style={{
               width: "1316px",
               height: "615px",
@@ -127,10 +131,10 @@ const Home = () => {
               gap: "0px",
               position: "absolute",
               background: "#000",
-              opacity: "0px",
+              opacity: "1",
             }}
           >
-            <DragonInfo rocket={selectedRocket.name} />
+            <RocketInfo type={selectedRocket} />
           </section>
           <section
             id="starship-n"
@@ -140,14 +144,29 @@ const Home = () => {
               // background: "#000",
               left: "calc(50% - (1806px/2))",
               top: "892px",
-
-              opacity: "0px",
+              position: "absolute",
+              opacity: "1",
             }}
           >
             <StarshipCapabilities />
 
             <Starbase />
           </section>
+          {/* Кнопка для повернення до секції OurRockets */}
+          <button
+            onClick={handleBackToRockets}
+            style={{
+              marginTop: "20px",
+              padding: "10px 20px",
+              backgroundColor: "#333",
+              color: "white",
+              borderRadius: "5px",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Повернутись до ракет
+          </button>
         </div>
       )}
     </div>

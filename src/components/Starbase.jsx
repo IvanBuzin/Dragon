@@ -6,10 +6,11 @@ const Starbase = () => {
       id="base"
       style={{
         position: "absolute",
-        width: "100%",
+        width: "80%",
         height: "100%",
 
-        top: "1726px",
+        marginLeft: "180px",
+        // top: "1726px",
 
         backgroundImage:
           'url("https://www.spacex.com/vehicles/starship/assets/images/Starbase_Desktop.jpg")',
@@ -29,8 +30,11 @@ const Starbase = () => {
           width: "1321px",
           height: "172px",
           position: "absolute",
-
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           top: "551px",
+          marginLeft: "60px",
         }}
       >
         <div
