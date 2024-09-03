@@ -246,7 +246,7 @@ const Team = () => {
                   src={member.image}
                   alt={member.name}
                   style={{
-                    height: "423px",
+                    height: "421px",
                     maxWidth: "423px",
                     borderRadius: "40px",
                     objectFit: "cover",

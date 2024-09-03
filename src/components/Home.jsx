@@ -22,7 +22,7 @@ const Home = () => {
     <div
       style={{
         color: "white",
-        maxHeight: "3983px",
+        maxHeight: "3149px",
         width: "1321px",
         position: "absolute",
         display: "flex",
@@ -104,7 +104,7 @@ const Home = () => {
           width: "1806px",
           position: "absolute",
           left: "calc(50% - (1806px/2))",
-          top: "3297px",
+          top: "3249px",
           display: selectedRocket ? "none" : "block",
         }}
       >
