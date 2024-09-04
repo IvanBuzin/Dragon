@@ -120,7 +120,8 @@ const RocketInfo = ({ type }) => {
             >
               <div
                 style={{
-                  border: "1px solid white",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+
                   borderRadius: "24px",
                   padding: "24px",
                   height: "457px",

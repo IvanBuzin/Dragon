@@ -83,7 +83,7 @@ const OurRocket = ({ onRocketSelect }) => {
                 gap: "24px",
                 flexDirection: "column",
                 padding: "24px",
-                border: "1px solid #ccc",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
                 borderRadius: "40px",
                 width: "375px",
                 height: "501px",

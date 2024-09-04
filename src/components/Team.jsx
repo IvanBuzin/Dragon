@@ -238,7 +238,7 @@ const Team = () => {
                   width: "423px",
                   height: "487px",
                   borderRadius: "40px",
-                  border: "1px solid #ccc",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
                   backgroundColor: "rgba(0, 0, 0, 1)",
                 }}
               >

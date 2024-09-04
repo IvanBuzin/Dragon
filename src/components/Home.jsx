@@ -40,7 +40,9 @@ const Home = () => {
         id="hero"
         style={{
           height: "649px",
-          border: selectedRocket ? "none" : "1px solid white",
+          border: selectedRocket
+            ? "none"
+            : "1px solid rgba(255, 255, 255, 0.2)",
           borderRadius: "40px",
           width: "100%",
         }}
@@ -100,7 +102,7 @@ const Home = () => {
         id="starship"
         style={{
           height: "834px",
-          border: "1px solid white",
+
           width: "1806px",
           position: "absolute",
           left: "calc(50% - (1806px/2))",
@@ -124,7 +126,7 @@ const Home = () => {
           <section
             id="rocketInfo"
             style={{
-              width: "1316px",
+              width: "1321px",
               height: "615px",
               top: "132px",
               left: "1px",
@@ -139,7 +141,6 @@ const Home = () => {
           <section
             id="starship-n"
             style={{
-              border: "1px solid white",
               width: "1806px",
               // background: "#000",
               left: "calc(50% - (1806px/2))",
