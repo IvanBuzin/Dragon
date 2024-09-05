@@ -1,11 +1,13 @@
 .slider-container {
   position: relative;
   width: 100%;
+  height: 100%;
   overflow: hidden;
 
   background-position: center;
   background-repeat: no-repeat;
   background-size: 1440px 834px;
+  position: static;
   background-image: url("https://www.spacex.com/vehicles/starship/assets/images/Starhip_website-crop20230126_dji_0199_01.jpg");
 }
 
@@ -44,3 +46,61 @@
   cursor: pointer;
   padding: 0px 16px;
 }
+/* .starship-capabilities-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+  position: absolute;
+  width: 1321px;
+  height: 366px;
+  left: 243px;
+  top: 436px;
+}
+
+.header-container .title {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 76px;
+  text-transform: uppercase;
+  color: #ffffff;
+  width: 468px;
+  height: 152px;
+}
+
+.header-container .description {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #ffffff;
+  width: 453px;
+  height: 96px;
+}
+
+.slider-container {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1806px;
+  height: 834px;
+  background: url("download (10).jpg");
+}
+
+.arrow {
+  width: 62px;
+  height: 62px;
+  cursor: pointer;
+  transform: rotate(90deg);
+} */

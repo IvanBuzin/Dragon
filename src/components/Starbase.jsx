@@ -5,13 +5,12 @@ const Starbase = () => {
     <section
       id="base"
       style={{
-        // position: "absolute",
         width: "100%",
         height: "866px",
         left: "-170px",
         top: "1726px",
         backgroundImage:
-          'url("https://www.spacex.com/vehicles/starship/assets/images/Starbase_Desktop.jpg")',
+          'url("https://www.spacex.com/vehicles/starship/assets/images/Starbase_Desktop.jpg" )',
         backgroundSize: "1440px 866px",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -27,13 +26,13 @@ const Starbase = () => {
           position: "absolute",
           width: "1321px",
           height: "172px",
-          left: "242px",
-          top: "1488px",
+          left: "60px",
+          top: "2388px",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
           padding: "0px",
-          gap: "32px",
+          gap: "24px",
         }}
       >
         <h2

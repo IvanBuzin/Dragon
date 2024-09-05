@@ -56,11 +56,9 @@ const Header = () => {
           src="/src/images/Group d.png"
           alt="kolo"
           style={{
-            position: "absolute",
             width: "33px",
             height: "33px",
-            top: "588px",
-            left: "32px",
+            margin: " -14px 0 0 -64px",
 
             opacity: "0.8",
           }}
@@ -90,6 +88,7 @@ const styles = {
     gap: "48px",
     alignItems: "center",
     width: "382px",
+    justifyContent: "space-between",
   },
   link: {
     color: "white",

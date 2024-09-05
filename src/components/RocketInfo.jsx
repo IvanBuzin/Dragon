@@ -3,6 +3,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PullToRefresh from "react-pull-to-refresh";
+import Header from "./Header";
+import { Link } from "react-router-dom";
 
 const RocketInfo = ({ type }) => {
   const [items, setItems] = useState([]);
@@ -98,6 +100,32 @@ const RocketInfo = ({ type }) => {
           flexDirection: "column",
         }}
       >
+        <header style={styles.header}>
+          <div style={styles.logo}>LOGO</div>
+          <nav style={styles.nav}>
+            <Link to="/" style={styles.link}>
+              Home
+            </Link>
+            <Link to="/about" style={styles.link}>
+              About
+            </Link>
+            <Link to="/qa" style={styles.link}>
+              QA
+            </Link>
+            <Link to="/contact" style={styles.link}>
+              Contact Form
+            </Link>
+          </nav>
+
+          <div style={styles.contact}>Contact Form</div>
+
+          {/* <Link to="/login" style={styles.link}>
+        Login
+        </Link>
+        <Link to="/register" style={styles.link}>
+        Register
+        </Link> */}
+        </header>
         <h2>{selectedItem ? selectedItem.name : `Select a ${type}`}</h2>
         <Slider {...settings} ref={sliderRef}>
           {items.map((item) => (
@@ -122,9 +150,9 @@ const RocketInfo = ({ type }) => {
                 style={{
                   border: "1px solid rgba(255, 255, 255, 0.2)",
 
-                  borderRadius: "24px",
+                  borderRadius: "20px",
                   padding: "24px",
-                  height: "457px",
+                  height: "453px",
                   display: "flex",
                   flexDirection: "row",
                   gap: "20px",
@@ -136,7 +164,7 @@ const RocketInfo = ({ type }) => {
                   alt={item.name}
                   style={{
                     width: "791px",
-                    height: "457px",
+                    height: "453px",
                     maxHeight: "457px",
                     borderRadius: "20px",
                   }}
@@ -374,6 +402,43 @@ const RocketInfo = ({ type }) => {
       </div>
     </PullToRefresh>
   );
+};
+
+const styles = {
+  header: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "32px",
+    color: "white",
+  },
+  logo: {
+    fontSize: "16px",
+    border: "1px solid white",
+    borderRadius: "21px",
+    padding: "8px 12px",
+    opacity: "0px",
+  },
+  nav: {
+    display: "flex",
+    gap: "48px",
+    alignItems: "center",
+    width: "382px",
+    justifyContent: "space-between",
+  },
+  link: {
+    color: "white",
+    textDecoration: "none",
+    fontSize: "16px",
+  },
+  contact: {
+    fontSize: "16px",
+    border: "1px solid white",
+
+    borderRadius: "21px",
+    padding: "8px 12px",
+    opacity: "0px",
+  },
 };
 
 export default RocketInfo;

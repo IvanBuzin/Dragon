@@ -3,28 +3,41 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const OurRocket = ({ onRocketSelect }) => {
+const OurRocket = ({
+  onRocketSelect = () => {},
+  clearSelectedRocket = () => {},
+}) => {
   const [rockets, setRockets] = useState([]);
   const [filteredImages, setFilteredImages] = useState([]);
   const sliderRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [selectedRocket, setSelectedRocket] = useState(null);
 
   const fetchRockets = async () => {
-    const dragonResponse = await fetch("https://api.spacexdata.com/v4/dragons");
-    const dragonData = await dragonResponse.json();
+    try {
+      const dragonResponse = await fetch(
+        "https://api.spacexdata.com/v4/dragons"
+      );
+      const dragonData = await dragonResponse.json();
 
-    const rocketResponse = await fetch("https://api.spacexdata.com/v4/rockets");
-    const rocketData = await rocketResponse.json();
+      const rocketResponse = await fetch(
+        "https://api.spacexdata.com/v4/rockets"
+      );
+      const rocketData = await rocketResponse.json();
 
-    const combinedData = [...dragonData, ...rocketData];
-    setRockets(combinedData);
+      const combinedData = [...dragonData, ...rocketData];
+      setRockets(combinedData);
 
-    const allImages = combinedData.flatMap((rocket) => rocket.flickr_images);
-    setFilteredImages(allImages);
+      setFilteredImages(combinedData.flatMap((rocket) => rocket.flickr_images));
+    } catch (error) {
+      console.error("Error fetching rockets data:", error);
+    }
   };
 
   useEffect(() => {
     fetchRockets();
+    // Очищуємо стан вибраної ракети після повернення з RocketInfo
+    clearSelectedRocket();
   }, []);
 
   const settings = {
@@ -49,6 +62,7 @@ const OurRocket = ({ onRocketSelect }) => {
   const kgToLbs = (kg) => (kg * 2.20462).toFixed(3);
 
   const handleRocketClick = (rocket) => {
+    setSelectedRocket(rocket); // Зберігаємо вибрану ракету
     onRocketSelect(rocket.id);
     setFilteredImages(rocket.flickr_images);
   };
@@ -103,7 +117,6 @@ const OurRocket = ({ onRocketSelect }) => {
               <h4
                 className="rocket-name"
                 style={{ margin: "0px", cursor: "pointer" }}
-                onClick={() => handleRocketClick(rocket)}
               >
                 {rocket.name || "Rocket"}
               </h4>
@@ -218,7 +231,8 @@ const OurRocket = ({ onRocketSelect }) => {
                   {rocket.return_payload_mass?.kg ?? "3,000"} kg /{" "}
                   {kgToLbs(rocket.return_payload_mass?.kg) ?? "6,614"} lbs
                 </p>
-                {/* <p className="spec-item"
+                {/* <p
+                  className="spec-item"
                   style={{
                     display: "flex",
                     height: "24px",

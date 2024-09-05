@@ -835,6 +835,54 @@ const StarshipCapabilities = () => {
 
   return (
     <div className="starship-capabilities-container">
+      <div
+        style={{
+          flexDirection: "column",
+          marginLeft: "60px",
+          justifyContent: "space-between",
+
+          // marginTop: "-360px",
+          display: "flex",
+
+          alignItems: "flex-start",
+          padding: "0px",
+          gap: "32px",
+          position: "absolute",
+          width: "1321px",
+          height: "302px",
+          left: "60px",
+          top: "3769px",
+
+          margin: "0 auto",
+        }}
+      >
+        <div
+          className="header-container"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            width: "453px",
+            gap: "24px",
+            position: "absolute",
+            left: "60px",
+          }}
+        >
+          <h2 className="title" style={{ height: "152px" }}>
+            Starship Capabilities
+          </h2>
+          <p
+            className="description"
+            style={{ width: "453px", margin: "0px", lineHeight: "24px" }}
+          >
+            As the most powerful launch system ever developed, Starship will be
+            able to carry up to 100 people on long-duration, interplanetary
+            flights. Starship will also help enable satellite delivery, the
+            development of a Moon base, and point-to-point transport here on
+            Earth.
+          </p>
+        </div>
+      </div>
       <div className="slider-container">
         <Slider {...settings} ref={sliderRef}>
           {capabilities.map((capability, index) => (
