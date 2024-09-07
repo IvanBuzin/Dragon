@@ -199,616 +199,60 @@
 
 // export default StarshipCapabilities;
 
-// import { useState, useEffect, useRef } from "react";
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import "./StarshipCapabilities.css"; // Підключаємо файл CSS для стилів
-
-// const StarshipCapabilities = () => {
-//   const [capabilities, setCapabilities] = useState([]);
-//   const [activeSlide, setActiveSlide] = useState(0);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const sliderRef = useRef(null);
-//   const localStorageKey = "capabilitiesData";
-
-//   const saveToLocalStorage = (data) => {
-//     localStorage.setItem(localStorageKey, JSON.stringify(data));
-//   };
-
-//   const loadFromLocalStorage = () => {
-//     const savedData = localStorage.getItem(localStorageKey);
-//     return savedData ? JSON.parse(savedData) : null;
-//   };
-
-//   const fetchData = () => {
-//     return fetch("https://api.spacexdata.com/v4/dragons")
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error("Network response was not ok");
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         setCapabilities(data);
-//         saveToLocalStorage(data);
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         setError(error);
-//         setLoading(false);
-//       });
-//   };
-
-//   useEffect(() => {
-//     const cachedData = loadFromLocalStorage();
-//     if (cachedData) {
-//       setCapabilities(cachedData);
-//       setLoading(false);
-//     } else {
-//       fetchData();
-//     }
-//   }, []);
-
-//   const handlePrev = () => {
-//     sliderRef.current.slickPrev();
-//   };
-
-//   const handleNext = () => {
-//     sliderRef.current.slickNext();
-//   };
-
-//   const settings = {
-//     dots: false,
-//     infinite: true,
-//     speed: 500,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     beforeChange: (oldIndex, newIndex) => setActiveSlide(newIndex),
-//   };
-
-//   if (loading) {
-//     return <p>Loading...</p>;
-//   }
-
-//   if (error) {
-//     return <p>Error: {error.message}</p>;
-//   }
-
-//   return (
-//     <div
-//       style={{
-//         // display: "flex",
-
-//         // flexDirection: "column",
-
-//         WebkitFontSmoothing: "antialiased",
-//         font: "16px/24px Arial, Verdana, sans-serif",
-//         fontWeight: 400,
-//         fontStyle: "normal",
-//         textAlign: "center",
-//         overflow: "hidden",
-//         display: "block",
-//         position: "absolute",
-//         width: "100%",
-//         height: "100%",
-//         margin: 0,
-//         padding: 0,
-//         backgroundColor: "#000",
-//         backgroundPosition: "center center",
-//         backgroundRepeat: "no-repeat",
-//         backgroundSize: "cover",
-//         transform:
-//           "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate3d(0, 0, 0.75, 0deg)",
-//         backgroundImage:
-//           'url("https://www.spacex.com/vehicles/starship/assets/images/Starhip_website-crop20230126_dji_0199_01.jpg")',
-//         opacity: 1,
-//         visibility: "inherit",
-//       }}
-//     >
-//       <div className="slider-container">
-//         <Slider {...settings} ref={sliderRef}>
-//           {capabilities.map((capability, index) => (
-//             <div key={index} className="slider-item">
-//               <img
-//                 src={capability.flickr_images[index + 1]}
-//                 alt={capability.name}
-//                 className="slider-image"
-//               />
-//               {/* <h3>{capability.name}</h3>
-//             <div className="capability-description">
-//               <p>
-//                 <strong>Description:</strong> {capability.description}
-//               </p>
-//               <p>
-//                 <strong>First Flight:</strong> {capability.first_flight}
-//               </p>
-//               <p>
-//                 <strong>Active:</strong> {capability.active ? "Yes" : "No"}
-//               </p>
-//               <p>
-//                 <strong>Crew Capacity:</strong> {capability.crew_capacity}
-//               </p>
-//               <p>
-//                 <strong>Height:</strong> {capability.height_w_trunk.meters}{" "}
-//                 meters / {capability.height_w_trunk.feet} feet
-//               </p>
-//               <p>
-//                 <strong>Diameter:</strong> {capability.diameter.meters} meters /{" "}
-//                 {capability.diameter.feet} feet
-//               </p>
-//               <p>
-//                 <strong>Launch Payload Mass:</strong>{" "}
-//                 {capability.launch_payload_mass.kg} kg /{" "}
-//                 {capability.launch_payload_mass.lb} lbs
-//               </p>
-//             </div> */}
-//             </div>
-//           ))}
-//         </Slider>
-//         <div className="navigation-container">
-//           <img
-//             className="arrow"
-//             src="/src/images/Vector w.png"
-//             alt="navigation left"
-//             onClick={handlePrev}
-//           />
-//           <div className="dots-container">
-//             {capabilities.map((_, index) => (
-//               <div
-//                 key={index}
-//                 className={`dot ${index === activeSlide ? "active" : ""}`}
-//                 onClick={() => sliderRef.current.slickGoTo(index)}
-//               ></div>
-//             ))}
-//           </div>
-//           <img
-//             className="arrow"
-//             src="/src/images/Vector w r.png"
-//             alt="navigation right"
-//             onClick={handleNext}
-//           />
-//         </div>
-//       </div>
-//       /
-//     </div>
-//   );
-// };
-
-// export default StarshipCapabilities;
-// import { useState, useEffect, useRef } from "react";
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import "./StarshipCapabilities.css"; // Підключаємо файл CSS для стилів
-
-// const StarshipCapabilities = () => {
-//   const [capabilities, setCapabilities] = useState([]);
-//   const [activeSlide, setActiveSlide] = useState(0);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const sliderRef = useRef(null);
-//   const localStorageKey = "capabilitiesData";
-
-//   const saveToLocalStorage = (data) => {
-//     localStorage.setItem(localStorageKey, JSON.stringify(data));
-//   };
-
-//   const loadFromLocalStorage = () => {
-//     const savedData = localStorage.getItem(localStorageKey);
-//     return savedData ? JSON.parse(savedData) : null;
-//   };
-
-//   const fetchData = () => {
-//     return fetch("https://api.spacexdata.com/v4/dragons")
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error("Network response was not ok");
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         setCapabilities(data);
-//         saveToLocalStorage(data);
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         setError(error);
-//         setLoading(false);
-//       });
-//   };
-
-//   useEffect(() => {
-//     const cachedData = loadFromLocalStorage();
-//     if (cachedData) {
-//       setCapabilities(cachedData);
-//       setLoading(false);
-//     } else {
-//       fetchData();
-//     }
-//   }, []);
-
-//   const handlePrev = () => {
-//     sliderRef.current.slickPrev();
-//   };
-
-//   const handleNext = () => {
-//     sliderRef.current.slickNext();
-//   };
-
-//   const settings = {
-//     dots: false,
-//     infinite: true,
-//     speed: 500,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     beforeChange: (oldIndex, newIndex) => setActiveSlide(newIndex),
-//   };
-
-//   if (loading) {
-//     return <p>Loading...</p>;
-//   }
-
-//   if (error) {
-//     return <p>Error: {error.message}</p>;
-//   }
-
-//   return (
-//     <div className="starship-capabilities-container">
-//       <div className="slider-container">
-//         <Slider {...settings} ref={sliderRef}>
-//           {capabilities.map((capability, index) => (
-//             <div key={index} className="slider-item">
-//               <img
-//                 src={capability.flickr_images[index + 1]} // Відображення першого зображення з масиву
-//                 alt={capability.name}
-//                 className="slider-image"
-//               />
-//             </div>
-//           ))}
-//         </Slider>
-//         <div className="navigation-container">
-//           <img
-//             className="arrow"
-//             src="/src/images/Vector w.png"
-//             alt="navigation left"
-//             onClick={handlePrev}
-//           />
-//           <div className="dots-container">
-//             {capabilities.map((_, index) => (
-//               <div
-//                 key={index}
-//                 className={`dot ${index === activeSlide ? "active" : ""}`}
-//                 onClick={() => sliderRef.current.slickGoTo(index)}
-//               ></div>
-//             ))}
-//           </div>
-//           <img
-//             className="arrow"
-//             src="/src/images/Vector w r.png"
-//             alt="navigation right"
-//             onClick={handleNext}
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default StarshipCapabilities;
-// import { useState, useEffect, useRef } from "react";
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import "./StarshipCapabilities.css"; // Підключаємо файл CSS для стилів
-
-// const StarshipCapabilities = ({ selectedRocketId }) => {
-//   const [capabilities, setCapabilities] = useState([]);
-//   const [filteredImages, setFilteredImages] = useState([]);
-//   const [activeSlide, setActiveSlide] = useState(0);
-
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const sliderRef = useRef(null);
-//   const localStorageKey = "capabilitiesData";
-
-//   const saveToLocalStorage = (data) => {
-//     localStorage.setItem(localStorageKey, JSON.stringify(data));
-//   };
-
-//   const loadFromLocalStorage = () => {
-//     const savedData = localStorage.getItem(localStorageKey);
-//     return savedData ? JSON.parse(savedData) : null;
-//   };
-
-//   const fetchData = () => {
-//     return fetch("https://api.spacexdata.com/v4/dragons")
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error("Network response was not ok");
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         const filteredData = data.filter(
-//           (item) =>
-//             typeof item === "object" && item.hasOwnProperty("flickr_images")
-//         );
-//         setCapabilities(filteredData);
-//         saveToLocalStorage(filteredData);
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         setError(error);
-//         setLoading(false);
-//       });
-//   };
-
-//   useEffect(() => {
-//     const cachedData = loadFromLocalStorage();
-//     if (cachedData) {
-//       setCapabilities(cachedData);
-//       setLoading(false);
-//     } else {
-//       fetchData();
-//     }
-//   }, []);
-
-//   const handlePrev = () => {
-//     sliderRef.current.slickPrev();
-//   };
-
-//   const handleNext = () => {
-//     sliderRef.current.slickNext();
-//   };
-
-//   const settings = {
-//     dots: false,
-//     infinite: true,
-//     speed: 500,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     beforeChange: (oldIndex, newIndex) => setActiveSlide(newIndex),
-//   };
-
-//   if (loading) {
-//     return <p>Loading...</p>;
-//   }
-
-//   if (error) {
-//     return <p>Error: {error.message}</p>;
-//   }
-
-//   return (
-//     <div className="starship-capabilities-container">
-//       <div className="slider-container">
-//         <Slider {...settings} ref={sliderRef}>
-//           {capabilities.map((capability, index) => (
-//             <div key={index} className="slider-item">
-//               <img
-//                 src={capability.flickr_images[(0, index + 1)]} // Відображення першого зображення з масиву
-//                 alt={capability.name}
-//                 className="slider-image"
-//               />
-//             </div>
-//           ))}
-//         </Slider>
-//         <div className="navigation-container">
-//           <img
-//             className="arrow"
-//             src="/src/images/Vector w.png"
-//             alt="navigation left"
-//             onClick={handlePrev}
-//           />
-//           <div className="dots-container">
-//             {capabilities.map((_, index) => (
-//               <div
-//                 key={index}
-//                 className={`dot ${index === activeSlide ? "active" : ""}`}
-//                 onClick={() => sliderRef.current.slickGoTo(index)}
-//               ></div>
-//             ))}
-//           </div>
-//           <img
-//             className="arrow"
-//             src="/src/images/Vector w r.png"
-//             alt="navigation right"
-//             onClick={handleNext}
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default StarshipCapabilities;
-// import { useState, useEffect, useRef } from "react";
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import "./StarshipCapabilities.css"; // Підключаємо файл CSS для стилів
-
-// const StarshipCapabilities = () => {
-//   const [capabilities, setCapabilities] = useState([]);
-//   const [activeSlide, setActiveSlide] = useState(0);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const sliderRef = useRef(null);
-//   const localStorageKey = "capabilitiesData";
-
-//   const saveToLocalStorage = (data) => {
-//     localStorage.setItem(localStorageKey, JSON.stringify(data));
-//   };
-
-//   const loadFromLocalStorage = () => {
-//     const savedData = localStorage.getItem(localStorageKey);
-//     return savedData ? JSON.parse(savedData) : null;
-//   };
-
-//   const fetchData = () => {
-//     return fetch("https://api.spacexdata.com/v4/dragons")
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error("Network response was not ok");
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         const filteredData = data.filter(
-//           (item) =>
-//             typeof item === "object" && item.hasOwnProperty("flickr_images")
-//         );
-//         setCapabilities(filteredData);
-//         saveToLocalStorage(filteredData);
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         setError(error);
-//         setLoading(false);
-//       });
-//   };
-
-//   useEffect(() => {
-//     const cachedData = loadFromLocalStorage();
-//     if (cachedData) {
-//       setCapabilities(cachedData);
-//       setLoading(false);
-//     } else {
-//       fetchData();
-//     }
-//   }, []);
-
-//   const handlePrev = () => {
-//     sliderRef.current.slickPrev();
-//   };
-
-//   const handleNext = () => {
-//     sliderRef.current.slickNext();
-//   };
-
-//   const settings = {
-//     dots: false,
-//     infinite: true,
-//     speed: 500,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     beforeChange: (oldIndex, newIndex) => setActiveSlide(newIndex),
-//   };
-
-//   if (loading) {
-//     return <p>Loading...</p>;
-//   }
-
-//   if (error) {
-//     return <p>Error: {error.message}</p>;
-//   }
-
-//   return (
-//     <div className="starship-capabilities-container">
-//       <div className="slider-container">
-//         <Slider {...settings} ref={sliderRef}>
-//           {capabilities.map((capability, index) => (
-//             <div key={index} className="slider-item">
-//               {capability.flickr_images &&
-//               capability.flickr_images.length > 0 ? (
-//                 <img
-//                   src={capability.flickr_images[index]} // Відображення першого зображення з масиву
-//                   alt={capability.name}
-//                   className="slider-image"
-//                 />
-//               ) : (
-//                 <p>No images available</p>
-//               )}
-//             </div>
-//           ))}
-//         </Slider>
-//         <div className="navigation-container">
-//           <img
-//             className="arrow"
-//             src="/src/images/Vector w.png"
-//             alt="navigation left"
-//             onClick={handlePrev}
-//           />
-//           <div className="dots-container">
-//             {capabilities.map((_, index) => (
-//               <div
-//                 key={index}
-//                 className={`dot ${index === activeSlide ? "active" : ""}`}
-//                 onClick={() => sliderRef.current.slickGoTo(index)}
-//               ></div>
-//             ))}
-//           </div>
-//           <img
-//             className="arrow"
-//             src="/src/images/Vector w r.png"
-//             alt="navigation right"
-//             onClick={handleNext}
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default StarshipCapabilities;
 import { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./StarshipCapabilities.css"; // Підключаємо файл CSS для стилів
 
+const fetchRocketData = (rocketType) => {
+  const apiUrl = {
+    starship: "https://api.spacexdata.com/v4/rockets",
+    falcon: "https://api.spacexdata.com/v4/rockets",
+    dragon: "https://api.spacexdata.com/v4/dragons",
+  }[rocketType];
+
+  return fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Фільтрація даних для Starship
+      if (rocketType === "starship") {
+        return data.filter((item) =>
+          item.name.toLowerCase().includes("starship")
+        );
+      }
+      return data.filter((item) => item.flickr_images); // Відфільтрувати елементи без зображень
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
 const StarshipCapabilities = () => {
   const [capabilities, setCapabilities] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedRocket, setSelectedRocket] = useState("starship");
   const sliderRef = useRef(null);
-  const localStorageKey = "capabilitiesData";
 
-  const [selectedRocket] = useState(null);
-
-  const saveToLocalStorage = (data) => {
-    localStorage.setItem(localStorageKey, JSON.stringify(data));
-  };
-
-  const loadFromLocalStorage = () => {
-    const savedData = localStorage.getItem(localStorageKey);
-    return savedData ? JSON.parse(savedData) : null;
-  };
-
-  const fetchData = () => {
-    return fetch("https://api.spacexdata.com/v4/dragons")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
+  useEffect(() => {
+    setLoading(true);
+    fetchRocketData(selectedRocket)
       .then((data) => {
-        const filteredData = data.filter(
-          (item) =>
-            typeof item === "object" && item.hasOwnProperty("flickr_images")
-        );
-        setCapabilities(filteredData);
-        saveToLocalStorage(filteredData);
+        setCapabilities(data);
         setLoading(false);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
       });
-  };
-
-  useEffect(() => {
-    const cachedData = loadFromLocalStorage();
-    if (cachedData) {
-      setCapabilities(cachedData);
-      setLoading(false);
-    } else {
-      fetchData();
-    }
-  }, []);
+  }, [selectedRocket]);
 
   const handlePrev = () => {
     sliderRef.current.slickPrev();
@@ -816,6 +260,10 @@ const StarshipCapabilities = () => {
 
   const handleNext = () => {
     sliderRef.current.slickNext();
+  };
+
+  const handleRocketChange = (e) => {
+    setSelectedRocket(e.target.value);
   };
 
   const settings = {
@@ -836,66 +284,35 @@ const StarshipCapabilities = () => {
   }
 
   return (
-    <div className="starship-capabilities-container ">
+    <div className="starship-capabilities-container">
+      <div className="rocket-selector">
+        <select value={selectedRocket} onChange={handleRocketChange}>
+          <option value="dragon">Dragon</option>
+          <option value="starship">Starship</option>
+          <option value="falcon">Falcon </option>
+        </select>
+      </div>
+
       <div className="slider-container">
         <Slider {...settings} ref={sliderRef}>
           {capabilities.map((capability, index) => (
             <div key={index} className="slider-item">
               {capability.flickr_images.length > 0 ? (
-                <img
-                  src={capability.flickr_images[0]} // Перше зображення
-                  alt={capability.name}
-                  className="slider-image"
-                />
+                capability.flickr_images.map((image, imgIndex) => (
+                  <img
+                    key={imgIndex}
+                    src={image}
+                    alt={`Image of ${capability.name}`}
+                    className="slider-image"
+                  />
+                ))
               ) : (
                 <p>No images available</p>
               )}
             </div>
           ))}
         </Slider>
-        <div
-          className="starship-n"
-          style={{
-            flexDirection: "column",
-            marginLeft: "60px",
-            justifyContent: "space-between",
 
-            display: "flex",
-
-            alignItems: "flex-start",
-            padding: "0px",
-            gap: "32px",
-            width: "1321px",
-            height: "302px",
-          }}
-        >
-          <div
-            className="header-container"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              width: "453px",
-              gap: "24px",
-
-              left: "60px",
-            }}
-          >
-            <h2 className="title" style={{ height: "152px" }}>
-              Starship Capabilities
-            </h2>
-            <p
-              className="description"
-              style={{ width: "453px", margin: "0px", lineHeight: "24px" }}
-            >
-              As the most powerful launch system ever developed, Starship will
-              be able to carry up to 100 people on long-duration, interplanetary
-              flights. Starship will also help enable satellite delivery, the
-              development of a Moon base, and point-to-point transport here on
-              Earth.
-            </p>
-          </div>
-        </div>
         <div className="navigation-container">
           <img
             className="arrow"

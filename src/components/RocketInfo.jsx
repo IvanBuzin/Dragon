@@ -192,33 +192,14 @@ const RocketInfo = ({ type }) => {
                       height: "395px",
                     }}
                   >
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <strong>Height</strong>
                       <span>
                         {item.height_w_trunk?.meters ?? "8.1"} m /{" "}
                         {metersToFeet(item.height_w_trunk?.meters) ?? "26.7"} ft
                       </span>
                     </p>
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        padding: "0px 0px 8px 0px",
-                        gap: "0px",
-                        border: "0px 0px 1px 0px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <span>
                         <strong>Diameter</strong>
                       </span>
@@ -228,18 +209,7 @@ const RocketInfo = ({ type }) => {
                         {metersToFeet(item.diameter?.meters) ?? "13"} ft
                       </span>
                     </p>
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        padding: "0px 0px 8px 0px",
-                        gap: "0px",
-                        border: "0px 0px 1px 0px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <span>
                         <strong>Spacecraft Volume</strong>{" "}
                       </span>
@@ -253,118 +223,41 @@ const RocketInfo = ({ type }) => {
                         ft³
                       </span>
                     </p>
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        padding: "0px 0px 8px 0px",
-                        gap: "0px",
-                        border: "0px 0px 1px 0px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <strong>Trunk Volume</strong>{" "}
                       {item.trunk?.trunk_volume?.cubic_meters ?? "37"} m³/
                       {metersToFeet(item.trunk?.trunk_volume?.cubic_meters) ??
                         "1300"}{" "}
                       ft³
                     </p>
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        padding: "0px 0px 8px 0px",
-                        gap: "0px",
-                        border: "0px 0px 1px 0px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <strong>Launch Payload Mass</strong>{" "}
                       {item.launch_payload_mass?.kg ?? "6,000"} kg /{" "}
                       {kgToLbs(item.launch_payload_mass?.kg) ?? "13,228"} lbs
                     </p>
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        padding: "0px 0px 8px 0px",
-                        gap: "0px",
-                        border: "0px 0px 1px 0px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <strong>Trunk Volume</strong>{" "}
                       {item.trunk?.trunk_volume?.cubic_meters ?? "37"} m³/
                       {metersToFeet(item.trunk?.trunk_volume?.cubic_meters) ??
                         "1300"}{" "}
                       ft³
                     </p>
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        padding: "0px 0px 8px 0px",
-                        gap: "0px",
-                        border: "0px 0px 1px 0px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <strong>Launch Payload Mass</strong>{" "}
                       {item.launch_payload_mass?.kg} kg /{" "}
                       {kgToLbs(item.launch_payload_mass?.kg)} lbs
                     </p>
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        padding: "0px 0px 8px 0px",
-                        gap: "0px",
-                        border: "0px 0px 1px 0px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <strong>Return Payload Mass</strong>{" "}
                       {item.return_payload_mass?.kg} kg /{" "}
                       {kgToLbs(item.return_payload_mass?.kg)} lbs
                     </p>
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        padding: "0px 0px 8px 0px",
-                        gap: "0px",
-                        border: "0px 0px 1px 0px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <strong>Return Payload Mass</strong>{" "}
                       {item.return_payload_mass?.kg ?? "3,000"} kg /{" "}
                       {kgToLbs(item.return_payload_mass?.kg) ?? "6,614"} lbs
                     </p>
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        padding: "0px 0px 8px 0px",
-                        gap: "0px",
-                        border: "0px 0px 1px 0px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <span>
                         <strong>Spacecraft Volume</strong>{" "}
                       </span>
@@ -378,18 +271,7 @@ const RocketInfo = ({ type }) => {
                         ft³
                       </span>
                     </p>
-                    <p
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "458px",
-                        height: "25px",
-                        padding: "0px 0px 8px 0px",
-                        gap: "0px",
-                        border: "0px 0px 1px 0px",
-                        margin: "0px",
-                      }}
-                    >
+                    <p style={styles.info}>
                       <strong>Return Payload Mass</strong>{" "}
                       {item.return_payload_mass?.kg} kg /{" "}
                       {kgToLbs(item.return_payload_mass?.kg)} lbs
@@ -406,6 +288,16 @@ const RocketInfo = ({ type }) => {
 };
 
 const styles = {
+  info: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "458px",
+    height: "25px",
+    padding: "0px 0px 8px 0px",
+    gap: "0px",
+    border: "0px 0px 1px 0px",
+    margin: "0px",
+  },
   header: {
     display: "flex",
     justifyContent: "space-between",
@@ -443,3 +335,16 @@ const styles = {
 };
 
 export default RocketInfo;
+// import React from "react";
+
+// const RocketInfo = ({ rocket }) => {
+//   return (
+//     <div>
+//       <h2>{rocket.name} Information</h2>
+//       <p>Here is some information about {rocket.name}.</p>
+//       {/* В залежності від ракети можна тут відобразити додаткову інформацію */}
+//     </div>
+//   );
+// };
+
+// export default RocketInfo;

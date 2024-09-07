@@ -3,7 +3,8 @@
   width: 1440px;
   height: 100%;
   overflow: hidden;
-
+  display: flex;
+  flex-direction: column;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 1440px 834px;
@@ -13,25 +14,28 @@
 
 .slider-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   color: #fff;
 }
-
+/* .slick-slider {
+  display: flex;
+  height: 770px;
+} */
 .slider-image {
   /* width: 80%; */
   max-height: 470px;
   object-fit: cover;
-  background-position: center;
+  /* background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   margin-left: auto;
   margin-right: auto;
-  height: 832px;
-  background-image: url(https://i.imgur.com/9fWdwNv.jpg);
-  left: calc(50% - (1806px / 2));
+  /* height: 832px; */
+  /* background-image: url(https://i.imgur.com/9fWdwNv.jpg); */
+  /* left: calc(50% - (1806px / 2)); */
 }
 
 .capability-description {
@@ -105,3 +109,11 @@
   cursor: pointer;
   transform: rotate(90deg);
 } */
+.rocket-selector {
+  margin-bottom: 20px;
+}
+
+.rocket-selector select {
+  padding: 10px;
+  font-size: 16px;
+}

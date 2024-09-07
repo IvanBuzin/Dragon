@@ -38,6 +38,13 @@ const OurRocket = ({
     fetchRockets();
     // Очищуємо стан вибраної ракети після повернення з RocketInfo
     clearSelectedRocket();
+    // Функція очищення для демонтованого компонента
+    return () => {
+      // Очищаємо стан вибраної ракети
+      setSelectedRocket(null);
+
+      // Додаємо інші дії для очищення, якщо потрібно
+    };
   }, []);
 
   const settings = {
@@ -130,16 +137,7 @@ const OurRocket = ({
                   flexDirection: "column",
                 }}
               >
-                <p
-                  className="spec-item"
-                  style={{
-                    display: "flex",
-                    height: "24px",
-                    margin: "0px",
-                    gap: "0px",
-                    justifyContent: "space-between",
-                  }}
-                >
+                <p className="spec-item" style={styles.info}>
                   <strong>HEIGHT</strong>{" "}
                   {rocket.height?.meters ??
                     rocket.height_w_trunk?.meters ??
@@ -150,28 +148,11 @@ const OurRocket = ({
                   ) ?? "26.7"}{" "}
                   ft
                 </p>
-                <p
-                  className="spec-item"
-                  style={{
-                    display: "flex",
-                    height: "24px",
-                    margin: "0px",
-                    gap: "0px",
-                    justifyContent: "space-between",
-                  }}
-                >
+                <p className="spec-item" style={styles.info}>
                   <strong>DIAMETER</strong> {rocket.diameter?.meters ?? "4"} m /{" "}
                   {metersToFeet(rocket.diameter?.meters) ?? "13"} ft
                 </p>
-                <p
-                  style={{
-                    display: "flex",
-                    height: "24px",
-                    margin: "0px",
-                    gap: "0px",
-                    justifyContent: "space-between",
-                  }}
-                >
+                <p style={styles.info}>
                   <strong>SPACECRAFT VOLUME</strong>{" "}
                   {rocket.pressurized_capsule?.payload_volume?.cubic_meters ??
                     "9.3"}{" "}
@@ -181,32 +162,14 @@ const OurRocket = ({
                   ) ?? "328"}{" "}
                   ft³
                 </p>
-                <p
-                  className="spec-item"
-                  style={{
-                    display: "flex",
-                    height: "24px",
-                    margin: "0px",
-                    gap: "0px",
-                    justifyContent: "space-between",
-                  }}
-                >
+                <p className="spec-item" style={styles.info}>
                   <strong>TRUNK VOLUME</strong>{" "}
                   {rocket.trunk?.trunk_volume?.cubic_meters ?? "37"} m³ /{" "}
                   {metersToFeet(rocket.trunk?.trunk_volume?.cubic_meters) ??
                     "1300"}{" "}
                   ft³
                 </p>
-                <p
-                  className="spec-item"
-                  style={{
-                    display: "flex",
-                    height: "24px",
-                    margin: "0px",
-                    gap: "0px",
-                    justifyContent: "space-between",
-                  }}
-                >
+                <p className="spec-item" style={styles.info}>
                   <strong>LAUNCH PAYLOAD MASS</strong>{" "}
                   {rocket.launch_payload_mass?.kg ??
                     rocket.dry_mass_kg ??
@@ -217,29 +180,14 @@ const OurRocket = ({
                   ) ?? "13,228"}{" "}
                   lbs
                 </p>
-                <p
-                  className="spec-item"
-                  style={{
-                    display: "flex",
-                    height: "24px",
-                    margin: "0px",
-                    gap: "0px",
-                    justifyContent: "space-between",
-                  }}
-                >
+                <p className="spec-item" style={styles.info}>
                   <strong>RETURN PAYLOAD MASS</strong>{" "}
                   {rocket.return_payload_mass?.kg ?? "3,000"} kg /{" "}
                   {kgToLbs(rocket.return_payload_mass?.kg) ?? "6,614"} lbs
                 </p>
                 {/* <p
                   className="spec-item"
-                  style={{
-                    display: "flex",
-                    height: "24px",
-                    margin: "0px",
-                    gap: "0px",
-                    justifyContent: "space-between",
-                  }}
+                  style={styles.info}
                 >
                   <strong>DESCRIPTION</strong>{" "}
                   {rocket.description ?? "No description available"}
@@ -278,4 +226,38 @@ const OurRocket = ({
   );
 };
 
+const styles = {
+  info: {
+    display: "flex",
+    justifyContent: "space-between",
+    height: "24px",
+    gap: "0px",
+    margin: "0px",
+  },
+};
+
 export default OurRocket;
+// import React from "react";
+
+// const OurRocket = ({ onSelectRocket }) => {
+//   const rockets = [
+//     { id: "starship", name: "Starship" },
+//     { id: "falcon9", name: "Falcon 9" },
+//     { id: "dragon", name: "Dragon" },
+//   ];
+
+//   return (
+//     <div>
+//       <h2>Select a Rocket</h2>
+//       <div>
+//         {rockets.map((rocket) => (
+//           <button key={rocket.id} onClick={() => onSelectRocket(rocket)}>
+//             {rocket.name}
+//           </button>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default OurRocket;
