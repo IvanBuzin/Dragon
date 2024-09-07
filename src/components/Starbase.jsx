@@ -5,10 +5,9 @@ const Starbase = () => {
     <section
       id="base"
       style={{
-        width: "100%",
+        width: "1440px",
         height: "866px",
-        left: "-170px",
-        top: "1726px",
+
         backgroundImage:
           'url("https://www.spacex.com/vehicles/starship/assets/images/Starbase_Desktop.jpg" )',
         backgroundSize: "1440px 866px",
@@ -27,7 +26,7 @@ const Starbase = () => {
           width: "1321px",
           height: "172px",
           left: "60px",
-          top: "2388px",
+          top: "2340px",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",

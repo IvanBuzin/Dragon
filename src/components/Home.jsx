@@ -23,22 +23,10 @@ const Home = () => {
       style={{
         color: "white",
         maxWidth: "1321px",
-        margin: "0 auto",
         display: "flex",
         flexDirection: "column",
         gap: "100px",
-        padding: "48px 0 0 0",
-        // maxHeight: "3149px",
-        // width: "1321px",
-        // position: "absolute",
-        // display: "flex",
-        // alignItems: "flex-start",
-        // gap: "100px",
-        // flexDirection: "column",
-        // left: "60px",
-        // top: "48px",
-        // padding: "0px",
-        // scrollBehavior: "smooth",
+        padding: "48px 60px 0px 60px",
       }}
     >
       {/* Перша секція */}
@@ -48,7 +36,9 @@ const Home = () => {
           boxSizing: "border-box",
           height: "653px",
           width: "100%",
-          background: "url('./src/images/toy-rocket.gif.gif')",
+          background:
+            "url('./src/images/toy-rocket.gif.gif'), rgba(50, 38, 89, 0.5)",
+          backgroundSize: "cover",
 
           border: selectedRocket
             ? "none"
@@ -71,7 +61,6 @@ const Home = () => {
             style={{
               height: "755px",
               width: "100%",
-              // display: selectedRocket ? "none" : "block",
             }}
           >
             <OurRockets onRocketSelect={handleRocketSelection} />
@@ -80,7 +69,6 @@ const Home = () => {
           <section
             id="statistics"
             style={{
-              // display: selectedRocket ? "none" : "block",
               height: "146px",
             }}
           >
@@ -92,7 +80,6 @@ const Home = () => {
             style={{
               height: "644px",
               width: "100%",
-              // display: selectedRocket ? "none" : "block",
             }}
           >
             <About />
@@ -103,7 +90,6 @@ const Home = () => {
             style={{
               height: "551px",
               width: "100%",
-              // display: selectedRocket ? "none" : "block",
             }}
           >
             <Team />
@@ -118,25 +104,25 @@ const Home = () => {
 
               width: "1440px",
               marginLeft: "-60px",
-              // position: "absolute",
-              // left: "calc(50% - (1806px/2))",
-              // top: "3249px",
-              // display: selectedRocket ? "none" : "block",
             }}
           >
             <StarshipCapabilities />
           </section>
         </>
       )}
-
       {/* Інформація про обрану ракету */}
       {selectedRocket && (
         <div
           style={{
+            color: "white",
+            maxWidth: "1440px",
+            margin: "0 auto",
             display: "flex",
             flexDirection: "column",
-            gap: "20px",
-            // height: selectedRocket ? "2608px" : "4131px",
+            height: "2608px",
+            position: "absolute",
+            marginLeft: "-60px",
+            gap: "100px",
           }}
         >
           <section
@@ -148,9 +134,9 @@ const Home = () => {
               width: "1321px",
               height: "744px",
               gap: "32px",
-              top: "48px",
-              position: "absolute",
+
               background: "#000",
+              margin: "0 auto",
 
               order: 0,
               alignSelf: "stretch",
@@ -162,35 +148,28 @@ const Home = () => {
           <section
             id="starship-n"
             style={{
-              width: "1440px",
-              marginLeft: "-60px",
-              // width: "1806px",
-              // background: "#000",
-              // left: "calc(50% - (1806px/2))",
-              top: "892px",
-              position: "absolute",
-              // opacity: "1",
+              width: "100%",
+              height: "834px",
             }}
           >
-            <StarshipCapabilities />
-
+            <StarshipCapabilities type={selectedRocket} />
             <Starbase />
+            {/* Кнопка для повернення до секції OurRockets */}
+            <button
+              onClick={handleBackToRockets}
+              style={{
+                marginTop: "24px",
+                padding: "10px 20px",
+                backgroundColor: "#333",
+                color: "white",
+                borderRadius: "5px",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              back to Our rockets
+            </button>
           </section>
-          {/* Кнопка для повернення до секції OurRockets */}
-          <button
-            onClick={handleBackToRockets}
-            style={{
-              marginTop: "20px",
-              padding: "10px 20px",
-              backgroundColor: "#333",
-              color: "white",
-              borderRadius: "5px",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Повернутись до ракет
-          </button>
         </div>
       )}
     </div>

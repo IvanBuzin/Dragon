@@ -1,6 +1,6 @@
 .slider-container {
   position: relative;
-  width: 100%;
+  width: 1440px;
   height: 100%;
   overflow: hidden;
 
@@ -22,7 +22,7 @@
 
 .slider-image {
   /* width: 80%; */
-  max-height: 770px;
+  max-height: 470px;
   object-fit: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -46,6 +46,7 @@
   cursor: pointer;
   padding: 0px 16px;
 }
+
 /* .starship-capabilities-container {
   position: relative;
   width: 100%;

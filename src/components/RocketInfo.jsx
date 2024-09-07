@@ -94,6 +94,7 @@ const RocketInfo = ({ type }) => {
   return (
     <PullToRefresh onRefresh={fetchData}>
       <div
+        className="rocketInfo"
         style={{
           display: "flex",
           gap: "32px",
