@@ -199,11 +199,441 @@
 
 // export default StarshipCapabilities;
 
+// import { useState, useEffect, useRef } from "react";
+// import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import "./StarshipCapabilities.css"; // Підключаємо файл CSS для стилів
+
+// const fetchRocketData = (rocketType) => {
+//   const apiUrl = {
+//     starship: "https://api.spacexdata.com/v4/rockets",
+//     falcon: "https://api.spacexdata.com/v4/rockets",
+//     dragon: "https://api.spacexdata.com/v4/dragons",
+//   }[rocketType];
+
+//   return fetch(apiUrl)
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Network response was not ok");
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       // Фільтрація даних для Starship
+//       if (rocketType === "starship") {
+//         return data.filter((item) =>
+//           item.name.toLowerCase().includes("starship")
+//         );
+//       }
+//       return data.filter((item) => item.flickr_images); // Відфільтрувати елементи без зображень
+//     })
+//     .catch((error) => {
+//       throw error;
+//     });
+// };
+
+// const StarshipCapabilities = () => {
+//   const [capabilities, setCapabilities] = useState([]);
+//   const [activeSlide, setActiveSlide] = useState(0);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   const [selectedRocket, setSelectedRocket] = useState("starship");
+//   const sliderRef = useRef(null);
+
+//   useEffect(() => {
+//     setLoading(true);
+//     fetchRocketData(selectedRocket)
+//       .then((data) => {
+//         setCapabilities(data);
+//         setLoading(false);
+//       })
+//       .catch((error) => {
+//         setError(error);
+//         setLoading(false);
+//       });
+//   }, [selectedRocket]);
+
+//   const handlePrev = () => {
+//     sliderRef.current.slickPrev();
+//   };
+
+//   const handleNext = () => {
+//     sliderRef.current.slickNext();
+//   };
+
+//   const handleRocketChange = (e) => {
+//     setSelectedRocket(e.target.value);
+//   };
+
+//   const settings = {
+//     dots: false,
+//     infinite: true,
+//     speed: 500,
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//     beforeChange: (oldIndex, newIndex) => setActiveSlide(newIndex),
+//   };
+
+//   if (loading) {
+//     return <p>Loading...</p>;
+//   }
+
+//   if (error) {
+//     return <p>Error: {error.message}</p>;
+//   }
+
+//   return (
+//     <div className="starship-capabilities-container">
+//       <div className="rocket-selector">
+//         <select value={selectedRocket} onChange={handleRocketChange}>
+//           <option value="dragon">Dragon</option>
+//           <option value="starship">Starship</option>
+//           <option value="falcon">Falcon </option>
+//         </select>
+//       </div>
+
+//       <div className="slider-container">
+//         <Slider {...settings} ref={sliderRef}>
+//           {capabilities.map((capability, index) => (
+//             <div
+//               key={index}
+//               className="slider-item"
+//               style={{ display: "flex", height: "700px" }}
+//             >
+//               <div style={{ display: "flex", height: "500px", gap: "40px" }}>
+//                 {capability.flickr_images.length > 0 ? (
+//                   capability.flickr_images.map((image, imgIndex) => (
+//                     <img
+//                       key={imgIndex}
+//                       src={image}
+//                       alt={`Image of ${capability.name}`}
+//                       className="slider-image"
+//                     />
+//                   ))
+//                 ) : (
+//                   <p>No images available</p>
+//                 )}
+//               </div>
+//             </div>
+//           ))}
+//         </Slider>
+
+//         <div className="navigation-container">
+//           <img
+//             className="arrow"
+//             src="/src/images/Vector w.png"
+//             alt="navigation left"
+//             onClick={handlePrev}
+//           />
+//           <div className="dots-container">
+//             {capabilities.map((_, index) => (
+//               <div
+//                 key={index}
+//                 className={`dot ${index === activeSlide ? "active" : ""}`}
+//                 onClick={() => sliderRef.current.slickGoTo(index)}
+//               ></div>
+//             ))}
+//           </div>
+//           <img
+//             className="arrow"
+//             src="/src/images/Vector w r.png"
+//             alt="navigation right"
+//             onClick={handleNext}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default StarshipCapabilities;
+
+// /* Frame 1000007918 */
+
+// position: absolute;
+// width: 1806px;
+// height: 834px;
+// left: calc(50% - 1806px/2);
+// top: 3297px;
+
+// /* download (10) 1 */
+
+// position: absolute;
+// width: 1806px;
+// height: 834px;
+// left: calc(50% - 1806px/2);
+// top: 0px;
+
+// background: url(download (10).jpg);
+
+// /* Frame 1000007915 */
+
+// /* Auto layout */
+// display: flex;
+// flex-direction: column;
+// align-items: flex-start;
+// padding: 0px;
+// gap: 32px;
+
+// position: absolute;
+// width: 1321px;
+// height: 366px;
+// left: 243px;
+// top: 436px;
+
+// /* Frame 1000007907 */
+
+// /* Auto layout */
+// display: flex;
+// flex-direction: column;
+// align-items: flex-start;
+// padding: 0px;
+// gap: 24px;
+
+// width: 453px;
+// height: 272px;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 0;
+// flex-grow: 0;
+
+// /* STARSHIP CAPABILITIES */
+
+// width: 468px;
+// height: 152px;
+
+// font-family: 'Rubik';
+// font-style: normal;
+// font-weight: 700;
+// font-size: 64px;
+// line-height: 76px;
+// text-transform: uppercase;
+
+// color: #FFFFFF;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 0;
+// flex-grow: 0;
+
+// /* As the most powerful launch system ever developed, Starship will be able to carry up to 100 people on long-duration, interplanetary flights. Starship will also help enable satellite delivery, the development of a Moon base, and point-to-point transport here on Earth. */
+
+// width: 453px;
+// height: 96px;
+
+// font-family: 'Rubik';
+// font-style: normal;
+// font-weight: 400;
+// font-size: 14px;
+// line-height: 24px;
+// /* or 171% */
+
+// color: #FFFFFF;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 1;
+// align-self: stretch;
+// flex-grow: 0;
+
+// /* Frame 1000007909 */
+
+// /* Auto layout */
+// display: flex;
+// flex-direction: row;
+// justify-content: space-between;
+// align-items: center;
+// padding: 0px;
+// gap: 12px;
+
+// width: 1321px;
+// height: 62px;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 1;
+// align-self: stretch;
+// flex-grow: 0;
+
+// /* mingcute:arrow-up-line */
+
+// margin: 0 auto;
+// width: 62px;
+// height: 62px;
+
+// border-radius: 12px;
+// transform: matrix(0, 1, 1, 0, 0, 0);
+
+// /* Inside auto layout */
+// flex: none;
+// order: 0;
+// flex-grow: 0;
+
+// /* Group */
+
+// position: absolute;
+// width: 38.25px;
+// height: 38.75px;
+// left: 11.25px;
+// top: 12.5px;
+
+// transform: matrix(0, 1, 1, 0, 0, 0);
+
+// /* Vector */
+
+// position: absolute;
+// left: 18.15%;
+// right: 20.16%;
+// top: 20.16%;
+// bottom: 17.34%;
+
+// transform: matrix(0, 1, 1, 0, 0, 0);
+
+// /* Vector */
+
+// position: absolute;
+// left: 26.85%;
+// right: 38.92%;
+// top: 33.87%;
+// bottom: 20.15%;
+
+// background: #FFFFFF;
+// transform: matrix(0, 1, 1, 0, 0, 0);
+
+// /* Frame 1000007914 */
+
+// /* Auto layout */
+// display: flex;
+// flex-direction: row;
+// justify-content: center;
+// align-items: center;
+// padding: 0px;
+// gap: 12px;
+
+// margin: 0 auto;
+// width: 128px;
+// height: 16px;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 1;
+// flex-grow: 0;
+
+// /* Ellipse 1 */
+
+// width: 16px;
+// height: 16px;
+
+// background: #FFFFFF;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 0;
+// flex-grow: 0;
+
+// /* Ellipse 2 */
+
+// width: 16px;
+// height: 16px;
+
+// background: #FFFFFF;
+// opacity: 0.4;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 1;
+// flex-grow: 0;
+
+// /* Ellipse 3 */
+
+// width: 16px;
+// height: 16px;
+
+// background: #FFFFFF;
+// opacity: 0.4;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 2;
+// flex-grow: 0;
+
+// /* Ellipse 4 */
+
+// width: 16px;
+// height: 16px;
+
+// background: #FFFFFF;
+// opacity: 0.4;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 3;
+// flex-grow: 0;
+
+// /* Ellipse 5 */
+
+// width: 16px;
+// height: 16px;
+
+// background: #FFFFFF;
+// opacity: 0.4;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 4;
+// flex-grow: 0;
+
+// /* mingcute:arrow-up-line */
+
+// margin: 0 auto;
+// width: 62px;
+// height: 62px;
+
+// border-radius: 12px;
+// transform: rotate(90deg);
+
+// /* Inside auto layout */
+// flex: none;
+// order: 2;
+// flex-grow: 0;
+
+// /* Group */
+
+// position: absolute;
+// width: 38.25px;
+// height: 38.75px;
+// left: 50.75px;
+// top: 12.5px;
+
+// transform: rotate(90deg);
+
+// /* Vector */
+
+// position: absolute;
+// left: 81.85%;
+// right: -43.55%;
+// top: 20.16%;
+// bottom: 17.34%;
+
+// transform: rotate(90deg);
+
+// /* Vector */
+
+// position: absolute;
+// left: 73.15%;
+// right: -7.38%;
+// top: 33.87%;
+// bottom: 20.15%;
+
+// background: #FFFFFF;
+// transform: rotate(90deg);
 import { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./StarshipCapabilities.css"; // Підключаємо файл CSS для стилів
+import "./StarshipCapabilities.css";
 
 const fetchRocketData = (rocketType) => {
   const apiUrl = {
@@ -220,13 +650,12 @@ const fetchRocketData = (rocketType) => {
       return response.json();
     })
     .then((data) => {
-      // Фільтрація даних для Starship
       if (rocketType === "starship") {
         return data.filter((item) =>
           item.name.toLowerCase().includes("starship")
         );
       }
-      return data.filter((item) => item.flickr_images); // Відфільтрувати елементи без зображень
+      return data.filter((item) => item.flickr_images);
     })
     .catch((error) => {
       throw error;
@@ -255,15 +684,20 @@ const StarshipCapabilities = () => {
   }, [selectedRocket]);
 
   const handlePrev = () => {
-    sliderRef.current.slickPrev();
+    if (sliderRef.current) {
+      sliderRef.current.slickPrev();
+    }
   };
 
   const handleNext = () => {
-    sliderRef.current.slickNext();
+    if (sliderRef.current) {
+      sliderRef.current.slickNext();
+    }
   };
 
   const handleRocketChange = (e) => {
     setSelectedRocket(e.target.value);
+    setActiveSlide(0); // Скидаємо слайд після вибору іншої ракети
   };
 
   const settings = {
@@ -273,6 +707,8 @@ const StarshipCapabilities = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     beforeChange: (oldIndex, newIndex) => setActiveSlide(newIndex),
+    lazyLoad: "ondemand", // Додаємо Lazy Loading
+    arrows: false, // Відключаємо вбудовані стрілки
   };
 
   if (loading) {
@@ -285,41 +721,57 @@ const StarshipCapabilities = () => {
 
   return (
     <div className="starship-capabilities-container">
+      {/* Ракетний селектор */}
       <div className="rocket-selector">
         <select value={selectedRocket} onChange={handleRocketChange}>
           <option value="dragon">Dragon</option>
           <option value="starship">Starship</option>
-          <option value="falcon">Falcon </option>
+          <option value="falcon">Falcon</option>
         </select>
       </div>
 
+      {/* Слайдер зображень */}
       <div className="slider-container">
         <Slider {...settings} ref={sliderRef}>
           {capabilities.map((capability, index) => (
-            <div key={index} className="slider-item">
-              {capability.flickr_images.length > 0 ? (
-                capability.flickr_images.map((image, imgIndex) => (
-                  <img
-                    key={imgIndex}
-                    src={image}
-                    alt={`Image of ${capability.name}`}
-                    className="slider-image"
-                  />
-                ))
-              ) : (
-                <p>No images available</p>
-              )}
+            <div
+              key={index}
+              className="slider-item"
+              style={{ display: "flex", height: "700px" }}
+            >
+              <div style={{ display: "flex", height: "770px", gap: "40px" }}>
+                {capability.flickr_images.length > 0 ? (
+                  capability.flickr_images.map((image, imgIndex) => (
+                    <img
+                      key={imgIndex}
+                      src={image}
+                      alt={`Image of ${capability.name}`}
+                      className="slider-image"
+                      loading="lazy" // Додаємо Lazy Loading для зображень
+                    />
+                  ))
+                ) : (
+                  <p>No images available</p>
+                )}
+              </div>
             </div>
           ))}
         </Slider>
 
+        {/* Навігація */}
         <div className="navigation-container">
-          <img
-            className="arrow"
-            src="/src/images/Vector w.png"
-            alt="navigation left"
+          <button
+            className={`arrow ${activeSlide === 0 ? "disabled" : ""}`}
             onClick={handlePrev}
-          />
+            disabled={activeSlide === 0}
+          >
+            <img
+              className="arrow-icon"
+              src="/src/images/Vector w.png"
+              alt="Previous"
+            />
+          </button>
+
           <div className="dots-container">
             {capabilities.map((_, index) => (
               <div
@@ -329,12 +781,20 @@ const StarshipCapabilities = () => {
               ></div>
             ))}
           </div>
-          <img
-            className="arrow"
-            src="/src/images/Vector w r.png"
-            alt="navigation right"
+
+          <button
+            className={`arrow ${
+              activeSlide === capabilities.length - 1 ? "disabled" : ""
+            }`}
             onClick={handleNext}
-          />
+            disabled={activeSlide === capabilities.length - 1}
+          >
+            <img
+              className="arrow-icon"
+              src="/src/images/Vector w r.png"
+              alt="Next"
+            />
+          </button>
         </div>
       </div>
     </div>

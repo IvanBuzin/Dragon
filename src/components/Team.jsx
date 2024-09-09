@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, lazy } from "react";
 import Slider from "react-slick";
 
 const Team = () => {
@@ -6,13 +6,23 @@ const Team = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [expandedMemberId, setExpandedMemberId] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0); // Стейт для поточного слайду
 
   const sliderRef = useRef(null);
 
   const localStorageKey = "teamData";
 
+  const cacheExpiryTime = 24 * 60 * 60 * 1000; // 24 години
+
+  const isCacheValid = () => {
+    const cachedTime = localStorage.getItem("teamDataTimestamp");
+    if (!cachedTime) return false;
+    const currentTime = new Date().getTime();
+    return currentTime - cachedTime < cacheExpiryTime;
+  };
   const saveToLocalStorage = (data) => {
     localStorage.setItem(localStorageKey, JSON.stringify(data));
+    localStorage.setItem("teamDataTimestamp", new Date().getTime());
   };
 
   const loadFromLocalStorage = () => {
@@ -97,24 +107,40 @@ const Team = () => {
   const toggleExpandedRole = (id) => {
     setExpandedMemberId((prevId) => (prevId === id ? null : id));
   };
+  const handlePrevClick = () => {
+    if (currentSlide > 0) {
+      sliderRef.current.slickPrev();
+    }
+  };
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
+  const handleNextClick = () => {
+    if (currentSlide < teamMembers.length - 1) {
+      sliderRef.current.slickNext();
+    }
+  };
 
   const sliderSettings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
     arrows: false,
+    lazyLoad: "ondemand",
+    afterChange: (current) => setCurrentSlide(current), // Update current slide index
   };
 
+  if (loading) {
+    return <div className="spinner">Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <p>
+        Failed to load team data. Please try again later. Error: {error.message}
+      </p>
+    );
+  }
   return (
     <div
       style={{
@@ -159,13 +185,15 @@ const Team = () => {
           }}
         >
           <div
+            className={currentSlide === 0 ? "disabled" : ""}
             style={{
               background: "#fff",
               width: "126px",
               height: "126px",
               borderRadius: "24px",
             }}
-            onClick={() => sliderRef.current.slickPrev()}
+            // onClick={() => sliderRef.current.slickPrev()}
+            onClick={handlePrevClick}
           >
             <img
               src="/src/images/Group 1x.png"
@@ -178,13 +206,17 @@ const Team = () => {
             />
           </div>
           <div
+            className={
+              currentSlide === teamMembers.length - 2 ? "disabled" : ""
+            }
             style={{
               width: "126px",
               height: "126px",
               borderRadius: "24px",
               background: "#fff",
             }}
-            onClick={() => sliderRef.current.slickNext()}
+            // onClick={() => sliderRef.current.slickNext()}
+            onClick={handleNextClick}
           >
             <img
               src="/src/images/Group 1x r.png"
@@ -227,7 +259,7 @@ const Team = () => {
 
                 position: "relative",
               }}
-              onClick={() => toggleExpandedRole(member.id)}
+              // onClick={() => toggleExpandedRole(member.id)}
             >
               <div
                 style={{
