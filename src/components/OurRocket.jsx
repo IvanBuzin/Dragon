@@ -49,7 +49,7 @@ const OurRocket = ({
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false, // вимикаємо нескінченну прокрутку
     speed: 400,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -58,11 +58,15 @@ const OurRocket = ({
   };
 
   const handlePrev = () => {
-    sliderRef.current.slickPrev();
+    if (activeSlide > 0) {
+      sliderRef.current.slickPrev();
+    }
   };
 
   const handleNext = () => {
-    sliderRef.current.slickNext();
+    if (activeSlide < rockets.length - 3) {
+      sliderRef.current.slickNext();
+    }
   };
 
   const metersToFeet = (meters) => (meters * 3.28084).toFixed(1);
@@ -198,13 +202,21 @@ const OurRocket = ({
         ))}
       </Slider>
       <div className="navigation-container">
-        <img
-          className="arrow"
-          src="/src/images/Vector w.png"
-          alt="navigation left"
-          style={{ color: "white", padding: "0px 16px", cursor: "pointer" }}
+        <div
+          className={activeSlide === 0 ? "disabled" : ""}
           onClick={handlePrev}
-        />
+          style={{
+            padding: "0px 16px",
+            cursor: activeSlide === 0 ? "not-allowed" : "pointer",
+          }}
+        >
+          <img
+            className="arrow"
+            src="/src/images/Vector w.png"
+            alt="navigation left"
+            style={{ color: "white", padding: "0px 16px", cursor: "pointer" }}
+          />
+        </div>
         <div className="dots-container">
           {rockets.map((_, index) => (
             <div
@@ -214,13 +226,23 @@ const OurRocket = ({
             ></div>
           ))}
         </div>
-        <img
-          className="arrow"
-          src="/src/images/Vector w r.png"
-          alt="navigation right"
-          style={{ color: "white", padding: "0px 16px", cursor: "pointer" }}
+        <div
+          className={activeSlide === rockets.length - 3 ? "disabled" : ""}
           onClick={handleNext}
-        />
+          style={{
+            padding: "0px 16px",
+            cursor:
+              activeSlide === rockets.length - 3 ? "not-allowed" : "pointer",
+          }}
+        >
+          <img
+            className="arrow"
+            src="/src/images/Vector w r.png"
+            alt="navigation right"
+            style={{ color: "white", padding: "0px 16px", cursor: "pointer" }}
+            onClick={handleNext}
+          />
+        </div>
       </div>
     </div>
   );
