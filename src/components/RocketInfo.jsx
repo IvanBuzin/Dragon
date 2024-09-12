@@ -33,9 +33,9 @@ const RocketInfo = ({ type }) => {
   // Функція для отримання даних з API
   const fetchData = () => {
     const apiUrl =
-      type === "dragon"
-        ? "https://api.spacexdata.com/v4/dragons"
-        : "https://api.spacexdata.com/v4/rockets";
+      type === "rockets"
+        ? "https://api.spacexdata.com/v4/rockets"
+        : "https://api.spacexdata.com/v4/dragons";
 
     return fetch(apiUrl)
       .then((response) => {
@@ -168,13 +168,21 @@ const RocketInfo = ({ type }) => {
               >
                 <img
                   src={item.flickr_images[0]}
+                  srcSet={`${item.flickr_images[0]} 480w, 
+                           ${item.flickr_images[1]} 800w, 
+                           ${item.flickr_images[2]} 1200w`}
+                  sizes="(max-width: 600px) 480px, 
+                         (max-width: 960px) 800px, 
+                         1200px"
                   alt={item.name}
                   loading="lazy" // Оптимізація завантаження зображень
                   style={{
-                    width: "791px",
-                    height: "453px",
+                    // width: "791px",
+                    width: "100%",
+                    // height: "453px",
                     maxHeight: "457px",
                     borderRadius: "20px",
+                    objectFit: "cover", // Зберігає пропорції, щоб не було деформації
                   }}
                 />
                 <div
@@ -360,16 +368,3 @@ const styles = {
 };
 
 export default RocketInfo;
-// import React from "react";
-
-// const RocketInfo = ({ rocket }) => {
-//   return (
-//     <div>
-//       <h2>{rocket.name} Information</h2>
-//       <p>Here is some information about {rocket.name}.</p>
-//       {/* В залежності від ракети можна тут відобразити додаткову інформацію */}
-//     </div>
-//   );
-// };
-
-// export default RocketInfo;
