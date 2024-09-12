@@ -70,6 +70,12 @@ const RocketInfo = ({ type }) => {
     }
   }, [type]);
 
+  useEffect(() => {
+    if (selectedItem) {
+      sliderRef.current.slickGoTo(items.indexOf(selectedItem));
+    }
+  }, [selectedItem, items]);
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -168,11 +174,11 @@ const RocketInfo = ({ type }) => {
               >
                 <img
                   src={item.flickr_images[0]}
-                  srcSet={`${item.flickr_images[0]} 480w, 
-                           ${item.flickr_images[1]} 800w, 
+                  srcSet={`${item.flickr_images[0]} 480w,
+                           ${item.flickr_images[1]} 800w,
                            ${item.flickr_images[2]} 1200w`}
-                  sizes="(max-width: 600px) 480px, 
-                         (max-width: 960px) 800px, 
+                  sizes="(max-width: 600px) 480px,
+                         (max-width: 960px) 800px,
                          1200px"
                   alt={item.name}
                   loading="lazy" // Оптимізація завантаження зображень
