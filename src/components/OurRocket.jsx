@@ -9,6 +9,8 @@ const OurRocket = ({
 }) => {
   const [rockets, setRockets] = useState([]);
   const [filteredImages, setFilteredImages] = useState([]);
+  const [loading, setLoading] = useState(true); // Індикатор завантаження
+  const [error, setError] = useState(null); // Стан для помилки
   const sliderRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [selectedRocket, setSelectedRocket] = useState(null);
@@ -28,9 +30,14 @@ const OurRocket = ({
       const combinedData = [...dragonData, ...rocketData];
       setRockets(combinedData);
 
-      setFilteredImages(combinedData.flatMap((rocket) => rocket.flickr_images));
+      setFilteredImages(
+        combinedData.flatMap((rocket) => rocket.flickr_images || [])
+      );
     } catch (error) {
       console.error("Error fetching rockets data:", error);
+      setError("Failed to load rocket data. Please try again later."); // Повідомлення про помилку
+    } finally {
+      setLoading(false); // Завершення завантаження
     }
   };
 
@@ -51,7 +58,7 @@ const OurRocket = ({
     dots: false,
     infinite: false, // вимикаємо нескінченну прокрутку
     speed: 400,
-    slidesToShow: 3,
+    slidesToShow: window.innerWidth < 768 ? 1 : 3, // Для адаптивності
     slidesToScroll: 1,
     arrows: false,
     beforeChange: (current, next) => setActiveSlide(next),
@@ -64,7 +71,7 @@ const OurRocket = ({
   };
 
   const handleNext = () => {
-    if (activeSlide < rockets.length - 3) {
+    if (activeSlide < rockets.length - settings.slidesToShow) {
       sliderRef.current.slickNext();
     }
   };
@@ -73,10 +80,28 @@ const OurRocket = ({
   const kgToLbs = (kg) => (kg * 2.20462).toFixed(3);
 
   const handleRocketClick = (rocket) => {
-    setSelectedRocket(rocket); // Зберігаємо вибрану ракету
-    onRocketSelect(rocket.id);
-    setFilteredImages(rocket.flickr_images);
+    if (rocket && rocket.id) {
+      setSelectedRocket(rocket); // Зберігаємо вибрану ракету
+      onRocketSelect(rocket.id);
+      setFilteredImages(rocket.flickr_images || []);
+    }
   };
+
+  if (loading) {
+    return (
+      <div style={{ textAlign: "center", color: "white" }}>
+        <p>Loading rockets...</p> {/* Індикатор завантаження */}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div style={{ textAlign: "center", color: "red" }}>
+        <p>{error}</p> {/* Повідомлення про помилку */}
+      </div>
+    );
+  }
 
   return (
     <div
@@ -116,7 +141,10 @@ const OurRocket = ({
             >
               <img
                 className="rocket-image"
-                src={rocket.flickr_images[0] || "./images/toy-rocket.gif"}
+                src={
+                  rocket.flickr_images?.[0] ||
+                  "./images/toy-rocket.gif" /*"./images/placeholder-rocket.png"*/
+                }
                 alt={rocket.name || "Rocket"}
                 style={{
                   width: "378px",
@@ -212,32 +240,48 @@ const OurRocket = ({
         >
           <img
             className="arrow"
-            src="/src/images/Vector w.png"
+            src="./src/images/Vector w.png"
             alt="navigation left"
             style={{ color: "white", padding: "0px 16px", cursor: "pointer" }}
           />
         </div>
         <div className="dots-container">
-          {rockets.map((_, index) => (
-            <div
-              key={index}
-              className={`dot ${index === activeSlide ? "active" : ""}`}
-              onClick={() => sliderRef.current.slickGoTo(index)}
-            ></div>
-          ))}
+          {rockets
+            .slice(0, Math.ceil(rockets.length / settings.slidesToShow))
+            .map((_, index) => (
+              <div
+                key={index}
+                className={`dot ${index === activeSlide ? "active" : ""}`}
+                onClick={() => sliderRef.current.slickGoTo(index)}
+                style={{
+                  backgroundColor: index === activeSlide ? "white" : "gray",
+                  borderRadius: "50%",
+                  width: "12px",
+                  height: "12px",
+                  margin: "0 5px",
+                  cursor: "pointer",
+                }}
+              ></div>
+            ))}
         </div>
         <div
-          className={activeSlide === rockets.length - 3 ? "disabled" : ""}
+          className={
+            activeSlide >= rockets.length - settings.slidesToShow
+              ? "disabled"
+              : ""
+          }
           onClick={handleNext}
           style={{
             padding: "0px 16px",
             cursor:
-              activeSlide === rockets.length - 3 ? "not-allowed" : "pointer",
+              activeSlide >= rockets.length - settings.slidesToShow
+                ? "not-allowed"
+                : "pointer",
           }}
         >
           <img
             className="arrow"
-            src="/src/images/Vector w r.png"
+            src="./src/images/Vector w r.png"
             alt="navigation right"
             style={{ color: "white", padding: "0px 16px", cursor: "pointer" }}
             onClick={handleNext}

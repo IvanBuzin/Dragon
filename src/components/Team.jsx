@@ -259,7 +259,7 @@ const Team = () => {
 
                 position: "relative",
               }}
-              // onClick={() => toggleExpandedRole(member.id)}
+              onClick={() => toggleExpandedRole(member.id)}
             >
               <div
                 style={{
