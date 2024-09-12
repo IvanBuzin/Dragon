@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PullToRefresh from "react-pull-to-refresh";
-import Header from "./Header";
 import { Link } from "react-router-dom";
 
 const RocketInfo = ({ type }) => {
@@ -76,7 +75,14 @@ const RocketInfo = ({ type }) => {
   }
 
   if (error) {
-    return <p>Error: {error.message}</p>;
+    return (
+      <div style={styles.errorContainer}>
+        <p style={styles.errorMessage}>Oops! Something went wrong.</p>
+        <button onClick={fetchData} style={styles.retryButton}>
+          Try Again
+        </button>
+      </div>
+    );
   }
 
   const metersToFeet = (meters) => (meters * 3.28084).toFixed(1);
@@ -163,6 +169,7 @@ const RocketInfo = ({ type }) => {
                 <img
                   src={item.flickr_images[0]}
                   alt={item.name}
+                  loading="lazy" // Оптимізація завантаження зображень
                   style={{
                     width: "791px",
                     height: "453px",
@@ -331,6 +338,24 @@ const styles = {
     borderRadius: "21px",
     padding: "8px 12px",
     opacity: "0px",
+  },
+  errorContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100vh",
+    textAlign: "center",
+  },
+  errorMessage: {
+    color: "red",
+    fontSize: "20px",
+  },
+  retryButton: {
+    padding: "10px 20px",
+    marginTop: "20px",
+    fontSize: "16px",
+    cursor: "pointer",
   },
 };
 
