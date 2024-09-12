@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "./Header";
-import OurRockets from "./OurRocket";
+import OurRocket from "./OurRocket";
 import StarshipCapabilities from "./StarshipCapabilities";
 import Starbase from "./Starbase";
 import About from "./About";
@@ -63,7 +63,7 @@ const Home = () => {
               width: "100%",
             }}
           >
-            <OurRockets onRocketSelect={handleRocketSelection} />
+            <OurRocket onRocketSelect={handleRocketSelection} />
           </section>
           {/* Третя секція: Rocket Statistics */}
           <section

@@ -13,21 +13,20 @@ const OurRocket = ({
   const [error, setError] = useState(null); // Стан для помилки
   const sliderRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [selectedRocket, setSelectedRocket] = useState(null);
 
   const fetchRockets = async () => {
     try {
-      const dragonResponse = await fetch(
-        "https://api.spacexdata.com/v4/dragons"
-      );
-      const dragonData = await dragonResponse.json();
+      const [dragonRes, rocketsRes] = await Promise.all([
+        fetch("https://api.spacexdata.com/v4/dragons"),
+        fetch("https://api.spacexdata.com/v4/rockets"),
+      ]);
 
-      const rocketResponse = await fetch(
-        "https://api.spacexdata.com/v4/rockets"
-      );
-      const rocketData = await rocketResponse.json();
+      const [dragons, rockets] = await Promise.all([
+        dragonRes.json(),
+        rocketsRes.json(),
+      ]);
 
-      const combinedData = [...dragonData, ...rocketData];
+      const combinedData = [...dragons, ...rockets];
       setRockets(combinedData);
 
       setFilteredImages(
@@ -45,13 +44,6 @@ const OurRocket = ({
     fetchRockets();
     // Очищуємо стан вибраної ракети після повернення з RocketInfo
     clearSelectedRocket();
-    // Функція очищення для демонтованого компонента
-    return () => {
-      // Очищаємо стан вибраної ракети
-      setSelectedRocket(null);
-
-      // Додаємо інші дії для очищення, якщо потрібно
-    };
   }, []);
 
   const settings = {
@@ -81,7 +73,6 @@ const OurRocket = ({
 
   const handleRocketClick = (rocket) => {
     if (rocket && rocket.id) {
-      setSelectedRocket(rocket); // Зберігаємо вибрану ракету
       onRocketSelect(rocket.id);
       setFilteredImages(rocket.flickr_images || []);
     }
@@ -303,27 +294,3 @@ const styles = {
 };
 
 export default OurRocket;
-// import React from "react";
-
-// const OurRocket = ({ onSelectRocket }) => {
-//   const rockets = [
-//     { id: "starship", name: "Starship" },
-//     { id: "falcon9", name: "Falcon 9" },
-//     { id: "dragon", name: "Dragon" },
-//   ];
-
-//   return (
-//     <div>
-//       <h2>Select a Rocket</h2>
-//       <div>
-//         {rockets.map((rocket) => (
-//           <button key={rocket.id} onClick={() => onSelectRocket(rocket)}>
-//             {rocket.name}
-//           </button>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default OurRocket;
