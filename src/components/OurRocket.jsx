@@ -44,7 +44,7 @@ const OurRocket = ({
     fetchRockets();
     // Очищуємо стан вибраної ракети після повернення з RocketInfo
     clearSelectedRocket();
-  }, []);
+  }, [clearSelectedRocket]);
 
   const settings = {
     dots: false,
@@ -73,7 +73,7 @@ const OurRocket = ({
 
   const handleRocketClick = (rocket) => {
     if (rocket && rocket.id) {
-      onRocketSelect(rocket.id);
+      onRocketSelect(rocket);
       setFilteredImages(rocket.flickr_images || []);
     }
   };
