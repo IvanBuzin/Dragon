@@ -143,7 +143,7 @@ const Home = () => {
               flexGrow: 0,
             }}
           >
-            <RocketInfo type={selectedRocket} />
+            <RocketInfo rocket={selectedRocket} />
           </section>
           <section
             id="starship-n"
@@ -152,7 +152,7 @@ const Home = () => {
               height: "834px",
             }}
           >
-            <StarshipCapabilities type={selectedRocket} />
+            <StarshipCapabilities rocket={selectedRocket} />
             <Starbase />
             {/* Кнопка для повернення до секції OurRockets */}
             <button

@@ -39,12 +39,6 @@ const RocketStatistics = () => {
         visitsToISS,
         totalReflights,
       });
-
-      console.log("Fetched statistics:", {
-        totalLaunches,
-        visitsToISS,
-        totalReflights,
-      });
     } catch (error) {
       console.error("Error fetching data: ", error);
     }

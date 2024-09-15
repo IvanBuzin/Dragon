@@ -43,7 +43,7 @@ const OurRocket = ({
   useEffect(() => {
     fetchRockets();
     // Очищуємо стан вибраної ракети після повернення з RocketInfo
-    clearSelectedRocket();
+    return () => clearSelectedRocket();
   }, [clearSelectedRocket]);
 
   const settings = {
@@ -208,13 +208,6 @@ const OurRocket = ({
                   {rocket.return_payload_mass?.kg ?? "3,000"} kg /{" "}
                   {kgToLbs(rocket.return_payload_mass?.kg) ?? "6,614"} lbs
                 </p>
-                {/* <p
-                  className="spec-item"
-                  style={styles.info}
-                >
-                  <strong>DESCRIPTION</strong>{" "}
-                  {rocket.description ?? "No description available"}
-                </p> */}
               </div>
             </div>
           </div>
