@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "./Header";
 import OurRocket from "./OurRocket";
 import StarshipCapabilities from "./StarshipCapabilities";
@@ -10,12 +10,16 @@ import RocketInfo from "./RocketInfo";
 
 const Home = () => {
   const [selectedRocket, setSelectedRocket] = useState(null);
+  const rocketsRef = useRef(null);
 
   const handleRocketSelection = (rocket) => {
     setSelectedRocket(rocket);
   };
   const handleBackToRockets = () => {
     setSelectedRocket(null);
+    if (rocketsRef.current) {
+      rocketsRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -62,6 +66,7 @@ const Home = () => {
               height: "755px",
               width: "100%",
             }}
+            ref={rocketsRef}
           >
             <OurRocket onRocketSelect={handleRocketSelection} />
           </section>
@@ -165,7 +170,10 @@ const Home = () => {
                 borderRadius: "5px",
                 border: "none",
                 cursor: "pointer",
+                transition: "background-color 0.3s ease",
               }}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#555")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "#333")}
             >
               back to Our rockets
             </button>
