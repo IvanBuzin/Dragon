@@ -101,7 +101,7 @@ const styles = {
     marginTop: "48px",
     marginLeft: "32px",
     gap: "0px",
-    fontSize: "3rem", // Відносні одиниці для масштабування на різних екранах
+    fontSize: "6.25rem", // Відносні одиниці для масштабування на різних екранах
   },
   gradientLine: {
     display: "flex",
