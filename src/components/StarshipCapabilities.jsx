@@ -112,7 +112,7 @@ const StarshipCapabilities = ({ rocket }) => {
           >
             <img
               className="arrow-icon"
-              src="./src/images/Vector w.png"
+              src="/images/Vector w.png"
               alt="Previous"
               style={{ width: "24px", height: "24px" }}
             />
@@ -153,7 +153,7 @@ const StarshipCapabilities = ({ rocket }) => {
           >
             <img
               className="arrow-icon"
-              src="./src/images/Vector w r.png"
+              src="/images/Vector w r.png"
               alt="Next"
               style={{ width: "24px", height: "24px" }}
             />
