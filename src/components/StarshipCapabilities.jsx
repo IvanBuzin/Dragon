@@ -9,7 +9,7 @@ const StarshipCapabilities = ({ rocket }) => {
 
   // Якщо ракета не вибрана, використовуємо дефолтні дані
   const defaultImages = [
-    "./src/images/starhip_1.jpg",
+    "/src/images/foto 1.jpg",
     "./src/images/starhip_2.jpg",
     "./src/images/starhip_3.jpg",
     "./src/images/starhip_4.jpg",
