@@ -20,7 +20,7 @@ const RocketInfo = ({ rocket }) => {
       <header style={styles.header}>
         <div style={styles.logo}>LOGO</div>
         <nav style={styles.nav}>
-          <Link to="/" style={styles.link}>
+          <Link onClick to="/" style={styles.link}>
             Home
           </Link>
           <Link to="/about" style={styles.link}>
@@ -34,12 +34,12 @@ const RocketInfo = ({ rocket }) => {
           </Link>
         </nav>
         <div style={styles.contact}>Contact Form</div>{" "}
-        {/* <Link to="/login" style={styles.link}>
+        <Link to="/login" style={styles.link}>
           Login
         </Link>
         <Link to="/register" style={styles.link}>
           Register
-        </Link> */}
+        </Link>
       </header>
       <h2>{rocket.name}</h2>
       <div

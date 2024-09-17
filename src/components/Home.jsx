@@ -21,6 +21,10 @@ const Home = () => {
       rocketsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const handleHomeClick = () => {
+    setSelectedRocket(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div
@@ -54,7 +58,7 @@ const Home = () => {
           flexGrow: 0,
         }}
       >
-        <Header />
+        <Header onHomeClick={handleHomeClick} />
       </section>
 
       {/* Друга секція */}
