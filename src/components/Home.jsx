@@ -13,6 +13,7 @@ import Register from "./Register";
 const Home = () => {
   const [selectedRocket, setSelectedRocket] = useState(null);
   const rocketsRef = useRef(null);
+  const [showForm, setShowForm] = useState(false);
 
   const handleRocketSelection = (rocket) => {
     setSelectedRocket(rocket);
