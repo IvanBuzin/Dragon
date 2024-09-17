@@ -196,7 +196,7 @@ const Team = () => {
             onClick={handlePrevClick}
           >
             <img
-              src="./src/images/Group 1x.png"
+              src="/images/Group 1x.png"
               alt="navigation left"
               style={{
                 marginLeft: "24px",
@@ -219,7 +219,7 @@ const Team = () => {
             onClick={handleNextClick}
           >
             <img
-              src="./src/images/Group 1x r.png"
+              src="/images/Group 1x r.png"
               alt="navigation r"
               style={{
                 marginLeft: "24px",

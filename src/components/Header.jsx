@@ -39,11 +39,7 @@ const Header = ({ onHomeClick, onContactFormClick }) => {
       </header>
       <h1 style={styles.title}>dive deep in to the future</h1>
       <div style={styles.gradientLine}>
-        <img
-          src="/src/images/Group d.png"
-          alt="kolo"
-          style={styles.koloImage}
-        />
+        <img src="/images/Group d.png" alt="kolo" style={styles.koloImage} />
       </div>
     </div>
   );

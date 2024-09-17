@@ -132,10 +132,7 @@ const OurRocket = ({
             >
               <img
                 className="rocket-image"
-                src={
-                  rocket.flickr_images?.[0] ||
-                  "./images/toy-rocket.gif" /*"./images/placeholder-rocket.png"*/
-                }
+                src={rocket.flickr_images?.[0] || "/images/rocket.gif"}
                 alt={rocket.name || "Rocket"}
                 style={{
                   width: "378px",
@@ -224,7 +221,7 @@ const OurRocket = ({
         >
           <img
             className="arrow"
-            src="./src/images/Vector w.png"
+            src="/images/Vector w.png"
             alt="navigation left"
             style={{ color: "white", padding: "0px 16px", cursor: "pointer" }}
           />
@@ -265,7 +262,7 @@ const OurRocket = ({
         >
           <img
             className="arrow"
-            src="./src/images/Vector w r.png"
+            src="/images/Vector w r.png"
             alt="navigation right"
             style={{ color: "white", padding: "0px 16px", cursor: "pointer" }}
             onClick={handleNext}
