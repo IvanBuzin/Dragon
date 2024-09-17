@@ -9,12 +9,12 @@ const StarshipCapabilities = ({ rocket }) => {
 
   // Якщо ракета не вибрана, використовуємо дефолтні дані
   const defaultImages = [
-    "/src/images/foto 1.jpg",
-    "./src/images/starhip_2.jpg",
-    "./src/images/starhip_3.jpg",
-    "./src/images/starhip_4.jpg",
-    "./src/images/starhip_5.jpg",
-    "./src/images/starhip_6.jpg",
+    "./src/images/photo 1.jpg",
+    "./src/images/photo 2.jpg",
+    "./src/images/photo 3.jpg",
+    "./src/images/photo 4.jpg",
+    "./src/images/photo 5.jpg",
+    "./src/images/photo 6.jpg",
   ];
   const defaultDescription =
     "As the most powerful launch system ever developed, Starship will be able to carry up to 100 people on long-duration, interplanetary flights. Starship will also help enable satellite delivery, the development of a Moon base, and point-to-point transport here on Earth.";

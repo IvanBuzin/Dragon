@@ -51,8 +51,7 @@ const Home = () => {
           boxSizing: "border-box",
           height: "653px",
           width: "100%",
-          background:
-            "url('./src/images/toy_rocket.gif'), rgba(50, 38, 89, 0.5)",
+          background: "url('./src/images/rocket.gif'), rgba(50, 38, 89, 0.5)",
           backgroundSize: "cover",
 
           border: selectedRocket
