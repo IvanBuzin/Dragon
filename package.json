@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && git config user.email 'ua.buzin@gmaile.com' && git config user.name 'Ivan Buzin'",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
