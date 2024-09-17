@@ -7,6 +7,8 @@ import About from "./About";
 import RocketStatistics from "./RocketStatistics";
 import Team from "./Team";
 import RocketInfo from "./RocketInfo";
+import Login from "./Login";
+import Register from "./Register";
 
 const Home = () => {
   const [selectedRocket, setSelectedRocket] = useState(null);
@@ -24,6 +26,11 @@ const Home = () => {
   const handleHomeClick = () => {
     setSelectedRocket(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Обробник для переходу на реєстрацію/аутентифікацію
+  const handleContactFormClick = (formType) => {
+    setShowForm(formType); // formType може бути 'register' або 'login'
   };
 
   return (
@@ -58,7 +65,10 @@ const Home = () => {
           flexGrow: 0,
         }}
       >
-        <Header onHomeClick={handleHomeClick} />
+        <Header
+          onHomeClick={handleHomeClick}
+          onContactFormClick={handleContactFormClick}
+        />
       </section>
 
       {/* Друга секція */}
