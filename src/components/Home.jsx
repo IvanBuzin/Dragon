@@ -4,7 +4,7 @@ import OurRocket from "./OurRocket/OurRocket";
 import StarshipCapabilities from "./StarshipCapabilities";
 import Starbase from "./Starbase";
 import About from "./About";
-import RocketStatistics from "./RocketStatistics";
+import RocketStatistics from "./RocketStatistics/RocketStatistics";
 import Team from "./Team";
 import RocketInfo from "./RocketInfo";
 import Login from "./Login";

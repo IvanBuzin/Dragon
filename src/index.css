@@ -13,7 +13,7 @@ h1 {
   font-family: Rubik;
   font-size: 6.25rem;
   font-weight: 700;
-  line-height: 118.5px;
+  /* line-height: 118.5px; */
   margin: 0px;
   text-transform: uppercase;
 }
@@ -158,7 +158,9 @@ div.slick-slide {
   .h2 {
     font-size: 3.5rem;
   }
-
+  .navigationContainer {
+    width: 700px;
+  }
   /* .our-rocket-container {
     gap: 16px;
   }
@@ -187,8 +189,15 @@ div.slick-slide {
 
 /* Для екранів до 480px */
 @media (max-width: 480px) {
-  h2 {
+  h1 {
     font-size: 3rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+    margin-top: 16px;
   }
   .title {
     font-size: 4rem;
@@ -197,12 +206,11 @@ div.slick-slide {
   .slick-slider {
     width: 1321px;
   }
-  .statistics {
-    flex-wrap: wrap;
+
+  .navigationContainer {
+    width: 100%;
   }
-  .statisticsBlok {
-    flex-direction: column;
-  }
+
   /* .our-rocket-container {
     gap: 8px;
   }

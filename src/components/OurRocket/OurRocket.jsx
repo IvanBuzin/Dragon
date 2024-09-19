@@ -55,6 +55,22 @@ const OurRocket = ({
     slidesToScroll: 1,
     arrows: false,
     beforeChange: (current, next) => setActiveSlide(next),
+    responsive: [
+      {
+        breakpoint: 768, // Для екранів менших за 768px
+        settings: {
+          slidesToShow: 2, // Показуємо 2 слайди
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480, // Для екранів менших за 480px
+        settings: {
+          slidesToShow: 1, // Показуємо 1 слайд
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const handlePrev = () => {

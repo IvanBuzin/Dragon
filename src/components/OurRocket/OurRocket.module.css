@@ -98,8 +98,8 @@
     font-size: 3.5rem;
   }
   .rocketCard {
-    width: 300px;
-    height: 450px;
+    width: 45%;
+    margin: 0 auto;
     padding: 16px;
   }
 
@@ -116,6 +116,9 @@
   .rocketSpecs {
     width: 260px;
   }
+  .navigationContainer {
+    width: 100%;
+  }
 }
 
 /* Для екранів до 480px */
@@ -127,7 +130,8 @@
     font-size: 3rem;
   }
   .rocketCard {
-    width: 250px;
+    width: 100%;
+    margin: 0 auto;
 
     padding: 12px;
   }
@@ -146,7 +150,7 @@
     width: 230px;
   }
   .navigationContainer {
-    width: 258px;
+    width: 100%;
   }
   .info {
     height: 16px;

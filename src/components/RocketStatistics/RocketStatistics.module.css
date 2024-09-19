@@ -1,0 +1,39 @@
+.statBlock {
+  flex: 1 1 calc(33.33% - 20px);
+  text-align: center;
+  min-width: 250px;
+  width: 419px;
+  height: 146px;
+}
+.statisticsInfo {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 100%;
+}
+.statisticsBlock {
+  display: flex;
+  justify-content: space-between;
+  /*flexWrap: "wrap";*/
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .statBlock {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .statBlock {
+    width: 100%;
+    min-width: 100%;
+  }
+  .statisticsBlok {
+    flex-direction: column;
+  }
+  .statistics {
+    flex-wrap: wrap;
+  }
+}

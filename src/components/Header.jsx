@@ -52,7 +52,6 @@ const styles = {
     alignItems: "center",
     padding: "32px",
     color: "white",
-    flexWrap: "wrap", // Щоб елементи переносилися на інший рядок на маленьких екранах
   },
   logo: {
     fontSize: "16px",
@@ -97,7 +96,8 @@ const styles = {
     marginTop: "48px",
     marginLeft: "32px",
     gap: "0px",
-    fontSize: "6.25rem", // Відносні одиниці для масштабування на різних екранах
+    // lineHeight: "118.5px",
+    // fontSize: "6.25rem", // Відносні одиниці для масштабування на різних екранах
   },
   gradientLine: {
     display: "flex",

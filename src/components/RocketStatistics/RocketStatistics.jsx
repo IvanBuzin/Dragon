@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import scc from "./RocketStatistics.module.css";
 
 const RocketStatistics = () => {
   const [statistics, setStatistics] = useState({
@@ -18,7 +19,6 @@ const RocketStatistics = () => {
       }
       const launches = await launchesResponse.json();
 
-      // Оновлення статистики
       const totalLaunches = launches.length;
       const visitsToISS = launches.filter(
         (launch) =>
@@ -49,55 +49,17 @@ const RocketStatistics = () => {
   }, []);
 
   return (
-    <div
-      className="statistics"
-      style={{ display: "flex", flexDirection: "column", color: "white" }}
-    >
-      <div
-        className="statisticsBlok"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "nowrap",
-          gap: "32px",
-        }}
-      >
-        <div
-          style={{
-            flex: "1 1 calc(33.33% - 20px)",
-
-            textAlign: "center",
-            minWidth: "250px",
-            width: "419px",
-            height: "146px",
-          }}
-        >
+    <div className="statisticsInfo" style={scc.statisticsInfo}>
+      <div className="statisticsBlok" style={scc.statisticsBlok}>
+        <div style={scc.statBlock}>
           <h2>{statistics.totalLaunches}</h2>
           <h3>Total Launches</h3>
         </div>
-        <div
-          style={{
-            flex: "1 1 calc(33.33% - 20px)",
-
-            textAlign: "center",
-            minWidth: "250px",
-            width: "419px",
-            height: "146px",
-          }}
-        >
+        <div style={scc.statBlock}>
           <h2>{statistics.visitsToISS}</h2>
           <h3>Visits to the ISS</h3>
         </div>
-        <div
-          style={{
-            flex: "1 1 calc(33.33% - 20px)",
-
-            textAlign: "center",
-            minWidth: "250px",
-            width: "419px",
-            height: "146px",
-          }}
-        >
+        <div style={scc.statBlock}>
           <h2>{statistics.totalReflights}</h2>
           <h3>Total Reflights</h3>
         </div>
