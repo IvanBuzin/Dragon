@@ -73,14 +73,14 @@ const RocketInfo = ({ rocket, onContactFormClick }) => {
           }}
         >
           <img
-            src={rocket.flickr_images[0]}
+            src={rocket.flickr_images?.[0] || "/images/falcon.jpg"}
             srcSet={`${rocket.flickr_images[0]} 480w,
                            ${rocket.flickr_images[1]} 800w,
-                           ${rocket.flickr_images[2]} 1200w`}
+                           ${rocket.flickr_images[1]} 1200w`}
             sizes="(max-width: 600px) 480px,
                          (max-width: 960px) 800px,
                          1200px"
-            alt={rocket.name}
+            alt={rocket.name || "Rocket"}
             loading="lazy" // Оптимізація завантаження зображень
             style={{
               maxWidth: "791px",

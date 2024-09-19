@@ -49,8 +49,12 @@ const RocketStatistics = () => {
   }, []);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", color: "white" }}>
+    <div
+      className="statistics"
+      style={{ display: "flex", flexDirection: "column", color: "white" }}
+    >
       <div
+        className="statisticsBlok"
         style={{
           display: "flex",
           justifyContent: "space-between",
