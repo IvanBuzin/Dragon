@@ -165,7 +165,8 @@ const Team = () => {
             gap: "24px",
             flexDirection: "column",
             alignItems: "flex-start",
-            width: "427px",
+            maxWidth: "427px",
+            width: "100%",
             height: "196px",
           }}
         >

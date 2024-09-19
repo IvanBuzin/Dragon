@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
-import OurRocket from "./OurRocket";
+import OurRocket from "./OurRocket/OurRocket";
 import StarshipCapabilities from "./StarshipCapabilities";
 import Starbase from "./Starbase";
 import About from "./About";

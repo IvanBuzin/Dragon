@@ -1,0 +1,155 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+  height: 24px;
+  gap: 0px;
+  margin: 0px;
+}
+
+.ourRocketContainer {
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+}
+
+.ourRocketText {
+  text-align: center;
+  font-style: 4rem;
+}
+.rocketCard {
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  /* padding: 24px; */
+  width: 427px;
+  height: 553px;
+  box-sizing: border-box;
+  color: white;
+  /* border-radius: 40px; */
+  cursor: pointer;
+}
+
+.rocketCardInner {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  width: 375px;
+  height: 501px;
+}
+
+.rocketImage {
+  width: 378px;
+  border-radius: 20px;
+  max-height: 218px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rocketSpecs {
+  text-align: left;
+  display: flex;
+  gap: 12px;
+  width: 379px;
+  flex-direction: column;
+}
+.navigationContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  width: 1321px;
+  height: 62px;
+  margin: 0 auto;
+}
+/* Контейнер для точок */
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  height: 16px;
+  margin: 0 auto;
+}
+
+/* Стиль для кожної точки */
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.dot.active {
+  opacity: 1;
+  background-color: #fff;
+}
+
+/* Для екранів до 768px */
+@media (max-width: 768px) {
+  .ourRocketContainer {
+    gap: 16px;
+  }
+  .ourRocketText {
+    font-size: 3.5rem;
+  }
+  .rocketCard {
+    width: 300px;
+    height: 450px;
+    padding: 16px;
+  }
+
+  .rocketCardInner {
+    width: 260px;
+    height: 400px;
+    padding: 16px;
+  }
+  .rocketImage {
+    width: 260px;
+    max-height: 180px;
+  }
+
+  .rocketSpecs {
+    width: 260px;
+  }
+}
+
+/* Для екранів до 480px */
+@media (max-width: 480px) {
+  .ourRocketContainer {
+    gap: 8px;
+  }
+  .ourRocketText {
+    font-size: 3rem;
+  }
+  .rocketCard {
+    width: 250px;
+
+    padding: 12px;
+  }
+
+  .rocketCardInner {
+    width: 230px;
+
+    padding: 12px;
+  }
+  .rocketImage {
+    width: 230px;
+    max-height: 150px;
+  }
+
+  .rocketSpecs {
+    width: 230px;
+  }
+  .navigationContainer {
+    width: 258px;
+  }
+  .info {
+    height: 16px;
+    font-size: 10px;
+  }
+}

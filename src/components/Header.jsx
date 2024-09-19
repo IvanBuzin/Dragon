@@ -52,7 +52,7 @@ const styles = {
     alignItems: "center",
     padding: "32px",
     color: "white",
-    wlexWrap: "wrap", // Щоб елементи переносилися на інший рядок на маленьких екранах
+    flexWrap: "wrap", // Щоб елементи переносилися на інший рядок на маленьких екранах
   },
   logo: {
     fontSize: "16px",
@@ -125,16 +125,28 @@ const styles = {
       gap: "16px",
     },
     title: {
-      fontSize: "2rem", // Менший розмір шрифту на середніх екранах
+      fontSize: "3rem", // Менший розмір шрифту на середніх екранах
+      width: "100%",
     },
   },
   "@media (max-width: 480px)": {
     title: {
-      fontSize: "1.5rem", // Ще менший шрифт на мобільних пристроях
+      fontSize: "3rem", // Ще менший шрифт на мобільних пристроях
       textAlign: "center", // Центруємо текст
+      display: "flex",
+      flexWrap: "wrap",
+      width: "100%",
+      maxWidth: "260px",
+      height: "auto",
+      marginTop: "48px",
+      marginLeft: "24px",
+      gap: "0px",
     },
     gradientLine: {
       width: "90%", // Менша ширина на мобільних пристроях
+    },
+    nav: {
+      gap: "12px 24px",
     },
   },
 };

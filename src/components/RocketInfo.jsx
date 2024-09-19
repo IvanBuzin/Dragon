@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const RocketInfo = ({ rocket }) => {
+const RocketInfo = ({ rocket, onContactFormClick }) => {
   if (!rocket) {
     return <p>Select a rocket to see the details.</p>;
   }
@@ -29,17 +29,26 @@ const RocketInfo = ({ rocket }) => {
           <Link to="/qa" style={styles.link}>
             QA
           </Link>
-          <Link to="/contact" style={styles.link}>
+          <Link to="/contact" style={styles.contact}>
             Contact Form
           </Link>
         </nav>
-        <div style={styles.contact}>Contact Form</div>{" "}
-        <Link to="/login" style={styles.link}>
-          Login
-        </Link>
-        <Link to="/register" style={styles.link}>
-          Register
-        </Link>
+        <div style={styles.authLinks}>
+          <Link
+            onClick={() => onContactFormClick("login")}
+            to="/login"
+            style={styles.link}
+          >
+            Contact
+          </Link>
+          <Link
+            onClick={() => onContactFormClick("register")}
+            to="/register"
+            style={styles.link}
+          >
+            &nbsp;Form
+          </Link>
+        </div>{" "}
       </header>
       <h2>{rocket.name}</h2>
       <div
@@ -214,6 +223,13 @@ const styles = {
     fontSize: "16px",
   },
   contact: {
+    fontSize: "16px",
+    textDecoration: "none",
+  },
+  authLinks: {
+    display: "flex",
+
+    flexWrap: "wrap",
     fontSize: "16px",
     border: "1px solid white",
     borderRadius: "21px",

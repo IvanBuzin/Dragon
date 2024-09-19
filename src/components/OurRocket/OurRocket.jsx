@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import css from "./OurRocket.module.css";
 
 const OurRocket = ({
   onRocketSelect = () => {},
@@ -50,7 +51,7 @@ const OurRocket = ({
     dots: false,
     infinite: false, // вимикаємо нескінченну прокрутку
     speed: 400,
-    slidesToShow: window.innerWidth < 768 ? 1 : 3, // Для адаптивності
+    slidesToShow: window.innerWidth < 480 ? 1 : window.innerWidth < 768 ? 2 : 3, // Для адаптивності
     slidesToScroll: 1,
     arrows: false,
     beforeChange: (current, next) => setActiveSlide(next),
@@ -75,6 +76,8 @@ const OurRocket = ({
     if (rocket && rocket.id) {
       onRocketSelect(rocket);
       setFilteredImages(rocket.flickr_images || []);
+    } else {
+      setFilteredImages({});
     }
   };
 
@@ -95,51 +98,20 @@ const OurRocket = ({
   }
 
   return (
-    <div
-      className="our-rocket-container"
-      style={{ display: "flex", gap: "32px", flexDirection: "column" }}
-    >
-      <h2 style={{ textAlign: "center" }}>Our rockets</h2>
+    <div className={css.ourRocketContainer}>
+      <h2 className={css.ourRocketText}>our rockets</h2>
       <Slider {...settings} ref={sliderRef}>
         {rockets.map((rocket) => (
           <div
             key={rocket.id}
-            className="rocket-card"
-            style={{
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              padding: "24px",
-              width: "427px",
-              height: "553px",
-              boxSizing: "border-box",
-              color: "white",
-              borderRadius: "40px",
-              cursor: "pointer",
-            }}
+            className={css.rocketCard}
             onClick={() => handleRocketClick(rocket)}
           >
-            <div
-              className="rocket-card-inner"
-              style={{
-                display: "flex",
-                gap: "24px",
-                flexDirection: "column",
-                padding: "24px",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                borderRadius: "40px",
-                width: "375px",
-                height: "501px",
-              }}
-            >
+            <div className={css.rocketCardInner}>
               <img
-                className="rocket-image"
+                className={css.rocketImage}
                 src={rocket.flickr_images?.[0] || "/images/rocket.gif"}
                 alt={rocket.name || "Rocket"}
-                style={{
-                  width: "378px",
-                  borderRadius: "20px",
-                  maxHeight: "218px",
-                  border: "1px solid rgba(255, 255, 255, 0.05)",
-                }}
               />
               <h4
                 className="rocket-name"
@@ -147,17 +119,8 @@ const OurRocket = ({
               >
                 {rocket.name || "Rocket"}
               </h4>
-              <div
-                className="rocket-specs"
-                style={{
-                  textAlign: "left",
-                  display: "flex",
-                  gap: "12px",
-                  width: "379px",
-                  flexDirection: "column",
-                }}
-              >
-                <p className="spec-item" style={styles.info}>
+              <div className={css.rocketSpecs}>
+                <p className={css.info}>
                   <strong>HEIGHT</strong>{" "}
                   {rocket.height?.meters ??
                     rocket.height_w_trunk?.meters ??
@@ -168,11 +131,11 @@ const OurRocket = ({
                   ) ?? "26.7"}{" "}
                   ft
                 </p>
-                <p className="spec-item" style={styles.info}>
+                <p className={css.info}>
                   <strong>DIAMETER</strong> {rocket.diameter?.meters ?? "4"} m /{" "}
                   {metersToFeet(rocket.diameter?.meters) ?? "13"} ft
                 </p>
-                <p style={styles.info}>
+                <p className={css.info}>
                   <strong>SPACECRAFT VOLUME</strong>{" "}
                   {rocket.pressurized_capsule?.payload_volume?.cubic_meters ??
                     "9.3"}{" "}
@@ -182,14 +145,14 @@ const OurRocket = ({
                   ) ?? "328"}{" "}
                   ft³
                 </p>
-                <p className="spec-item" style={styles.info}>
+                <p className={css.info}>
                   <strong>TRUNK VOLUME</strong>{" "}
                   {rocket.trunk?.trunk_volume?.cubic_meters ?? "37"} m³ /{" "}
                   {metersToFeet(rocket.trunk?.trunk_volume?.cubic_meters) ??
                     "1300"}{" "}
                   ft³
                 </p>
-                <p className="spec-item" style={styles.info}>
+                <p className={css.info}>
                   <strong>LAUNCH PAYLOAD MASS</strong>{" "}
                   {rocket.launch_payload_mass?.kg ??
                     rocket.dry_mass_kg ??
@@ -200,7 +163,7 @@ const OurRocket = ({
                   ) ?? "13,228"}{" "}
                   lbs
                 </p>
-                <p className="spec-item" style={styles.info}>
+                <p className={css.info}>
                   <strong>RETURN PAYLOAD MASS</strong>{" "}
                   {rocket.return_payload_mass?.kg ?? "3,000"} kg /{" "}
                   {kgToLbs(rocket.return_payload_mass?.kg) ?? "6,614"} lbs
@@ -210,7 +173,7 @@ const OurRocket = ({
           </div>
         ))}
       </Slider>
-      <div className="navigation-container">
+      <div className={css.navigationContainer}>
         <div
           className={activeSlide === 0 ? "disabled" : ""}
           onClick={handlePrev}
@@ -226,7 +189,7 @@ const OurRocket = ({
             style={{ color: "white", padding: "0px 16px", cursor: "pointer" }}
           />
         </div>
-        <div className="dots-container">
+        <div className={css.dotsContainer}>
           {rockets
             .slice(0, Math.ceil(rockets.length / settings.slidesToShow))
             .map((_, index) => (
@@ -234,14 +197,6 @@ const OurRocket = ({
                 key={index}
                 className={`dot ${index === activeSlide ? "active" : ""}`}
                 onClick={() => sliderRef.current.slickGoTo(index)}
-                style={{
-                  backgroundColor: index === activeSlide ? "white" : "gray",
-                  borderRadius: "50%",
-                  width: "12px",
-                  height: "12px",
-                  margin: "0 5px",
-                  cursor: "pointer",
-                }}
               ></div>
             ))}
         </div>
@@ -271,16 +226,6 @@ const OurRocket = ({
       </div>
     </div>
   );
-};
-
-const styles = {
-  info: {
-    display: "flex",
-    justifyContent: "space-between",
-    height: "24px",
-    gap: "0px",
-    margin: "0px",
-  },
 };
 
 export default OurRocket;

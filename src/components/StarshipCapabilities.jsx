@@ -98,7 +98,11 @@ const StarshipCapabilities = ({ rocket }) => {
         {/* Навігація */}
         <div
           className="navigation-container"
-          style={{ display: "flex", alignItems: "center" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
         >
           <button
             className={`arrow ${activeSlide === 0 ? "disabled" : ""}`}
