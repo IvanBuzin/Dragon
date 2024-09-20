@@ -49,7 +49,7 @@ const RocketStatistics = () => {
   }, []);
 
   return (
-    <>
+    <div className={css.statisticsSection}>
       <div className={css.statistics}>
         <div className={css.statBlock}>
           <h2 className={css.statH2}>
@@ -66,7 +66,7 @@ const RocketStatistics = () => {
           <h3 className={css.statH3}>Total Reflights</h3>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

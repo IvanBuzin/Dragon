@@ -94,23 +94,16 @@ const Starship = ({ rocket }) => {
           </div>
 
           <button
-            className={`arrow ${
-              activeSlide === images.length - 1 ? "disabled" : ""
+            className={`${css.navButton} arrow ${
+              activeSlide === images.length - 1 ? css.navButtonDisabled : ""
             }`}
             onClick={handleNext}
             disabled={activeSlide === images.length - 1}
-            style={{
-              background: "none",
-              border: "none",
-              cursor:
-                activeSlide === images.length - 1 ? "not-allowed" : "pointer",
-            }}
           >
             <img
-              className="arrow-icon"
+              className={css.navIcon}
               src="/images/Vector w r.png"
               alt="Next"
-              style={{ width: "24px", height: "24px" }}
             />
           </button>
         </div>

@@ -98,3 +98,22 @@
     font-size: 3rem;
   }
 }
+/* Для екранів до 480px */
+@media (max-width: 480px) {
+  .teamContainer {
+    gap: 8px;
+  }
+  .teamFirstContainer {
+    width: 150px;
+  }
+  .teamNav {
+    flex-direction: column;
+  }
+  .teamSecondBlock {
+    width: 180px;
+  }
+  .teamSecondImg {
+    margin-left: 0px;
+    width: 160px;
+  }
+}

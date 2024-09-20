@@ -78,7 +78,7 @@ const Home = () => {
           <section
             id="rockets"
             style={{
-              height: "755px",
+              // height: "755px",
               width: "100%",
             }}
             ref={rocketsRef}
@@ -89,7 +89,7 @@ const Home = () => {
           <section
             id="statistics"
             style={{
-              height: "146px",
+              height: "100%",
             }}
           >
             <ErrorBoundary>
@@ -100,7 +100,7 @@ const Home = () => {
           <section
             id="about"
             style={{
-              height: "644px",
+              // height: "644px",
               width: "100%",
             }}
           >
@@ -110,7 +110,8 @@ const Home = () => {
           <section
             id="team"
             style={{
-              height: "551px",
+              height: "100%",
+              maxHeight: "551px",
               width: "100%",
             }}
           >

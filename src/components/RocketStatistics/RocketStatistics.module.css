@@ -1,3 +1,6 @@
+.statisticsSection {
+  height: 146px;
+}
 .statistics {
   display: flex;
   flex-direction: row;
@@ -13,10 +16,13 @@
   height: 146px;
   gap: 32px;
 }
+.statH3 {
+  margin: 0;
+}
 
 @media (max-width: 768px) {
   .statistics {
-    gap: 12px;
+    gap: 8px;
   }
   .statBlock {
     min-width: 208px;
@@ -33,6 +39,9 @@
 }
 
 @media (max-width: 480px) {
+  .statisticsSection {
+    height: 500px;
+  }
   .statBlock {
     width: 100%;
     min-width: 100%;

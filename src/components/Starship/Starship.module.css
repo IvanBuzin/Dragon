@@ -71,12 +71,38 @@
 .dotActive {
   background-color: #fff;
 }
-.StarshipDotsContainer{
-     style={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  backgroundColor: index === activeSlide ? "#fff" : "#888",
-                  cursor: "pointer",
-                }}
+/* Для екранів до 768px */
+@media (max-width: 768px) {
+  .StarshipContainer {
+    width: 768px;
+  }
+  .StarshipBlock {
+    width: 85%;
+    left: 60px;
+  }
+  .StarshipImg {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Для екранів до 480px */
+@media (max-width: 480px) {
+  .StarshipContainer {
+    width: 480px;
+  }
+  .StarshipBlock {
+    width: 72.5%;
+    left: 60px;
+  }
+  .StarshipCard {
+    width: 100%;
+  }
+  .StarshipP {
+    width: 100%;
+  }
+  .StarshipImg {
+    width: 34%;
+    object-fit: cover;
+  }
 }
