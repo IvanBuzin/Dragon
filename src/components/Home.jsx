@@ -1,14 +1,15 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import OurRocket from "./OurRocket/OurRocket";
-import StarshipCapabilities from "./StarshipCapabilities";
+import Starship from "./Starship/Starship";
 import Starbase from "./Starbase";
 import About from "./About";
 import RocketStatistics from "./RocketStatistics/RocketStatistics";
-import Team from "./Team";
+import Team from "./Team/Team";
 import RocketInfo from "./RocketInfo";
 import Login from "./Login";
 import Register from "./Register";
+import ErrorBoundary from "./ErrorBoundary";
 
 const Home = () => {
   const [selectedRocket, setSelectedRocket] = useState(null);
@@ -91,7 +92,9 @@ const Home = () => {
               height: "146px",
             }}
           >
-            <RocketStatistics />
+            <ErrorBoundary>
+              <RocketStatistics />
+            </ErrorBoundary>
           </section>
           {/* Четверта секція */}
           <section
@@ -125,7 +128,7 @@ const Home = () => {
               marginLeft: "-60px",
             }}
           >
-            <StarshipCapabilities />
+            <Starship />
           </section>
         </>
       )}
@@ -171,7 +174,7 @@ const Home = () => {
               height: "834px",
             }}
           >
-            <StarshipCapabilities rocket={selectedRocket} />
+            <Starship rocket={selectedRocket} />
             <Starbase />
             {/* Кнопка для повернення до секції OurRockets */}
             <button

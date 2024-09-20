@@ -2,8 +2,9 @@ import Slider from "react-slick";
 import { useRef, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import css from "./Starship.module.css";
 
-const StarshipCapabilities = ({ rocket }) => {
+const Starship = ({ rocket }) => {
   const sliderRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -46,98 +47,48 @@ const StarshipCapabilities = ({ rocket }) => {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      <Slider
-        ref={sliderRef}
-        {...settings}
-        style={{ width: "100%", maxWidth: "1440px" }}
-      >
+    <div className={css.StarshipContainer}>
+      <Slider ref={sliderRef} {...settings} className={css.StarshipSlider}>
         {images.map((image, index) => (
           <div key={index}>
             <img
+              className={css.StarshipImg}
               src={image}
               alt={`Rocket image ${index + 1}`}
-              style={{
-                width: "1440px",
-                height: "834px",
-                position: "relative",
-                overflow: "hidden",
-              }}
             />
           </div>
         ))}
       </Slider>
-      <div
-        style={{
-          display: "flex",
-          gap: "32px",
-          flexDirection: "column",
-          width: "1321px",
-          height: "366px",
-          position: "absolute",
-          left: "60px",
-          marginTop: "436px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            width: "453px",
-            height: "272px",
-            gap: "24px",
-          }}
-        >
-          <h2>Starship Capabilities</h2>
-          <p style={{ width: "453px", margin: "0px", lineHeight: "24px" }}>
-            {description}
-          </p>
+      <div className={css.StarshipBlock}>
+        <div className={css.StarshipCard}>
+          <h2 className={css.StarshipH2}>Starship Capabilities</h2>
+          <p className={css.StarshipP}>{description}</p>
         </div>
 
         {/* Навігація */}
-        <div
-          className="navigation-container"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        <div className={css.navContainerStarship}>
           <button
-            className={`arrow ${activeSlide === 0 ? "disabled" : ""}`}
+            className={`${css.navButton} arrow ${
+              activeSlide === 0 ? css.navButtonDisabled : ""
+            }`}
             onClick={handlePrev}
             disabled={activeSlide === 0}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: activeSlide === 0 ? "not-allowed" : "pointer",
-            }}
           >
             <img
-              className="arrow-icon"
+              className={css.navIcon}
               src="/images/Vector w.png"
               alt="Previous"
-              style={{ width: "24px", height: "24px" }}
             />
           </button>
 
-          <div
-            className="dots-container"
-            style={{ display: "flex", gap: "8px", margin: "0 20px" }}
-          >
+          <div className={css.StarshipDotsContainer}>
             {images.map((_, index) => (
               <div
                 key={index}
-                className={`dot ${index === activeSlide ? "active" : ""}`}
+                className={`${css.dot} dot ${
+                  index === activeSlide ? css.dotActive : ""
+                }`}
                 onClick={() => sliderRef.current.slickGoTo(index)}
-                style={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  backgroundColor: index === activeSlide ? "#fff" : "#888",
-                  cursor: "pointer",
-                }}
               ></div>
             ))}
           </div>
@@ -168,4 +119,4 @@ const StarshipCapabilities = ({ rocket }) => {
   );
 };
 
-export default StarshipCapabilities;
+export default Starship;

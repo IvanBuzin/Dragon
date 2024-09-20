@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef, lazy } from "react";
 import Slider from "react-slick";
+import css from "./Team.module.css";
 
 const Team = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -123,11 +124,27 @@ const Team = () => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: window.innerWidth < 768 ? 1 : 2,
     slidesToScroll: 1,
     arrows: false,
     lazyLoad: "ondemand",
     afterChange: (current) => setCurrentSlide(current), // Update current slide index
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   if (loading) {
@@ -142,36 +159,11 @@ const Team = () => {
     );
   }
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: "20px" /*загальний блок вертикаль*/,
-        height: "551px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-
-          color: "#fff",
-          flexDirection: "column",
-
-          justifyContent: "space-between",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            gap: "24px",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            maxWidth: "427px",
-            width: "100%",
-            height: "196px",
-          }}
-        >
-          <h2>Team</h2>
-          <p style={{ margin: "0px", lineHeight: "24px" }}>
+    <div className={css.teamContainer}>
+      <div className={css.teamFirst}>
+        <div className={css.teamFirstContainer}>
+          <h2 className={css.teamH2}>Team</h2>
+          <p className={css.teamP}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
             auctor sed urna a faucibus. Pellentesque mi nisl, mollis convallis
             metus id, congue semper neque. Sed suscipit eget ipsum ut gravida.
@@ -179,150 +171,61 @@ const Team = () => {
           </p>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            gap: "12px",
-          }}
-        >
+        <div className={css.teamNav}>
           <div
-            className={currentSlide === 0 ? "disabled" : ""}
-            style={{
-              background: "#fff",
-              width: "126px",
-              height: "126px",
-              borderRadius: "24px",
-            }}
-            // onClick={() => sliderRef.current.slickPrev()}
+            className={`${css.teamNavNext} ${
+              currentSlide === 0 ? "disabled" : ""
+            }`}
             onClick={handlePrevClick}
           >
             <img
+              className={css.teamNavImg}
               src="/images/Group 1x.png"
               alt="navigation left"
-              style={{
-                marginLeft: "24px",
-                marginTop: "24px",
-                cursor: "pointer",
-              }}
             />
           </div>
           <div
-            className={
+            className={`${css.teamNavNext} ${
               currentSlide === teamMembers.length - 2 ? "disabled" : ""
-            }
-            style={{
-              width: "126px",
-              height: "126px",
-              borderRadius: "24px",
-              background: "#fff",
-            }}
-            // onClick={() => sliderRef.current.slickNext()}
+            }`}
             onClick={handleNextClick}
           >
             <img
+              className={css.teamNavImg}
               src="/images/Group 1x r.png"
               alt="navigation r"
-              style={{
-                marginLeft: "24px",
-                marginTop: "24px",
-                cursor: "pointer",
-              }}
             />
           </div>
         </div>
       </div>
 
-      <div /* 2 блок*/
-        style={{
-          display: "flex",
-          gap: "20px",
-          justifyContent: "center",
-          width: "66%",
-          flexDirection: "column",
-        }}
-      >
+      <div className={css.teamSecond} /* 2 блок*/>
         <Slider ref={sliderRef} {...sliderSettings}>
           {teamMembers.map((member) => (
             <div
+              className={css.teamSecondContainer}
               key={member.id}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-
-                gap: "12px",
-
-                boxSizing: "border-box",
-
-                flex: "none",
-                order: 1,
-                flexGrow: 0,
-
-                position: "relative",
-              }}
               onClick={() => toggleExpandedRole(member.id)}
             >
-              <div
-                style={{
-                  display: "flex",
-                  gap: "12px",
-                  flexDirection: "column",
-                  padding: "32px 0px",
-                  width: "423px",
-                  height: "487px",
-                  borderRadius: "40px",
-                  border: "1px solid rgba(255, 255, 255, 0.2)",
-                  backgroundColor: "rgba(0, 0, 0, 1)",
-                }}
-              >
+              <div className={css.teamSecondBlock}>
                 <img
+                  className={css.teamSecondImg}
                   src={member.image}
                   alt={member.name}
-                  style={{
-                    height: "421px",
-                    maxWidth: "423px",
-                    borderRadius: "40px",
-                    objectFit: "cover",
-
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                  }}
                   onError={(e) =>
                     (e.target.src =
                       member.wikiImage || "/src/images/image 2.png")
                   }
                 />
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    gap: "12px",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
-                  <p
-                    style={{
-                      textTransform: "uppercase",
-                      fontSize: "12px",
-                      margin: "0",
-                      color: "white",
-                    }}
-                  >
+                <div className={css.teamSecondBlockText}>
+                  <p className={css.teamPt}>
                     {expandedMemberId === member.id &&
                     member.fullRoleDescription
                       ? member.fullRoleDescription
                       : member.role}{" "}
                     {/* St. Mechanic */}
                   </p>
-                  <h4
-                    style={{
-                      fontSize: "14px",
-                      margin: "0",
-                    }}
-                  >
-                    {member.name}
-                  </h4>
+                  <h4 className={css.teamH4}>{member.name}</h4>
                 </div>
               </div>
             </div>

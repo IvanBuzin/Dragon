@@ -1,0 +1,82 @@
+.StarshipContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.StarshipSlider {
+  width: 100%;
+  max-width: 1440px;
+}
+.StarshipImg {
+  width: 1440px;
+  height: 834px;
+  position: relative;
+  overflow: hidden;
+}
+.StarshipBlock {
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  width: 1321px;
+  height: 366px;
+  position: absolute;
+  left: 60px;
+  margin-top: 436px;
+}
+.StarshipCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 453px;
+  height: 272px;
+  gap: 24px;
+}
+.StarshipH2 {
+}
+.StarshipP {
+  width: 453px;
+  margin: 0px;
+  line-height: 24px;
+}
+.navContainerStarship {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.navButtonDisabled {
+  cursor: not-allowed;
+}
+.navIcon {
+  width: 24px;
+  height: 24px;
+}
+.StarshipDotsContainer {
+  display: flex;
+  gap: 8px;
+  margin: 0 20px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #888;
+  cursor: pointer;
+}
+
+.dotActive {
+  background-color: #fff;
+}
+.StarshipDotsContainer{
+     style={{
+                  width: "10px",
+                  height: "10px",
+                  borderRadius: "50%",
+                  backgroundColor: index === activeSlide ? "#fff" : "#888",
+                  cursor: "pointer",
+                }}
+}

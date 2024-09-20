@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import scc from "./RocketStatistics.module.css";
+import css from "./RocketStatistics.module.css";
 
 const RocketStatistics = () => {
   const [statistics, setStatistics] = useState({
@@ -49,22 +49,24 @@ const RocketStatistics = () => {
   }, []);
 
   return (
-    <div className="statisticsInfo" style={scc.statisticsInfo}>
-      <div className="statisticsBlok" style={scc.statisticsBlok}>
-        <div style={scc.statBlock}>
-          <h2>{statistics.totalLaunches}</h2>
-          <h3>Total Launches</h3>
+    <>
+      <div className={css.statistics}>
+        <div className={css.statBlock}>
+          <h2 className={css.statH2}>
+            {statistics?.totalLaunches || "Loading..."}
+          </h2>
+          <h3 className={css.statH3}>Total Launches</h3>
         </div>
-        <div style={scc.statBlock}>
-          <h2>{statistics.visitsToISS}</h2>
-          <h3>Visits to the ISS</h3>
+        <div className={css.statBlock}>
+          <h2 className={css.statH2}>{statistics.visitsToISS}</h2>
+          <h3 className={css.statH3}>Visits to the ISS</h3>
         </div>
-        <div style={scc.statBlock}>
-          <h2>{statistics.totalReflights}</h2>
-          <h3>Total Reflights</h3>
+        <div className={css.statBlock}>
+          <h2 className={css.statH2}>{statistics.totalReflights}</h2>
+          <h3 className={css.statH3}>Total Reflights</h3>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

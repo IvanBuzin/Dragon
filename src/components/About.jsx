@@ -85,7 +85,7 @@ const About = () => {
           style={{
             position: "relative",
             paddingBottom: "40.5%",
-            height: 0,
+            height: 0 /*264px*/,
           }}
         >
           <iframe

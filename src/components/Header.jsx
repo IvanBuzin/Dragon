@@ -102,7 +102,7 @@ const styles = {
   gradientLine: {
     display: "flex",
     height: "6px",
-    width: "100%",
+    // width: "100%",
     maxWidth: "1191px",
     background:
       "linear-gradient(359deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%)",
