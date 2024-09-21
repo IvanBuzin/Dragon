@@ -85,9 +85,7 @@ const Starship = ({ rocket }) => {
             {images.map((_, index) => (
               <div
                 key={index}
-                className={`${css.dot} dot ${
-                  index === activeSlide ? css.dotActive : ""
-                }`}
+                className={` dot ${index === activeSlide ? "active" : ""}`}
                 onClick={() => sliderRef.current.slickGoTo(index)}
               ></div>
             ))}
