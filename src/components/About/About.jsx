@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import css from "./About.module.css";
 
 const About = () => {
   const [aboutData, setAboutData] = useState(null);
@@ -78,28 +79,14 @@ const About = () => {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-      <h2 style={{ textAlign: "center" }}>About Us</h2>
+    <div className={css.aboutContainer}>
+      <h2 className={css.aboutH2}>About Us</h2>
       {aboutData.video_url && (
-        <div
-          style={{
-            position: "relative",
-            paddingBottom: "40.5%",
-            height: 0,
-          }}
-        >
+        <div className={css.aboutBlock}>
           <iframe
             src={aboutData.video_url}
             title="About Us Video"
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              borderRadius: "40px",
-              border: "1px solid rgb(204, 204, 204, 0.2)",
-            }}
+            className={css.aboutVideo}
             frameBorder="0"
             allowFullScreen
             onError={handleVideoError}

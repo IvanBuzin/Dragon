@@ -1,0 +1,22 @@
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.aboutH2 {
+  text-align: center;
+}
+.aboutBlock {
+  position: relative;
+  padding-bottom: 40.5%;
+  height: 0;
+}
+.aboutVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  border: 1px solid rgb(204, 204, 204, 0.2);
+}

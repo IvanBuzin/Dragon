@@ -61,14 +61,17 @@
   margin: 0 20px;
 }
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background-color: #888;
+  background: #ffffff;
+  opacity: 0.5;
   cursor: pointer;
+  transition: opacity 0.3s;
 }
 
 .dotActive {
+  opacity: 1;
   background-color: #fff;
 }
 /* Для екранів до 768px */
@@ -105,6 +108,7 @@
   .StarshipP {
     width: 100%;
     max-width: 300px;
+    font-size: 12px;
   }
   .StarshipImg {
     width: 34%;
@@ -116,5 +120,8 @@
   }
   .navContainerStarship {
     width: 300px;
+  }
+  .dot {
+    width: 8px;
   }
 }

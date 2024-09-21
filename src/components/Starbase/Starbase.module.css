@@ -1,0 +1,71 @@
+.baseContent {
+  width: 1440px;
+  height: 866px;
+
+  background-image: url("https://www.spacex.com/vehicles/starship/assets/images/Starbase_Desktop.jpg");
+  background-size: 1440px 866px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+}
+.baseBlock {
+  position: absolute;
+  width: 1321px;
+  height: 172px;
+  left: 60px;
+  top: 2340px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+}
+.baseH2 {
+  width: 468px;
+  height: 76px;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 76px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0px;
+}
+.baseP {
+  width: 453px;
+  height: 72px;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #ffffff;
+  margin: 0px;
+}
+/* Для екранів до 768px */
+@media (max-width: 768px) {
+  .baseContent {
+    width: 768px;
+  }
+  .baseBlock {
+    top: 2150px;
+  }
+}
+
+/* Для екранів до 480px */
+@media (max-width: 480px) {
+  .baseBlock {
+    width: 360px;
+  }
+  .baseH2 {
+    font-size: 2rem;
+  }
+  .baseP {
+    width: 280px;
+  }
+}

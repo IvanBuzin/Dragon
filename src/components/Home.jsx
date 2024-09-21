@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
-import Header from "./Header";
+import Header from "./Header/Header";
 import OurRocket from "./OurRocket/OurRocket";
 import Starship from "./Starship/Starship";
-import Starbase from "./Starbase";
-import About from "./About";
+import Starbase from "./Starbase/Starbase";
+import About from "./About/About";
 import RocketStatistics from "./RocketStatistics/RocketStatistics";
 import Team from "./Team/Team";
 import RocketInfo from "./RocketInfo/RocketInfo";

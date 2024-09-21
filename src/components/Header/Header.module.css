@@ -1,0 +1,109 @@
+.heroContent {
+  scroll-behavior: smooth;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  color: white;
+}
+.logo {
+  font-size: 16px;
+  border: 1px solid white;
+  border-radius: 21px;
+  padding: 8px 12px;
+  opacity: 0px;
+}
+.nav {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  width: 382px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+.authLinks {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  border: 1px solid white;
+  border-radius: 21px;
+  padding: 8px 12px;
+  opacity: 0px;
+}
+.contact {
+  font-size: 16px;
+  text-decoration: none;
+}
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 583px;
+  height: auto;
+  margin-top: 48px;
+  margin-left: 32px;
+  gap: 0px;
+}
+.gradientLine {
+  display: flex;
+  height: 6px;
+  /*width: 100%;*/
+  max-width: 1191px;
+  background: linear-gradient(
+    359deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgb(255, 255, 255) 100%
+  );
+  margin: 94px 42px 48px 94px;
+}
+.koloImage {
+  width: 33px;
+  height: 33px;
+  margin: -14px 0 0 -64px;
+  opacity: 0.8;
+}
+
+/* Медіа-запити для адаптивного дизайну*/
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .title {
+    font-size: 3rem;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .title {
+    font-size: 3rem;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    margin-top: 48px;
+    margin-left: 24px;
+    gap: 0px;
+  }
+  .gradientLine {
+    width: 90%;
+  }
+  .nav {
+    gap: 12px 24px;
+    flex-direction: colum;
+  }
+}
