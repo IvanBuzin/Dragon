@@ -6,7 +6,7 @@ import Starbase from "./Starbase";
 import About from "./About";
 import RocketStatistics from "./RocketStatistics/RocketStatistics";
 import Team from "./Team/Team";
-import RocketInfo from "./RocketInfo";
+import RocketInfo from "./RocketInfo/RocketInfo";
 import Login from "./Login";
 import Register from "./Register";
 import ErrorBoundary from "./ErrorBoundary";

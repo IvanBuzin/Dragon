@@ -84,6 +84,9 @@
     width: 100%;
     object-fit: cover;
   }
+  .navContainerStarship {
+    width: 648px;
+  }
 }
 
 /* Для екранів до 480px */
@@ -97,12 +100,21 @@
   }
   .StarshipCard {
     width: 100%;
+    max-width: 340px;
   }
   .StarshipP {
     width: 100%;
+    max-width: 300px;
   }
   .StarshipImg {
     width: 34%;
     object-fit: cover;
+  }
+  .slick-slide img {
+    width: 34%;
+    object-fit: cover;
+  }
+  .navContainerStarship {
+    width: 300px;
   }
 }
