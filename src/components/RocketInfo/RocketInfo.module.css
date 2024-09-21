@@ -178,5 +178,7 @@
   .header {
     width: 280px;
     padding: 8px;
+    flex-direction: column;
+    gap: 8px;
   }
 }

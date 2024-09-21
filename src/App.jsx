@@ -4,7 +4,7 @@ import QA from "./components/QA";
 import ContactForm from "./components/ContactForm";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Home from "./components/Home";
+import Home from "./components/Home/Home";
 
 function App() {
   return (

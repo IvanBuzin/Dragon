@@ -74,15 +74,11 @@
 /* Медіа-запити для адаптивного дизайну*/
 @media (max-width: 768px) {
   .nav {
-    flex-direction: column;
     gap: 16px;
+    width: 300px;
   }
-  .header {
-    flex-direction: column;
-    gap: 16px;
-  }
+
   .title {
-    font-size: 3rem;
     width: 100%;
   }
 }
@@ -99,8 +95,12 @@
     margin-left: 24px;
     gap: 0px;
   }
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
   .gradientLine {
-    width: 90%;
+    margin-top: 30px;
   }
   .nav {
     gap: 12px 24px;

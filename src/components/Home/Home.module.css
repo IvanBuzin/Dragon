@@ -1,0 +1,53 @@
+.rocketInfoSection {
+  color: white;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 2608px;
+  position: absolute;
+  margin-left: -60px;
+  gap: 100px;
+}
+.buttonBeck {
+  margin-top: 24px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.homeContent {
+  color: white;
+  max-width: 1321px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  padding: 48px 60px 0px 60px;
+}
+.RocketInfoContent {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 1321px;
+  height: 744px;
+  gap: 32px;
+
+  background: #000;
+  margin: 0 auto;
+
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+/* Для екранів до 768px */
+@media (max-width: 768px) {
+  .RocketInfoContent {
+    width: 100%;
+  }
+}
+/* Для екранів до 480px */
+@media (max-width: 480px) {
+}

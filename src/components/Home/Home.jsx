@@ -1,15 +1,16 @@
 import { useRef, useState } from "react";
-import Header from "./Header/Header";
-import OurRocket from "./OurRocket/OurRocket";
-import Starship from "./Starship/Starship";
-import Starbase from "./Starbase/Starbase";
-import About from "./About/About";
-import RocketStatistics from "./RocketStatistics/RocketStatistics";
-import Team from "./Team/Team";
-import RocketInfo from "./RocketInfo/RocketInfo";
-import Login from "./Login";
-import Register from "./Register";
-import ErrorBoundary from "./ErrorBoundary";
+import Header from "../Header/Header";
+import OurRocket from "../OurRocket/OurRocket";
+import Starship from "../Starship/Starship";
+import Starbase from "../Starbase/Starbase";
+import About from "../About/About";
+import RocketStatistics from "../RocketStatistics/RocketStatistics";
+import Team from "../Team/Team";
+import RocketInfo from "../RocketInfo/RocketInfo";
+import Login from "../Login";
+import Register from "../Register";
+import ErrorBoundary from "../ErrorBoundary";
+import css from "./Home.module.css";
 
 const Home = () => {
   const [selectedRocket, setSelectedRocket] = useState(null);
@@ -36,16 +37,7 @@ const Home = () => {
   };
 
   return (
-    <div
-      style={{
-        color: "white",
-        maxWidth: "1321px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "100px",
-        padding: "48px 60px 0px 60px",
-      }}
-    >
+    <div className={css.homeContent}>
       {/* Перша секція */}
       <section
         id="hero"
@@ -135,37 +127,8 @@ const Home = () => {
       )}
       {/* Інформація про обрану ракету */}
       {selectedRocket && (
-        <div
-          style={{
-            color: "white",
-            maxWidth: "1440px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            height: "2608px",
-            position: "absolute",
-            marginLeft: "-60px",
-            gap: "100px",
-          }}
-        >
-          <section
-            id="rocketInfo"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "stretch",
-              width: "1321px",
-              height: "744px",
-              gap: "32px",
-
-              background: "#000",
-              margin: "0 auto",
-
-              order: 0,
-              alignSelf: "stretch",
-              flexGrow: 0,
-            }}
-          >
+        <div className={css.rocketInfoSection}>
+          <section id="rocketInfo" className={css.RocketInfoContent}>
             <RocketInfo rocket={selectedRocket} />
           </section>
           <section
@@ -180,16 +143,7 @@ const Home = () => {
             {/* Кнопка для повернення до секції OurRockets */}
             <button
               onClick={handleBackToRockets}
-              style={{
-                marginTop: "24px",
-                padding: "10px 20px",
-                backgroundColor: "#333",
-                color: "white",
-                borderRadius: "5px",
-                border: "none",
-                cursor: "pointer",
-                transition: "background-color 0.3s ease",
-              }}
+              className={css.buttonBeck}
               onMouseEnter={(e) => (e.target.style.backgroundColor = "#555")}
               onMouseLeave={(e) => (e.target.style.backgroundColor = "#333")}
             >
